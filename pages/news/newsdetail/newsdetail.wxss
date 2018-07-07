@@ -1,0 +1,25 @@
+/* pages/news/detail/newsdetail.wxss */
+.bc{
+  z-index: -1;
+  position: absolute;
+}
+.head {
+  font-size: 150%;
+  position: absolute;
+  z-index: 1;
+  font-weight: 800;
+  padding-left: 70rpx;
+  padding-right: 70rpx;
+  padding-top: 280rpx;
+  color: #ffffff;
+}
+
+.shead {
+  position: absolute;
+  z-index: 1;
+  color: #a8a8a8;
+  font-size: 75%;
+  padding-top: 390rpx;
+  padding-left: 70rpx;
+  padding-right: 70rpx;
+}

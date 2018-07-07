@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/news/news",
+    "pages/home/home",
+    "pages/me/me",
+    "pages/trade/trade",
+    "pages/news/newsdetail/newsdetail"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#1F1E2C",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "HearFresh听鲜",
+    "backgroundColor": "#1F1E2C",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "white",
+    "backgroundColor": "#1F1E2C",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "image/home.png",
+        "text": "Home"
+      },
+      {
+        "pagePath": "pages/trade/trade",
+        "iconPath": "image/sale.png",
+        "text": "Trade"
+      },
+      {
+        "pagePath": "pages/news/news",
+        "iconPath": "image/news.png",
+        "text": "News"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "iconPath": "image/me.png",
+        "text": "Me"
+      }
+    ]
+  }
+}

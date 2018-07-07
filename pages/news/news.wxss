@@ -1,0 +1,88 @@
+/* pages/news/news.wxss */
+.front {
+  position: absolute;
+  z-index: 2;
+  left: 60rpx;
+  top: 300rpx;
+  color: #fff;
+  font-size: 150%;
+  font-weight: 800;
+}
+
+.frontshead {
+  position: absolute;
+  z-index: 2;
+  left: 60rpx;
+  top: 355rpx;
+  color: #a8a8a8;
+  font-size: 85%;
+}
+
+.bc {
+  position: absolute;
+  z-index: -1;
+}
+
+.rec {
+  position: absolute;
+  z-index: 1;
+  opacity: 0.75;
+  width: 1500rpx;
+}
+
+.blank {
+  height: 10rpx;
+  width: 750rpx;
+}
+
+.article {
+  height: 300rpx;
+  width: 750rpx;
+  background-color: #fff;
+}
+
+.arimg {
+  height: 300rpx;
+  width: 300rpx;
+  left: 0px;
+}
+
+.arhead {
+  position: absolute;
+  font-size: 90%;
+  padding-top: 50rpx;
+  padding-left: 35rpx;
+  padding-right: 20rpx;
+  font-weight: 600;
+}
+
+.artime{
+  position: absolute;
+  height: 30rpx;
+  width: 30rpx;
+  padding-top: 220rpx;
+  padding-left: 35rpx;
+}
+.arreaded{
+  position: absolute;
+  height: 40rpx;
+  width: 40rpx;
+  padding-top: 220rpx;
+  padding-left: 280rpx;
+}
+.artimetext{
+  position: absolute;
+  height: 30rpx;
+  width: 30rpx;
+  padding-top: 225rpx;
+  padding-left: 70rpx;
+  font-size: 70%;
+}
+.arreadedtext{
+  position: absolute;
+  height: 30rpx;
+  width: 30rpx;
+  padding-top: 225rpx;
+  padding-left: 330rpx;
+  font-size: 70%;
+}

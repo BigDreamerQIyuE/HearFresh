@@ -1,0 +1,4 @@
+<!--pages/news/detail/newsdetail.wxml-->
+<view>
+<text>{{ids}}</text>
+</view>

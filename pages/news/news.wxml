@@ -1,0 +1,39 @@
+<view style='height:{{scrheight}}px'>
+  <swiper indicator-dots='true' autoplay="true" interval="3000" duration="500" style='height:{{scrheight}}px' indicator-active-color='#FFFFFF' >
+    <block wx:for="{{background}}" wx:key="*this">
+      <swiper-item>
+        <image bindtap='tapNews' src='{{item.url}}' class='bc' mode='widthFix' style='width:100%; overflow:show;' bindload='iLoad'></image>
+        <view  class='front'>{{item.head}}</view>
+        <view  class='frontshead'>{{item.shead}}</view>
+        <image  class='rec' src='{{item.mask}}' style='overflow:show; height:{{scrheight}}px;' data-postid="{{item.id}}" catchtap='tapNews'></image>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+
+<view>
+  <block wx:for="{{article}}" wx:key="*this">
+    <view class='blank'></view>
+    <view class='article' bindtap='tapNews'>
+      <image class='arimg' src='{{item.url}}'></image>
+      <text class='arhead'>{{item.head}}</text>
+      <image src='../../image/time.png' class='artime'></image>
+      <image src='../../image/readed.png' class='arreaded'></image>
+      <text class='artimetext'>{{item.time}}</text>
+      <text class='arreadedtext'>{{item.readed}}</text>
+    </view>
+  </block>
+</view>
+
+
+<view class='blank'></view>
+<view class='article'></view>
+
+<view class='blank'></view>
+<view class='article'></view>
+
+<view class='blank'></view>
+<view class='article'></view>
+
+<view class='blank'></view>
+<view class='blank'></view>

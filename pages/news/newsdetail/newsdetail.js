@@ -1,12 +1,12 @@
 Page({
 
   data: {
-      title: '',
-      description: '',
-      content: '',
-      author: '',
-      reading: '',
-      date: ''
+    title: '',
+    description: '',
+    content: '',
+    author: '',
+    reading: '',
+    date: ''
   },
 
   onLoad: function(options) {
@@ -25,15 +25,15 @@ Page({
 
       success: function(res) {
         console.log(res.data)
-      _this.setData({
-        title:res.data.data.title,
-        description:res.data.data.description,
-        content:res.data.data.content,
-        author:res.data.data.author,
-        date:res.data.data.createdAt.date,
-        reading:res.data.data.reading,
-        cover:res.data.data.cover
-      })
+        _this.setData({
+          title: res.data.data.title,
+          description: res.data.data.description,
+          content: res.data.data.content,
+          author: res.data.data.author,
+          date: res.data.data.createdAt.date,
+          reading: res.data.data.reading,
+          cover: res.data.data.cover
+        })
       },
       fail: function() {
         wx.showActionSheet({
@@ -42,10 +42,18 @@ Page({
       }
     })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
+  iLoad: function(e) {
+    var a = wx.getSystemInfoSync();
+    var scrwidth = a.windowWidth,
+      imgwidth = e.detail.width,
+      imgheight = e.detail.height,
+      ratio = imgwidth / imgheight;
+    this.setData({
+      scrheight: scrwidth / ratio,
+      headtop: 0.75 * scrwidth / ratio,
+      sheadtop: (0.75 * scrwidth / ratio) + 30
+    })
+  },
   onReady: function() {
 
   },

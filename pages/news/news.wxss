@@ -3,7 +3,7 @@
   position: absolute;
   z-index: 2;
   left: 60rpx;
-  top: 300rpx;
+  top: 320rpx;
   color: #fff;
   font-size: 150%;
   font-weight: 800;
@@ -13,7 +13,7 @@
   position: absolute;
   z-index: 2;
   left: 60rpx;
-  top: 355rpx;
+  top: 380rpx;
   color: #a8a8a8;
   font-size: 85%;
 }
@@ -21,6 +21,8 @@
 .bc {
   position: absolute;
   z-index: -1;
+  height: 450rpx;
+  width: 100%
 }
 
 .rec {

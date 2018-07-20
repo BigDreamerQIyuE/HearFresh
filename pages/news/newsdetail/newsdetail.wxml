@@ -1,9 +1,9 @@
 <!--pages/news/detail/newsdetail.wxml-->
-<view style='height:{{scrheight}}px'>
-  <image src='{{cover}}' class='bc' style='widthFix;height:{{scrheight}}px' bindload='iLoad'></image>
-  <text class='head'style='top:{{headtop}}px'>{{title}}</text>
-  <text class='shead'style='top:{{sheadtop}}px'>{{description}}</text>
-  <image class='mask' src='../../../image/mask.png' style='height:{{scrheight}}px'></image>
+<view style='height:450rpx'>
+  <image src='{{cover}}' class='bc'></image>
+  <text class='head'>{{title}}</text>
+  <text class='shead'>{{description}}</text>
+  <image class='mask' src='../../../image/mask.png'></image>
 </view>
 
 <view class="msg">

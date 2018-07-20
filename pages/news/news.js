@@ -32,7 +32,7 @@ Page({
       method: 'POST',
       data: {
         page: 1,
-        pageSize: 4
+        pageSize: 10
       },
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -46,16 +46,16 @@ Page({
           'headLine[0].cover': res.data.data.headLine.cover,
           'headLine[0].description': res.data.data.headLine.description,
         });
-        for (var i = 0; i < 3; i++) {
+        for (var i = 0; i < 10; i++) {
           var param = {};
           var string = "article[" + i + "].id";
           param[string] = res.data.data.news[i].newsId;
-         // console.log(res.data.data.news[i].newsId)
+          // console.log(res.data.data.news[i].newsId)
           _this.setData(param);
-          
+
           var string = "article[" + i + "].title";
           param[string] = res.data.data.news[i].title;
-         // console.log(res.data.data.news[i].title)
+          // console.log(res.data.data.news[i].title)
           _this.setData(param);
 
           var string = "article[" + i + "].time";
@@ -74,7 +74,7 @@ Page({
           _this.setData(param);
         }
       },
-      fail:function(e){
+      fail: function(e) {
         wx.showActionSheet({
           itemList: ["fuck"],
         })

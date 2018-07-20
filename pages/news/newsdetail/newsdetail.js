@@ -42,18 +42,7 @@ Page({
       }
     })
   },
-  iLoad: function(e) {
-    var a = wx.getSystemInfoSync();
-    var scrwidth = a.windowWidth,
-      imgwidth = e.detail.width,
-      imgheight = e.detail.height,
-      ratio = imgwidth / imgheight;
-    this.setData({
-      scrheight: scrwidth / ratio,
-      headtop: 0.75 * scrwidth / ratio,
-      sheadtop: (0.75 * scrwidth / ratio) + 30
-    })
-  },
+
   onReady: function() {
 
   },

@@ -67,3 +67,12 @@ page{
   font-size: 28rpx;
   line-height: 45rpx;
 }
+
+.comment{
+  z-index: 2;
+  position: fixed;
+  height: 80rpx;
+  width: 80rpx;
+  top: 60rpx;
+  right: 60rpx;
+}

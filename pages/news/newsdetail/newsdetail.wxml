@@ -1,4 +1,5 @@
 <!--pages/news/detail/newsdetail.wxml-->
+<image class='comment' src='../../../image/comment.png' catchtap='toComment' data-postid='{{id}}'></image>
 <view style='height:450rpx'>
   <image src='{{cover}}' class='bc'></image>
   <text class='head'>{{title}}</text>
@@ -12,4 +13,6 @@
     <text class="info_time">{{date}}</text>
   </view>
   <text class="msg_txt">{{content}}</text>
+  
 </view>
+

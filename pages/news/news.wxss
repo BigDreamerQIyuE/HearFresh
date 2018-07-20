@@ -1,34 +1,37 @@
 /* pages/news/news.wxss */
+
 .front {
   position: absolute;
   z-index: 2;
-  left: 60rpx;
   top: 320rpx;
   color: #fff;
-  font-size: 150%;
+  font-size: 50rpx;
   font-weight: 800;
+    padding-left: 60rpx;
+  padding-right: 60rpx;
 }
 
 .frontshead {
   position: absolute;
   z-index: 2;
-  left: 60rpx;
   top: 380rpx;
   color: #a8a8a8;
-  font-size: 85%;
+  font-size: 26rpx;
+  padding-left: 60rpx;
+  padding-right: 60rpx;
 }
 
 .bc {
   position: absolute;
   z-index: -1;
   height: 450rpx;
-  width: 100%
+  width: 100%;
 }
 
 .rec {
   position: absolute;
   z-index: 1;
-  width: 100%
+  width: 100%;
 }
 
 .blank {
@@ -38,8 +41,8 @@
 
 .article {
   height: 300rpx;
-  width: 750rpx;
-  background-color: #fff;
+  width: 100%;
+  background-color: #ffffff
 }
 
 .arimg {
@@ -50,40 +53,44 @@
 
 .arhead {
   position: absolute;
-  font-size: 90%;
+  font-size: 35rpx;
   padding-top: 50rpx;
   padding-left: 35rpx;
   padding-right: 20rpx;
   font-weight: 600;
 }
 
-.artime{
+.artime {
   position: absolute;
   height: 30rpx;
   width: 30rpx;
   padding-top: 220rpx;
   padding-left: 35rpx;
 }
-.arreaded{
+
+.arreaded {
   position: absolute;
   height: 40rpx;
   width: 40rpx;
   padding-top: 220rpx;
   padding-left: 280rpx;
 }
-.artimetext{
+
+.artimetext {
   position: absolute;
   height: 30rpx;
-  width: 30rpx;
-  padding-top: 225rpx;
+  width: 300rpx;
+  padding-top: 220rpx;
   padding-left: 70rpx;
-  font-size: 70%;
+  font-size: 25rpx;
+  z-index: 3
 }
-.arreadedtext{
+
+.arreadedtext {
   position: absolute;
   height: 30rpx;
   width: 30rpx;
-  padding-top: 225rpx;
+  padding-top: 220rpx;
   padding-left: 330rpx;
   font-size: 70%;
 }

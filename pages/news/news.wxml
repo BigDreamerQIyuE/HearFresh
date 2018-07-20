@@ -7,15 +7,17 @@
   </view>
 </block>
 <view>
-  <block wx:for="{{article}}" wx:key="*this">
-    <view class='blank'></view>
-    <view class='article' bindtap='tapNews'>
-      <image class='arimg' src='{{item.cover}}' data-postid='{{item.id}}'></image>
-      <text class='arhead' data-postid='{{item.id}}'>{{item.title}}</text>
-      <image src='../../image/time.png' class='artime' data-postid='{{item.id}}'></image>
-      <image src='../../image/readed.png' class='arreaded' data-postid='{{item.id}}'></image>
-      <text class='artimetext' data-postid='{{item.id}}'>{{item.time}}</text>
-      <text class='arreadedtext' data-postid='{{item.id}}'>{{item.read}}</text>
-    </view>
+  <block wx:if="{{article[0].id}}">
+    <block wx:for="{{article}}" wx:key="*this">
+      <view class='blank'></view>
+      <view class='article' catchtap='tapNews' data-postid='{{item.id}}'>
+        <image class='arimg' src='{{item.cover}}' data-postid='{{item.id}}'></image>
+        <text class='arhead' data-postid='{{item.id}}'>{{item.title}}</text>
+        <image src='../../image/time.png' class='artime' data-postid='{{item.id}}'></image>
+        <image src='../../image/readed.png' class='arreaded' data-postid='{{item.id}}'></image>
+        <text class='artimetext' data-postid='{{item.id}}'>{{item.time}}</text>
+        <text class='arreadedtext' data-postid='{{item.id}}'>{{item.read}}</text>
+      </view>
+    </block>
   </block>
 </view>

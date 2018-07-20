@@ -4,7 +4,8 @@
     "pages/home/home",
     "pages/me/me",
     "pages/trade/trade",
-    "pages/news/newsdetail/newsdetail"
+    "pages/news/newsdetail/newsdetail",
+    "pages/news/newsdetail/comment/comment"
   ],
   "window": {
     "navigationBarBackgroundColor": "#1F1E2C",

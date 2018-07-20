@@ -32,7 +32,8 @@ Page({
           author: res.data.data.author,
           date: res.data.data.createdAt.date,
           reading: res.data.data.reading,
-          cover: res.data.data.cover
+          cover: res.data.data.cover,
+          id: id
         })
       },
       fail: function() {
@@ -41,6 +42,13 @@ Page({
         })
       }
     })
+  },
+
+  toComment: function(event) {
+    var postId = event.target.dataset.postid;
+    wx.navigateTo({
+      url: 'comment/comment?id=' + postId
+    });
   },
 
   onReady: function() {

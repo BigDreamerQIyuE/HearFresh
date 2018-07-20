@@ -1,25 +1,46 @@
-// pages/news/detail/newsdetail.js
-
-
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
-    
+      title: '',
+      description: '',
+      content: '',
+      author: '',
+      reading: '',
+      date: ''
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function(options) {
+    var _this = this
     console.log(options.id)
-    var ids=options.id;
-    this.setData({
-      ids: options.id
+    var id = options.id;
+    wx.request({
+      url: 'http://139.199.79.232/HearFresh/GetNewsByObjectId.php',
+      method: 'POST',
+      data: {
+        newsId: id
+      },
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+
+      success: function(res) {
+        console.log(res.data)
+      _this.setData({
+        title:res.data.data.title,
+        description:res.data.data.description,
+        content:res.data.data.content,
+        author:res.data.data.author,
+        date:res.data.data.createdAt.date,
+        reading:res.data.data.reading,
+        cover:res.data.data.cover
+      })
+      },
+      fail: function() {
+        wx.showActionSheet({
+          itemList: ["fuck fail"],
+        })
+      }
     })
-    console.log(ids);
   },
 
   /**

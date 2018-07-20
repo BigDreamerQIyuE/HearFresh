@@ -2,24 +2,66 @@
 .bc{
   z-index: -1;
   position: absolute;
+  width: 100%;
 }
 .head {
-  font-size: 150%;
+  font-size: 50rpx;
   position: absolute;
   z-index: 1;
-  font-weight: 800;
+  font-weight: bold;
   padding-left: 70rpx;
   padding-right: 70rpx;
-  padding-top: 280rpx;
+  top: 300rpx;
   color: #ffffff;
+  display: flex
 }
 
 .shead {
   position: absolute;
   z-index: 1;
   color: #a8a8a8;
-  font-size: 75%;
-  padding-top: 390rpx;
+  font-size: 26rpx;
+  top: 355rpx;
   padding-left: 70rpx;
   padding-right: 70rpx;
+}
+.mask{
+  z-index: 0;
+  width: 100%;
+}
+
+page{
+  background-color: #ffffff
+}
+.msg {
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.msg_info{
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40rpx;
+  margin-bottom: 30rpx;
+}
+
+.info_author {
+  color: black;
+  font-size: 24rpx;
+}
+
+.info_time {
+  color: #929292;
+  font-size: 20rpx;
+}
+
+.msg_txt{
+  width: 80%;
+  color: #4d545b;
+  font-size: 28rpx;
+  line-height: 45rpx;
 }

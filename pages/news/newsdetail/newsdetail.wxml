@@ -1,4 +1,15 @@
 <!--pages/news/detail/newsdetail.wxml-->
 <view>
-<text>{{ids}}</text>
+  <image src='{{cover}}' class='bc' style='widthFix'></image>
+  <text class='head'>{{title}}</text>
+  <text class='shead'>{{description}}</text>
+  <image class='mask' src='../../../image/mask.png'></image>
+</view>
+
+<view class="msg">
+  <view class="msg_info">
+    <text class="info_author">撰写：{{author}}</text>
+    <text class="info_time">{{date}}</text>
+  </view>
+  <text class="msg_txt">{{content}}</text>
 </view>

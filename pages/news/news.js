@@ -40,15 +40,13 @@ Page({
 
       success: function(res) {
         console.log(res.data);
-        if (res.data.data.headLine.headLineId) {
-          _this.setData({
-            'headLine[0].id': res.data.data.headLine.headLineId,
-            'headLine[0].title': res.data.data.headLine.title,
-            'headLine[0].cover': res.data.data.headLine.cover,
-            'headLine[0].description': res.data.data.headLine.description,
-          })
-        }
-        for (var i = 0; i < res.data.data.news.length; i++) {
+        _this.setData({
+          'headLine[0].id': res.data.data.headLine.headLineId,
+          'headLine[0].title': res.data.data.headLine.title,
+          'headLine[0].cover': res.data.data.headLine.cover,
+          'headLine[0].description': res.data.data.headLine.description,
+        });
+        for (var i = 0; i < 10; i++) {
           var param = {};
           var string = "article[" + i + "].id";
           param[string] = res.data.data.news[i].newsId;
@@ -62,17 +60,17 @@ Page({
 
           var string = "article[" + i + "].time";
           param[string] = res.data.data.news[i].createdAt.date;
-          //console.log(res.data.data.news[i].createdAt.data)
+          console.log(res.data.data.news[i].createdAt.data)
           _this.setData(param);
 
           var string = "article[" + i + "].read";
           param[string] = res.data.data.news[i].reading;
-          //console.log(res.data.data.news[i].reading)
+          console.log(res.data.data.news[i].reading)
           _this.setData(param);
 
           var string = "article[" + i + "].cover";
           param[string] = res.data.data.news[i].cover;
-          // console.log(res.data.data.news[i].cover)
+          console.log(res.data.data.news[i].cover)
           _this.setData(param);
         }
       },

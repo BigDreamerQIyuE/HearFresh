@@ -1,2 +1,9 @@
 <!--pages/news/newsdetail/comment/comment.wxml-->
-<text>pages/news/newsdetail/comment/comment.wxml</text>
+<block wx:for="{{comment}}" wx:key='this'>
+  <view class='bg'>
+
+    <image src='../../../../image/up.png' class='up'></image>
+    <image src='../../../../image/down.png' class='down'></image>
+
+  </view>
+</block>

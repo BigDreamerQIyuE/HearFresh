@@ -1,1 +1,20 @@
 /* pages/news/newsdetail/comment/comment.wxss */
+
+page {
+  background-color: #1f1e2c;
+}
+
+.bg {
+  background-color: #fff;
+}
+
+.up {
+  height: 60rpx;
+  width: 60rpx;
+  
+}
+
+.down {
+  height: 60rpx;
+  width: 60rpx;
+}

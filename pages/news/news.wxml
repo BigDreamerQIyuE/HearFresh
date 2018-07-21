@@ -3,12 +3,12 @@
     <image bindtap='tapNews' src='{{headLine[0].cover}}' class='bc' bindload='iLoad'></image>
     <view class='front'>{{headLine[0].title}}</view>
     <view class='frontshead'>{{headLine[0].description}}</view>
-    <image class='rec' src='../../image/mask.png' style='height:450rpx' data-postid="{{headLine[0].id}}" catchtap='tapNews'></image>
+    <image class='mask' src='../../image/mask.png' style='height:450rpx' data-postid="{{headLine[0].id}}" catchtap='tapNews'></image>
   </view>
 </block>
 <view>
   <block wx:if="{{article[0].id}}">
-    <block wx:for="{{article}}" wx:key="*this">
+    <block wx:for="{{article}}" wx:key="this">
       <view class='blank'></view>
       <view class='article' catchtap='tapNews' data-postid='{{item.id}}'>
         <image class='arimg' src='{{item.cover}}' data-postid='{{item.id}}'></image>

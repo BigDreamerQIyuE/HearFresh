@@ -28,7 +28,7 @@
   width: 100%;
 }
 
-.rec {
+.mask {
   position: absolute;
   z-index: 1;
   width: 100%;

@@ -53,28 +53,29 @@ Page({
           var string = "article[" + i + "].id";
           param[string] = res.data.data.news[i].newsId;
           // console.log(res.data.data.news[i].newsId)
-          _this.setData(param);
+          //_this.setData(param);
 
           var string = "article[" + i + "].title";
           param[string] = res.data.data.news[i].title;
           // console.log(res.data.data.news[i].title)
-          _this.setData(param);
+         // _this.setData(param);
 
           var string = "article[" + i + "].time";
           param[string] = res.data.data.news[i].createdAt.date;
           //console.log(res.data.data.news[i].createdAt.data)
-          _this.setData(param);
+         // _this.setData(param);
 
           var string = "article[" + i + "].read";
           param[string] = res.data.data.news[i].reading;
           //console.log(res.data.data.news[i].reading)
-          _this.setData(param);
+          //_this.setData(param);
 
           var string = "article[" + i + "].cover";
           param[string] = res.data.data.news[i].cover;
           // console.log(res.data.data.news[i].cover)
           _this.setData(param);
         }
+        
       },
       fail: function(e) {
         wx.showActionSheet({

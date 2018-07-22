@@ -1,5 +1,9 @@
 <!--pages/news/newsdetail/comment/comment.wxml-->
+<view class='replyInput'>
+  <input placeholder='你想说啥？' class='input' confirm-type='send'></input>
+</view>
 <view class='leftRightBlank'>
+
   <block wx:for="{{comment}}" wx:key='this'>
     <view class='bg'>
       <view class='upAndDown'>

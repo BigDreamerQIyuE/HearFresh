@@ -1,9 +1,24 @@
 <!--pages/news/newsdetail/comment/comment.wxml-->
-<block wx:for="{{comment}}" wx:key='this'>
-  <view class='bg'>
-
-    <image src='../../../../image/up.png' class='up'></image>
-    <image src='../../../../image/down.png' class='down'></image>
-
-  </view>
-</block>
+<view class='leftRightBlank'>
+  <block wx:for="{{comment}}" wx:key='this'>
+    <view class='bg'>
+      <view class='upAndDown'>
+        <image src='../../../../image/up.png' class='up'></image>
+        <image src='../../../../image/down.png' class='down'></image>
+      </view>
+      <view class='information'>
+        <text class='username'>{{item.username}}</text>
+        <text class='level'> Level 999 </text>
+        <text class='likeNumber'>{{item.likeNumber}}赞 </text>
+        <text class='date'>{{item.date}}</text>
+        <view class='content'>{{item.content}}</view>
+        <view class='replyView'>
+          <image src='../../../../image/reply.png' class='replyImg'></image>
+          <text class='replyTitle'> Reply 评论(34)</text>
+          <image src='../../../../image/rightmenu.png' class='rightMenu'></image>
+        </view>
+      </view>
+    </view>
+    <view class='bottomBlank'></view>
+  </block>
+</view>

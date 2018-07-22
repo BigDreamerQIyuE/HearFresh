@@ -21,7 +21,7 @@ Page({
       data: {
         newsId: id,
         userId: '5b39b27067f356003815884d',
-        pageSize:3
+        pageSize:1000
       },
       header: {
         "Content-Type": "application/x-www-form-urlencoded"

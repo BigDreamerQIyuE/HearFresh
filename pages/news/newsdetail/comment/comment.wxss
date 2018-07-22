@@ -4,17 +4,80 @@ page {
   background-color: #1f1e2c;
 }
 
+.leftRightBlank {
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+}
+
+.bottomBlank {
+  height: 5rpx;
+}
+
 .bg {
   background-color: #fff;
+  display: flex;
+  flex-direction: row;
+}
+
+.upAndDown {
+  display: flex;
+  flex-direction: column;
 }
 
 .up {
   height: 60rpx;
   width: 60rpx;
-  
 }
 
 .down {
   height: 60rpx;
   width: 60rpx;
+}
+
+.information {
+  padding-top: 3rpx;
+}
+
+.level {
+  color: #307c92;
+  font-size: 25rpx;
+}
+
+.username {
+  background-color: #edeff1;
+  font-size: 25rpx;
+}
+
+.likeNumber {
+  font-size: 25rpx;
+  color: #818181;
+}
+
+.date {
+  font-size: 25rpx;
+  word-break: break-all;
+  color: #818181;
+}
+
+.content {
+  font-size: 35rpx;
+  padding: 10rpx;
+}
+.replyView{
+  padding-bottom: 20rpx;
+}
+.replyImg{
+  height: 30rpx;
+  width: 30rpx;
+  padding-top: 10rpx;
+}
+.replyTitle{
+  font-size: 30rpx;
+  font-weight: bold
+}
+.rightMenu{
+  position: absolute;
+  height: 50rpx;
+  width: 50rpx;
+  right: 50rpx;
 }

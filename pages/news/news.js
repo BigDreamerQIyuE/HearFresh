@@ -1,7 +1,5 @@
 // pages/news/news.js
-var app = getApp(),
-  page = 1,
-  pageSize = 14
+var app = getApp()
 Page({
 
   /**
@@ -33,8 +31,8 @@ Page({
       url: 'http://139.199.79.232/HearFresh/GetTheNewsList.php',
       method: 'POST',
       data: {
-        page: page,
-        pageSize: pageSize
+        page: 1,
+        pageSize: 10
       },
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -60,12 +58,12 @@ Page({
           var string = "article[" + i + "].title";
           param[string] = res.data.data.news[i].title;
           // console.log(res.data.data.news[i].title)
-          // _this.setData(param);
+         // _this.setData(param);
 
           var string = "article[" + i + "].time";
           param[string] = res.data.data.news[i].createdAt.date;
           //console.log(res.data.data.news[i].createdAt.data)
-          // _this.setData(param);
+         // _this.setData(param);
 
           var string = "article[" + i + "].read";
           param[string] = res.data.data.news[i].reading;
@@ -77,7 +75,7 @@ Page({
           // console.log(res.data.data.news[i].cover)
           _this.setData(param);
         }
-
+        
       },
       fail: function(e) {
         wx.showActionSheet({
@@ -85,8 +83,6 @@ Page({
         })
       }
     });
-
-
   },
 
 
@@ -145,66 +141,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-   /* page++
-    console.log("page:"+page+"pageSize:"+pageSize)
 
-    var _this = this
-    wx.request({
-      url: 'http://139.199.79.232/HearFresh/GetTheNewsList.php',
-      method: 'POST',
-      data: {
-        page: page,
-        pageSize: pageSize
-      },
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-
-      success: function(res) {
-        console.log(res.data);
-        var fuck=(page-1)*3-1
-        for (var i = 0; i < res.data.data.news.length; i++) {
-          var param = {};
-          var string = "article[" + fuck + "].id";
-          param[string] = res.data.data.news[i].newsId;
-          // console.log(res.data.data.news[i].newsId)
-          //_this.setData(param);
-
-          var string = "article[" + fuck + "].title";
-          param[string] = res.data.data.news[i].title;
-          // console.log(res.data.data.news[i].title)
-          // _this.setData(param);
-
-          var string = "article[" + fuck + "].time";
-          param[string] = res.data.data.news[i].createdAt.date;
-          //console.log(res.data.data.news[i].createdAt.data)
-          // _this.setData(param);
-
-          var string = "article[" + fuck + "].read";
-          param[string] = res.data.data.news[i].reading;
-          //console.log(res.data.data.news[i].reading)
-          //_this.setData(param);
-
-          var string = "article[" + fuck + "].cover";
-          param[string] = res.data.data.news[i].cover;
-          // console.log(res.data.data.news[i].cover)
-          _this.setData(param);
-        }
-
-      },
-      fail: function(e) {
-        wx.showActionSheet({
-          itemList: ["fuck"],
-        })
-      }
-    });
-*/
   },
 
 
-
+  /**
+   * 页面上拉触底事件的处理函数
+   */
   onReachBottom: function() {
-
 
   },
 

@@ -1,17 +1,14 @@
 <!--pages/news/newsdetail/comment/comment.wxml-->
 <view class='replyInput'>
-  <input placeholder='你想说啥？' class='input' confirm-type='send' bindconfirm='replySubmit'></input>
+  <input placeholder='你想说啥？' class='input' confirm-type='send'></input>
 </view>
 <view class='leftRightBlank'>
 
   <block wx:for="{{comment}}" wx:key='this'>
     <view class='bg'>
       <view class='upAndDown'>
-        <image wx:if="{{item.like}}" src='../../../../image/up1.png' class='up' catchtap='likeComment' data-likeid='{{item.id}}'></image>
-        <image wx:else src='../../../../image/up.png' class='up' catchtap='likeComment' data-likeid='{{item.id}}'></image>
-        
-        <image wx:if="{{item.dislike}}" src='../../../../image/down1.png' class='down' catchtap='dislikeComment' data-dislikeid='{{item.id}}'></image>
-        <image wx:else src='../../../../image/down.png' class='down' catchtap='dislikeComment' data-dislikeid='{{item.id}}'></image>
+        <image src='../../../../image/up.png' class='up'></image>
+        <image src='../../../../image/down.png' class='down'></image>
       </view>
       <view class='information'>
         <text class='username'>{{item.username}}</text>

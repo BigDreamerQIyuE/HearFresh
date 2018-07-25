@@ -94,3 +94,8 @@
   padding-left: 330rpx;
   font-size: 70%;
 }
+
+.reachBottom{
+ text-align: center;
+  color: #fff
+}

@@ -28,4 +28,5 @@
     </view>
     <view class='bottomBlank'></view>
   </block>
+  <view class='blank'></view>
 </view>

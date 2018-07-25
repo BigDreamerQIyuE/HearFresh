@@ -209,8 +209,6 @@ Page({
 
   onReachBottom: function() {
     page++
-    console.log("page:" + page + "pageSize:" + pageSize)
-
     var _this = this
     wx.request({
       url: 'http://139.199.79.232/HearFresh/GetTheNewsList.php',
@@ -231,7 +229,7 @@ Page({
           page--
         } else {
           console.log(res.data);
-          var fuck = (page - 1) * 5 - 1
+          var fuck = (page - 1) * pageSize - 1
           for (var i = 0; i < res.data.data.news.length; i++, fuck++) {
             var param = {};
             var string = "article[" + fuck + "].id";

@@ -19,7 +19,7 @@
         <text class='arreadedtext' data-postid='{{item.id}}'>{{item.read}}</text>
       </view>
     </block>
-    <view class='reachBottom' wx:if="{{!reachBottom}}">----上拉加载更多----</view>
+    <view class='reachBottom' wx:if="{{!reachBottom}}">----加载中----</view>
     <view class='reachBottom' wx:if="{{reachBottom}}">----没了----</view>
   </block>
 </view>

@@ -1,15 +1,14 @@
 <!--pages/news/newsdetail/comment/comment.wxml-->
 <view class='replyInput'>
-  <input placeholder='你想说啥？' class='input' confirm-type='send' bindconfirm='replySubmit'></input>
+  <input placeholder='你想说啥？' class='input' confirm-type='done' bindconfirm='replySubmit'></input>
 </view>
-<view class='leftRightBlank'>
 
+<view class='leftRightBlank'>
   <block wx:for="{{comment}}" wx:key='this'>
     <view class='bg'>
       <view class='upAndDown'>
         <image wx:if="{{item.like}}" src='../../../../image/up1.png' class='up' catchtap='likeComment' data-likeid='{{item.id}}'></image>
         <image wx:else src='../../../../image/up.png' class='up' catchtap='likeComment' data-likeid='{{item.id}}'></image>
-        
         <image wx:if="{{item.dislike}}" src='../../../../image/down1.png' class='down' catchtap='dislikeComment' data-dislikeid='{{item.id}}'></image>
         <image wx:else src='../../../../image/down.png' class='down' catchtap='dislikeComment' data-dislikeid='{{item.id}}'></image>
       </view>
@@ -27,6 +26,10 @@
       </view>
     </view>
     <view class='bottomBlank'></view>
+
   </block>
+  <view class='reachBottom' wx:if="{{!reachBottom}}">----加载中----</view>
+  <view class='reachBottom' wx:if="{{reachBottom}}">----没了----</view>
   <view class='blank'></view>
+
 </view>

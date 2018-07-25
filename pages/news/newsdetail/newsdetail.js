@@ -6,13 +6,43 @@ Page({
     content: '',
     author: '',
     reading: '',
-    date: ''
+    date: '',
   },
 
   onLoad: function(options) {
+    console.log(this.data.collect)
     var _this = this
     console.log(options.id)
     var id = options.id;
+
+    wx.request({
+      url: 'http://139.199.79.232/HearFresh/Collect.php',
+      method: 'POST',
+      data: {
+        userId: '5b58394fee920a003ca68a9f',
+        newsId: options.id,
+        collectAction: false
+      },
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+
+      success: function (collection) {
+        console.log(collection.data.data.collection)
+        _this.setData({
+          collect:collection.data.data.collection
+        })
+      },
+
+      fail: function () {
+        wx.showActionSheet({
+          itemList: ["fuck fail"],
+        })
+      }
+    })
+
+
+
     wx.request({
       url: 'http://139.199.79.232/HearFresh/GetNewsByObjectId.php',
       method: 'POST',
@@ -42,6 +72,8 @@ Page({
         })
       }
     })
+
+
   },
 
   toComment: function(event) {
@@ -51,6 +83,33 @@ Page({
     });
   },
 
+  collect: function(res) {
+    var _this = this
+    wx.request({
+      url: 'http://139.199.79.232/HearFresh/Collect.php',
+      method: 'POST',
+      data: {
+        userId: '5b58394fee920a003ca68a9f',
+        newsId: _this.data.id,
+        collectAction: true
+      },
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+
+      success: function(res) {
+        console.log("collect success")
+        _this.setData({
+          collect: !_this.data.collect
+        })
+      },
+      fail: function() {
+        wx.showActionSheet({
+          itemList: ["fuck fail"],
+        })
+      }
+    })
+  },
   onReady: function() {
 
   },

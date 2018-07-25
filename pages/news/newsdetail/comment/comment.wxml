@@ -1,12 +1,35 @@
 <!--pages/news/newsdetail/comment/comment.wxml-->
 <view class='replyInput'>
-<form bindsubmit='replySubmit'>
-  <input placeholder='你想说啥？' value='{{reset}}' class='input' bindblur='message' confirm-type='done' ></input>
-  <button class='sendButton' size='mini' form-type='submit'>发送</button>
+  <form bindsubmit='replySubmit'>
+    <input placeholder='你想说啥？' value='{{reset}}' class='input' bindinput='message' confirm-type='done'></input>
+    <button class='sendButton' size='mini' form-type='submit'>发送</button>
   </form>
 </view>
 
 <view class='leftRightBlank'>
+  <block wx:for="{{fakeComment}}" wx:key='this'>
+    <view class='bg'>
+      <view class='upAndDown'>
+        <image src='../../../../image/up1.png' class='up'></image>
+        <image src='../../../../image/down1.png' class='down'></image>
+      </view>
+      <view class='information'>
+        <text class='username'>shaolizhi</text>
+        <text class='level'> Level 999 </text>
+        <text class='likeNumber'>0赞 </text>
+        <text class='date'>{{item.date}}</text>
+        <view class='content'>{{item.content}}</view>
+        <view class='replyView'>
+          <image src='../../../../image/reply.png' class='replyImg'></image>
+          <text class='replyTitle'> Reply 评论(34)</text>
+          <image src='../../../../image/rightmenu.png' class='rightMenu'></image>
+        </view>
+      </view>
+    </view>
+    <view class='bottomBlank'></view>
+  </block>
+
+
   <block wx:for="{{comment}}" wx:key='this'>
     <view class='bg'>
       <view class='upAndDown'>

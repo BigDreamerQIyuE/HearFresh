@@ -1,10 +1,12 @@
 /* pages/news/detail/newsdetail.wxss */
-.bc{
+
+.bc {
   z-index: -1;
   position: absolute;
   width: 100%;
   height: 450rpx;
 }
+
 .head {
   font-size: 50rpx;
   position: absolute;
@@ -13,8 +15,8 @@
   padding-left: 70rpx;
   padding-right: 70rpx;
   top: 320rpx;
-  color: #ffffff;
-  display: flex
+  color: #fff;
+  display: flex;
 }
 
 .shead {
@@ -26,15 +28,17 @@
   padding-left: 70rpx;
   padding-right: 70rpx;
 }
-.mask{
+
+.mask {
   z-index: 0;
   width: 100%;
-  height: 450rpx
+  height: 450rpx;
 }
 
-page{
-  background-color: #ffffff
+page {
+  background-color: #fff;
 }
+
 .msg {
   width: 100%;
   background-color: white;
@@ -43,7 +47,7 @@ page{
   align-items: center;
 }
 
-.msg_info{
+.msg_info {
   width: 80%;
   display: flex;
   justify-content: space-between;
@@ -61,18 +65,27 @@ page{
   font-size: 20rpx;
 }
 
-.msg_txt{
+.msg_txt {
   width: 80%;
   color: #4d545b;
   font-size: 28rpx;
   line-height: 45rpx;
 }
 
-.comment{
+.comment {
   z-index: 2;
   position: fixed;
-height: 160rpx;
-width: 80rpx;
+  height: 160rpx;
+  width: 80rpx;
   bottom: 240rpx;
+  right: -1rpx;
+}
+
+.collect {
+  z-index: 2;
+  position: fixed;
+  height: 160rpx;
+  width: 80rpx;
+  bottom: 500rpx;
   right: -1rpx;
 }

@@ -5,7 +5,8 @@ var page = 1,
 Page({
   data: {
     reachBottom: false,
-    reset: ''
+    reset: '',
+
   },
 
   onLoad: function(options) {
@@ -67,15 +68,15 @@ Page({
       }
     })
   },
+
   message: function(res) {
     this.setData({
       content: res.detail.value
     })
   },
-  replySubmit: function(res) {
-    console.log(res.detail.value)
-    var _this = this
 
+  replySubmit: function(res) {
+    var _this = this
     wx.request({
       url: 'http://139.199.79.232/HearFresh/CreateComment.php',
       method: 'POST',
@@ -89,12 +90,18 @@ Page({
       },
 
     })
+
+    console.log(_this.data.content)
     _this.setData({
-      reset: ''
+      reset: '',
+      "fakeComment[0].content": _this.data.content
     })
+
+    console.log("fuck:" + _this.data.fakeComment[0].content)
     wx.showToast({
       title: '发送成功！',
     })
+
   },
 
   likeComment: function(event) {

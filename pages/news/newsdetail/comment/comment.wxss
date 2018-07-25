@@ -8,10 +8,17 @@
   z-index: 2;
 }
 
+.sendButton{
+  position: fixed;
+  z-index: 3;
+  right: 20rpx;
+  bottom: 30rpx;
+}
 .input {
   margin: 20rpx;
   background-color: #fff;
   height: 80rpx;
+  width: 560rpx
 }
 
 .leftRightBlank {

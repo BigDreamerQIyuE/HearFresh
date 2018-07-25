@@ -4,11 +4,12 @@ var page = 1,
 
 Page({
   data: {
-    reachBottom: false
+    reachBottom: false,
+    reset: ''
   },
 
   onLoad: function(options) {
-    console.log("page="+page)
+    console.log("page=" + page)
     var id = options.id,
       _this = this;
     _this.setData({
@@ -28,6 +29,11 @@ Page({
       },
 
       success: function(res) {
+        if (res.data.data.length < pageSize) {
+          _this.setData({
+            reachBottom: true
+          })
+        }
         console.log(res.data)
         for (var i = 0; i < res.data.data.length; i++) {
           var param = {}
@@ -61,15 +67,20 @@ Page({
       }
     })
   },
-
+  message: function(res) {
+    this.setData({
+      content: res.detail.value
+    })
+  },
   replySubmit: function(res) {
-    console.log(res)
+    console.log(res.detail.value)
     var _this = this
+
     wx.request({
       url: 'http://139.199.79.232/HearFresh/CreateComment.php',
       method: 'POST',
       data: {
-        content: res.detail.value,
+        content: _this.data.content,
         userId: '5b39b27067f356003815884d',
         newsId: _this.data.id
       },
@@ -77,6 +88,9 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
 
+    })
+    _this.setData({
+      reset: ''
     })
     wx.showToast({
       title: '发送成功！',
@@ -108,6 +122,15 @@ Page({
         var string = "comment[" + fuck + "].like"
         param[string] = !_this.data.comment[fuck].like
         _this.setData(param)
+        if (_this.data.comment[fuck].like == true) {
+          var likeNumber = "comment[" + fuck + "]likeNumber"
+          param[likeNumber] = _this.data.comment[fuck].likeNumber + 1
+          _this.setData(param)
+        } else {
+          var likeNumber = "comment[" + fuck + "]likeNumber"
+          param[likeNumber] = _this.data.comment[fuck].likeNumber - 1
+          _this.setData(param)
+        }
       }
     })
   },
@@ -150,7 +173,7 @@ Page({
     var _this = this,
       id = _this.data.id,
       fuck = (page - 1) * pageSize
-console.log("fuck"+fuck)
+    console.log("fuck" + fuck)
     wx.request({
       url: 'http://139.199.79.232/HearFresh/GetTheCommentList.php',
       method: 'POST',
@@ -166,14 +189,14 @@ console.log("fuck"+fuck)
 
       success: function(res) {
         console.log(res.data)
-        if (res.data.data.length==0) {
+        if (res.data.data.length == 0) {
           _this.setData({
             reachBottom: true
           })
           page--
         } else {
           console.log("下拉成功")
-          for (var i = 0; i < res.data.data.length; i++,fuck++) {
+          for (var i = 0; i < res.data.data.length; i++, fuck++) {
             var param = {}
             var string = "comment[" + fuck + "].content"
             param[string] = res.data.data[i].content
@@ -233,7 +256,7 @@ console.log("fuck"+fuck)
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-      page=1
+    page = 1
   },
 
   /**

@@ -1,5 +1,8 @@
 // pages/news/newsdetail/comment/comment.js
-var page = 1,
+
+
+var util = require('../../../../utils/util.js'),
+  page = 1,
   pageSize = 10
 
 Page({
@@ -10,6 +13,10 @@ Page({
   },
 
   onLoad: function(options) {
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading'
+    })
     console.log("page=" + page)
     var id = options.id,
       _this = this;
@@ -36,6 +43,8 @@ Page({
           })
         }
         console.log(res.data)
+        var time;
+
         for (var i = 0; i < res.data.data.length; i++) {
           var param = {}
           var string = "comment[" + i + "].content"
@@ -46,8 +55,10 @@ Page({
           param[string] = res.data.data[i].username
 
 
-          var string = "comment[" + i + "].date"
-          param[string] = res.data.data[i].createdAt.date
+          var string = "comment[" + i + "].date",
+            createdAt = res.data.data[i].createdAt * 1000,
+            date = util.formatTime(new Date(createdAt))
+          param[string] = date
 
           var string = "comment[" + i + "].likeNumber"
           param[string] = res.data.data[i].likeNumber
@@ -65,7 +76,8 @@ Page({
           _this.setData(param)
 
         }
-      }
+        wx.hideToast()
+      },
     })
   },
 
@@ -104,9 +116,31 @@ Page({
 
   },
 
+  //点赞
   likeComment: function(event) {
     var _this = this,
-      likeId = event.target.dataset.likeid
+      likeId = event.target.dataset.likeid,
+      param = {},
+      fuck;
+    for (var i = 0; i < 100; i++) {
+      if (likeId == _this.data.comment[i].id) {
+        fuck = i;
+        i = 101;
+      }
+    }
+    if (_this.data.comment[fuck].like == false) {
+      var likeNumber = "comment[" + fuck + "]likeNumber"
+      param[likeNumber] = _this.data.comment[fuck].likeNumber + 1
+      var string = "comment[" + fuck + "].like"
+      param[string] = !_this.data.comment[fuck].like
+      _this.setData(param)
+    } else {
+      var likeNumber = "comment[" + fuck + "]likeNumber"
+      param[likeNumber] = _this.data.comment[fuck].likeNumber - 1
+      var string = "comment[" + fuck + "].like"
+      param[string] = !_this.data.comment[fuck].like
+      _this.setData(param)
+    }
     wx.request({
       url: 'http://139.199.79.232/HearFresh/LikeComment.php',
       method: 'POST',
@@ -117,34 +151,29 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      success: function() {
-        var fuck;
-        for (var i = 0; i < 100; i++) {
-          if (likeId == _this.data.comment[i].id) {
-            fuck = i;
-            i = 101;
-          }
-        }
-        var param = {}
-        var string = "comment[" + fuck + "].like"
-        param[string] = !_this.data.comment[fuck].like
+      success: function(res) {
+        var confirmData = "comment[" + fuck + "].like"
+        param[confirmData] = res.data.data.like
         _this.setData(param)
-        if (_this.data.comment[fuck].like == true) {
-          var likeNumber = "comment[" + fuck + "]likeNumber"
-          param[likeNumber] = _this.data.comment[fuck].likeNumber + 1
-          _this.setData(param)
-        } else {
-          var likeNumber = "comment[" + fuck + "]likeNumber"
-          param[likeNumber] = _this.data.comment[fuck].likeNumber - 1
-          _this.setData(param)
-        }
       }
     })
   },
 
+  //点踩
   dislikeComment: function(event) {
     var _this = this,
-      dislikeId = event.target.dataset.dislikeid
+      dislikeId = event.target.dataset.dislikeid,
+      param = {},
+      fuck;
+    for (var i = 0; i < 100; i++) {
+      if (dislikeId == _this.data.comment[i].id) {
+        fuck = i;
+        i = 101;
+      }
+    }
+    var name = "comment[" + fuck + "].dislike"
+    param[name] = !_this.data.comment[fuck].dislike
+    _this.setData(param)
     wx.request({
       url: 'http://139.199.79.232/HearFresh/DislikeComment.php',
       method: 'POST',
@@ -155,17 +184,9 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      success: function() {
-        var fuck;
-        for (var i = 0; i < 100; i++) {
-          if (dislikeId == _this.data.comment[i].id) {
-            fuck = i;
-            i = 101;
-          }
-        }
-        var param = {}
-        var string = "comment[" + fuck + "].dislike"
-        param[string] = !_this.data.comment[fuck].dislike
+      success: function(res) {
+        name = "comment[" + fuck + "].dislike"
+        param[name] = res.data.data.dislike
         _this.setData(param)
       }
     })
@@ -241,9 +262,7 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
-
-  },
+  onReady: function() {},
 
   /**
    * 生命周期函数--监听页面显示

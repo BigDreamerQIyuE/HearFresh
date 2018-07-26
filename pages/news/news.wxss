@@ -3,28 +3,37 @@
 .front {
   position: absolute;
   z-index: 2;
-  top: 320rpx;
+  font-weight: bold;
   color: #fff;
-  font-size: 50rpx;
-  font-weight: 800;
-    padding-left: 60rpx;
-  padding-right: 60rpx;
+  display: flex;
+  mix-blend-mode: undefined;
+  font-family: SegoeUI;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.93;
+  letter-spacing: 0.7px;
+  text-align: left;
 }
 
 .frontshead {
   position: absolute;
   z-index: 2;
-  top: 380rpx;
-  color: #a8a8a8;
   font-size: 26rpx;
-  padding-left: 60rpx;
-  padding-right: 60rpx;
+  padding-right: 70rpx;
+  mix-blend-mode: undefined;
+  font-family: SegoeUI;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2.08;
+  letter-spacing: 0.5px;
+  text-align: left;
+  color: #e6e6e6;
 }
 
 .bc {
   position: absolute;
   z-index: -1;
-  height: 450rpx;
   width: 100%;
 }
 
@@ -36,18 +45,18 @@
 
 .blank {
   height: 10rpx;
-  width: 750rpx;
+  width: 100%;
 }
 
 .article {
-  height: 300rpx;
+  height: 270rpx;
   width: 100%;
-  background-color: #ffffff
+  background-color: #fff;
 }
 
 .arimg {
-  height: 300rpx;
-  width: 300rpx;
+  height: 270rpx;
+  width: 270rpx;
   left: 0px;
 }
 
@@ -55,24 +64,35 @@
   position: absolute;
   font-size: 35rpx;
   padding-top: 50rpx;
-  padding-left: 35rpx;
+  padding-left: 38rpx;
   padding-right: 20rpx;
-  font-weight: 600;
+  font-weight: bold;
+
+  mix-blend-mode: undefined;
+  font-family: SegoeUI;
+
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2.03;
+  letter-spacing: 0.5px;
+  text-align: left;
+  color: #000000;
+
 }
 
 .artime {
   position: absolute;
-  height: 30rpx;
-  width: 30rpx;
-  padding-top: 220rpx;
-  padding-left: 35rpx;
+  height: 34rpx;
+  width: 34rpx;
+  padding-top: 203rpx;
+  padding-left: 38rpx;
 }
 
 .arreaded {
   position: absolute;
-  height: 40rpx;
-  width: 40rpx;
-  padding-top: 220rpx;
+  height: 44rpx;
+  width: 44rpx;
+  padding-top: 200rpx;
   padding-left: 280rpx;
 }
 
@@ -80,22 +100,39 @@
   position: absolute;
   height: 30rpx;
   width: 300rpx;
-  padding-top: 220rpx;
-  padding-left: 70rpx;
+  padding-top: 195rpx;
+  padding-left: 80rpx;
   font-size: 25rpx;
-  z-index: 3
+  z-index: 3;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2.25;
+  letter-spacing: 0.5px;
+  text-align: left;
+  color: #000000;
+
 }
 
 .arreadedtext {
   position: absolute;
   height: 30rpx;
   width: 30rpx;
-  padding-top: 220rpx;
+  padding-top: 195rpx;
   padding-left: 330rpx;
   font-size: 70%;
+  z-index: 3;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2.25;
+  letter-spacing: 0.5px;
+  text-align: left;
+  color: #000000;
+  -webkit-text-stroke: 1rpx #707070;
 }
 
-.reachBottom{
- text-align: center;
-  color: #fff
+.reachBottom {
+  text-align: center;
+  color: #fff;
 }

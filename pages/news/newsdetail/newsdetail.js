@@ -1,20 +1,56 @@
+var util = require('../../../utils/util.js')
 Page({
 
   data: {
-    title: '',
-    description: '',
-    content: '',
-    author: '',
-    reading: '',
-    date: '',
+
   },
 
   onLoad: function(options) {
-    console.log(this.data.collect)
+    var a = wx.getSystemInfoSync();
+    var scrwidth = a.windowWidth
+    this.setData({
+      scrheight: scrwidth / 1.78,
+      headTop: scrwidth / 1.78 * 0.75,
+      left: scrwidth / 20,
+      sheadTop: scrwidth / 1.78 * 0.86,
+      headSize: scrwidth / 1.78 / 11.81,
+      sheadSize: scrwidth / 1.78 / 16
+    })
     var _this = this
-    console.log(options.id)
     var id = options.id;
+    //请求文章详细内容
+    wx.request({
+      url: 'http://139.199.79.232/HearFresh/GetNewsByObjectId.php',
+      method: 'POST',
+      data: {
+        newsId: id
+      },
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      success: function(res) {
+        var createdAt = res.data.data.createdAt * 1000,
+          date = util.formatTime(new Date(createdAt))
+        console.log(res.data)
+        _this.setData({
+          title: res.data.data.title,
+          description: res.data.data.description,
+          content: res.data.data.content,
+          author: res.data.data.author,
+          reading: res.data.data.reading,
+          cover: res.data.data.cover,
+          id: id,
+          date: date
+        })
+      },
+      fail: function() {
+        wx.showActionSheet({
+          itemList: ["fuck fail"],
+        })
+      }
+    })
 
+    //请求是否收藏数据
     wx.request({
       url: 'http://139.199.79.232/HearFresh/Collect.php',
       method: 'POST',
@@ -26,46 +62,13 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-
-      success: function (collection) {
+      success: function(collection) {
         console.log(collection.data.data.collection)
         _this.setData({
-          collect:collection.data.data.collection
+          collect: collection.data.data.collection
         })
       },
 
-      fail: function () {
-        wx.showActionSheet({
-          itemList: ["fuck fail"],
-        })
-      }
-    })
-
-
-
-    wx.request({
-      url: 'http://139.199.79.232/HearFresh/GetNewsByObjectId.php',
-      method: 'POST',
-      data: {
-        newsId: id
-      },
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-
-      success: function(res) {
-        console.log(res.data)
-        _this.setData({
-          title: res.data.data.title,
-          description: res.data.data.description,
-          content: res.data.data.content,
-          author: res.data.data.author,
-          date: res.data.data.createdAt.date,
-          reading: res.data.data.reading,
-          cover: res.data.data.cover,
-          id: id
-        })
-      },
       fail: function() {
         wx.showActionSheet({
           itemList: ["fuck fail"],
@@ -75,7 +78,7 @@ Page({
 
 
   },
-
+  //评论页入口
   toComment: function(event) {
     var postId = event.target.dataset.postid;
     wx.navigateTo({
@@ -83,8 +86,12 @@ Page({
     });
   },
 
+  //收藏
   collect: function(res) {
     var _this = this
+    _this.setData({
+      collect: !_this.data.collect
+    })
     wx.request({
       url: 'http://139.199.79.232/HearFresh/Collect.php',
       method: 'POST',
@@ -99,17 +106,20 @@ Page({
 
       success: function(res) {
         console.log("collect success")
-        _this.setData({
-          collect: !_this.data.collect
-        })
       },
+
       fail: function() {
         wx.showActionSheet({
-          itemList: ["fuck fail"],
+          itemList: ["连接错误"],
         })
       }
     })
   },
+
+  iLoad: function(e) {
+
+  },
+
   onReady: function() {
 
   },

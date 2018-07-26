@@ -6,11 +6,17 @@
   background-color: #1f1e2c;
   width: 100%;
   z-index: 2;
+  align-content: space-between;
+  align-items: center;
+  justify-content: center;
+}
+
+.abc{
+  padding-right: 140rpx
 }
 
 .sendButton{
   position: fixed;
-  z-index: 3;
   right: 20rpx;
   bottom: 30rpx;
 }
@@ -18,7 +24,6 @@
   margin: 20rpx;
   background-color: #fff;
   height: 80rpx;
-  width: 560rpx
 }
 
 .leftRightBlank {
@@ -42,13 +47,13 @@
 }
 
 .up {
-  height: 60rpx;
-  width: 60rpx;
+  height: 75rpx;
+  width: 75rpx;
 }
 
 .down {
-  height: 60rpx;
-  width: 60rpx;
+  height: 75rpx;
+  width: 75rpx;
 }
 
 .information {

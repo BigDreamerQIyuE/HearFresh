@@ -1,7 +1,28 @@
 // pages/news/news.js
 var app = getApp(),
   page = 1,
-  pageSize = 5
+  pageSize = 5,
+  utils = require('../../utils/util.js')
+
+function judge(differTime) {
+  if (differTime < 60) {
+    return differTime + "秒前"
+  } else if (differTime < 3600) {
+    return parseInt(differTime / 60) + "分钟前"
+  } else if (differTime < 86400) {
+    return parseInt(differTime / 3600) + "小时前"
+  } else if (differTime < 604800) {
+    return parseInt(differTime / 86400) + "天前"
+  } else if (differTime < 2592000) {
+    return parseInt(differTime / 604800) + "周前"
+  } else if (differTime < 31536000) {
+    return parseInt(differTime / 2592000) + "月前"
+  } else {
+    return parseInt(differTime / 31536000) + "年前"
+  }
+}
+
+
 Page({
 
   /**
@@ -29,6 +50,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    var a = wx.getSystemInfoSync();
+    var scrwidth = a.windowWidth
+    this.setData({
+      scrheight: scrwidth / 1.78,
+      headTop: scrwidth / 1.78 * 0.75,
+      left: scrwidth / 20,
+      sheadTop: scrwidth / 1.78 * 0.86,
+      headSize: scrwidth / 1.78 / 11.81,
+      sheadSize: scrwidth / 1.78 / 16
+    })
+    wx.showLoading({
+      title: '加载中',
+    })
     var _this = this
     wx.request({
       url: 'http://139.199.79.232/HearFresh/GetTheNewsList.php',
@@ -55,34 +89,31 @@ Page({
           var param = {};
           var string = "article[" + i + "].id";
           param[string] = res.data.data.news[i].newsId;
-          // console.log(res.data.data.news[i].newsId)
-          //_this.setData(param);
-
           var string = "article[" + i + "].title";
           param[string] = res.data.data.news[i].title;
-          // console.log(res.data.data.news[i].title)
-          // _this.setData(param);
 
-          var string = "article[" + i + "].time";
-          param[string] = res.data.data.news[i].createdAt.date;
-          //console.log(res.data.data.news[i].createdAt.data)
-          // _this.setData(param);
+          var string = "article[" + i + "].time",
+            createdAt = res.data.data.news[i].createdAt,
+            t = utils.formatTime(new Date()),
+            standerdTime = new Date(t),
+            currentTime = standerdTime.getTime() / 1000,
+            differTime = currentTime - createdAt,
+            date = judge(differTime)
+          param[string] = date
+
+
 
           var string = "article[" + i + "].read";
           param[string] = res.data.data.news[i].reading;
-          //console.log(res.data.data.news[i].reading)
-          //_this.setData(param);
-
           var string = "article[" + i + "].cover";
           param[string] = res.data.data.news[i].cover;
-          // console.log(res.data.data.news[i].cover)
           _this.setData(param);
         }
-
+        wx.hideLoading()
       },
       fail: function(e) {
         wx.showActionSheet({
-          itemList: ["fuck"],
+          itemList: ["连接失败"],
         })
       }
     });
@@ -103,17 +134,8 @@ Page({
   },
 
   iLoad: function(e) {
-    var a = wx.getSystemInfoSync();
-    var scrwidth = a.windowWidth,
-      imgwidth = e.detail.width,
-      imgheight = e.detail.height,
-      ratio = imgwidth / imgheight;
-    this.setData({
-      scrheight: scrwidth / ratio
-    })
+
   },
-
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -152,7 +174,7 @@ Page({
     this.setData({
       article: this.data.article,
       headLine: this.data.headLine,
-      reachBottom:false
+      reachBottom: false
     })
 
     var _this = this
@@ -176,16 +198,22 @@ Page({
           'headLine[0].description': res.data.data.headLine.description,
         })
         for (var i = 0; i < res.data.data.news.length; i++) {
-          var param = {};
+          var param = {},
+            time;
           var string = "article[" + i + "].id";
           param[string] = res.data.data.news[i].newsId;
 
           var string = "article[" + i + "].title";
           param[string] = res.data.data.news[i].title;
 
-
-          var string = "article[" + i + "].time";
-          param[string] = res.data.data.news[i].createdAt.date;
+          var string = "article[" + i + "].time",
+            createdAt = res.data.data.news[i].createdAt,
+            t = utils.formatTime(new Date()),
+            standerdTime = new Date(t),
+            currentTime = standerdTime.getTime() / 1000,
+            differTime = currentTime - createdAt,
+            date = judge(differTime)
+          param[string] = date
 
 
           var string = "article[" + i + "].read";
@@ -242,10 +270,31 @@ Page({
             // console.log(res.data.data.news[i].title)
             // _this.setData(param);
 
-            var string = "article[" + fuck + "].time";
-            param[string] = res.data.data.news[i].createdAt.date;
-            //console.log(res.data.data.news[i].createdAt.data)
-            // _this.setData(param);
+            var string = "article[" + fuck + "].time",
+              createdAt = res.data.data.news[i].createdAt,
+              t = utils.formatTime(new Date()),
+              standerdTime = new Date(t),
+              currentTime = standerdTime.getTime() / 1000,
+              differTime = currentTime - createdAt,
+              date
+
+            if (differTime < 60) {
+              date = differTime + "秒前"
+            } else if (differTime < 3600) {
+              data = parseInt(differTime / 60) + "分钟前"
+            } else if (differTime < 86400) {
+              data = parseInt(differTime / 3600) + "小时前"
+            } else if (differTime < 604800) {
+              date = parseInt(differTime / 86400) + "天前"
+            } else if (differTime < 2592000) {
+              date = parseInt(differTime / 604800) + "周前"
+            } else if (differTime < 31536000) {
+              date = parseInt(differTime / 2592000) + "月前"
+            } else {
+              date = parseInt(differTime / 31536000) + "年前"
+            }
+            param[string] = date
+
 
             var string = "article[" + fuck + "].read";
             param[string] = res.data.data.news[i].reading;

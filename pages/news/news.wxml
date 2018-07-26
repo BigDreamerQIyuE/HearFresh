@@ -1,9 +1,9 @@
 <block wx:if="{{headLine[0].id}}">
-  <view style='height:450rpx'>
-    <image bindtap='tapNews' src='{{headLine[0].cover}}' class='bc' bindload='iLoad'></image>
-    <view class='front'>{{headLine[0].title}}</view>
-    <view class='frontshead'>{{headLine[0].description}}</view>
-    <image class='mask' src='../../image/mask.png' style='height:450rpx' data-postid="{{headLine[0].id}}" catchtap='tapNews'></image>
+  <view style='height:{{scrheight}}px'>
+    <image bindtap='tapNews' src='{{headLine[0].cover}}' style='height:{{scrheight}}px' class='bc' bindload='iLoad'></image>
+    <view class='front' style='top:{{headTop}}px;padding-left:{{left}}px;font-size:{{headSize}}px'>{{headLine[0].title}}</view>
+    <view class='frontshead'style='top:{{sheadTop}}px;padding-left:{{left}}px;font-size:{{sheadSize}}px'>{{headLine[0].description}}</view>
+    <image class='mask' src='../../image/mask.png' style='height:{{scrheight}}px' data-postid="{{headLine[0].id}}" catchtap='tapNews'></image>
   </view>
 </block>
 <view>
@@ -11,7 +11,7 @@
     <block wx:for="{{article}}" wx:key="this">
       <view class='blank'></view>
       <view class='article' catchtap='tapNews' data-postid='{{item.id}}'>
-        <image class='arimg' src='{{item.cover}}' data-postid='{{item.id}}'></image>
+        <image class='arimg' mode='aspectFill' src='{{item.cover}}' data-postid='{{item.id}}'></image>
         <text class='arhead' data-postid='{{item.id}}'>{{item.title}}</text>
         <image src='../../image/time.png' class='artime' data-postid='{{item.id}}'></image>
         <image src='../../image/readed.png' class='arreaded' data-postid='{{item.id}}'></image>

@@ -1,8 +1,12 @@
 <!--pages/news/newsdetail/comment/comment.wxml-->
 <view class='replyInput'>
   <form bindsubmit='replySubmit'>
-    <input placeholder='你想说啥？' value='{{reset}}' class='input' bindinput='message' confirm-type='done'></input>
-    <button class='sendButton' size='mini' form-type='submit'>发送</button>
+    <view class='abc'>
+      <input placeholder='你想说啥？' value='{{reset}}' class='input' bindinput='message' confirm-type='done'></input>
+    </view>
+    <view class='bcd'>
+      <button class='sendButton' size='mini' form-type='submit'>发送</button>
+    </view>
   </form>
 </view>
 
@@ -10,8 +14,8 @@
   <block wx:for="{{fakeComment}}" wx:key='this'>
     <view class='bg'>
       <view class='upAndDown'>
-        <image src='../../../../image/up1.png' class='up'></image>
-        <image src='../../../../image/down1.png' class='down'></image>
+        <image src='../../../../image/up.png' class='up'></image>
+        <image src='../../../../image/down.png' class='down'></image>
       </view>
       <view class='information'>
         <text class='username'>shaolizhi</text>

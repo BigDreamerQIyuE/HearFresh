@@ -10,8 +10,8 @@
 
 <view style='height:{{scrheight}}px'>
   <image src='{{cover}}' class='bc' bindload='iLoad'></image>
-  <text class='head' style='top:{{headTop}}px'>{{title}}</text>
-  <text class='shead' style='top:{{sheadTop}}px'>{{description}}</text>
+  <text class='head' style='top:{{headTop}}px;padding-left:{{left}}px;font-size:{{headSize}}px'>{{title}}</text>
+  <text class='shead' style='top:{{sheadTop}}px;padding-left:{{left}}px;font-size:{{sheadSize}}px'>{{description}}</text>
   <image class='mask' style='height:{{scrheight}}px' src='../../../image/mask.png'></image>
 </view>
 

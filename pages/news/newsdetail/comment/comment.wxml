@@ -1,6 +1,6 @@
 <!--pages/news/newsdetail/comment/comment.wxml-->
 <form bindsubmit='replySubmit' class='replyInput'>
-  <input placeholder=' What ar your thoughts? 你有什么想法？' value='{{reset}}' bindfocus='sendButtonShow' bindblur='sendButtonHide' class='input' bindconfirm='replySubmit' bindinput='message' confirm-type='发送'></input>
+  <input placeholder=' What are your thoughts? 你有什么想法？' value='{{reset}}' bindfocus='sendButtonShow' bindblur='sendButtonHide' class='input' bindconfirm='replySubmit' bindinput='message' confirm-type='发送'></input>
   <button  wx:if='{{sendButtonState}}' class='sendButton' size='mini' form-type='submit'>提交</button>
 </form>
 

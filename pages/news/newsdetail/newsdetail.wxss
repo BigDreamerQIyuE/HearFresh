@@ -88,6 +88,7 @@ page {
   letter-spacing: 0.5px;
   text-align: left;
   color: #808080;
+  margin-top: 5rpx;
 }
 
 .msg_txt {

@@ -58,7 +58,8 @@ Page({
       left: scrwidth / 20,
       sheadTop: scrwidth / 1.78 * 0.85,
       headSize: scrwidth / 1.78 / 11.81,
-      sheadSize: scrwidth / 1.78 / 16
+      sheadSize: scrwidth / 1.78 / 16,
+      maskHeight: scrwidth / 1.78 + 2
     })
     wx.showLoading({
       title: '加载中',

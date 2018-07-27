@@ -10,6 +10,7 @@ Page({
     var scrwidth = a.windowWidth
     this.setData({
       scrheight: scrwidth / 1.78,
+ 
       headTop: scrwidth / 1.78 * 0.7,
       left: scrwidth / 20,
       sheadTop: scrwidth / 1.78 * 0.85,

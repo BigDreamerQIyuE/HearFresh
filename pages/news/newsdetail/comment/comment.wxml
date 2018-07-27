@@ -1,14 +1,9 @@
 <!--pages/news/newsdetail/comment/comment.wxml-->
-<view class='replyInput'>
-  <form bindsubmit='replySubmit'>
-    <view class='abc'>
-      <input placeholder='你想说啥？' value='{{reset}}' class='input' bindinput='message' confirm-type='done'></input>
-    </view>
-    <view class='bcd'>
-      <button class='sendButton' size='mini' form-type='submit'>发送</button>
-    </view>
-  </form>
-</view>
+<form bindsubmit='replySubmit' class='replyInput'>
+  <input placeholder=' What ar your thoughts? 你有什么想法？' value='{{reset}}' bindfocus='sendButtonShow' bindblur='sendButtonHide' class='input' bindconfirm='replySubmit' bindinput='message' confirm-type='发送'></input>
+  <button  wx:if='{{sendButtonState}}' class='sendButton' size='mini' form-type='submit'>提交</button>
+</form>
+
 
 <view class='leftRightBlank'>
   <block wx:for="{{fakeComment}}" wx:key='this'>
@@ -35,7 +30,7 @@
 
 
   <block wx:for="{{comment}}" wx:key='this'>
-    <view class='bg'>
+    <view class='bg' >
       <view class='upAndDown'>
         <image wx:if="{{item.like}}" src='../../../../image/up1.png' class='up' catchtap='likeComment' data-likeid='{{item.id}}'></image>
         <image wx:else src='../../../../image/up.png' class='up' catchtap='likeComment' data-likeid='{{item.id}}'></image>
@@ -50,7 +45,7 @@
         <view class='content'>{{item.content}}</view>
         <view class='replyView'>
           <image src='../../../../image/reply.png' class='replyImg'></image>
-          <text class='replyTitle'> Reply 评论(34)</text>
+          <text class='replyTitle'>Reply 评论(34)</text>
           <image src='../../../../image/rightmenu.png' class='rightMenu'></image>
         </view>
       </view>

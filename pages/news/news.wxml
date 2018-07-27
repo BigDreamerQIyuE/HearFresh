@@ -1,8 +1,8 @@
 <block wx:if="{{headLine[0].id}}">
   <view style='height:{{scrheight}}px'>
     <image bindtap='tapNews' src='{{headLine[0].cover}}' style='height:{{scrheight}}px' class='bc' bindload='iLoad'></image>
-    <view class='front' style='top:{{headTop}}px;padding-left:{{left}}px;font-size:{{headSize}}px'>{{headLine[0].title}}</view>
-    <view class='frontshead'style='top:{{sheadTop}}px;padding-left:{{left}}px;font-size:{{sheadSize}}px'>{{headLine[0].description}}</view>
+    <view class='front' style='top:{{headTop}}px'>{{headLine[0].title}}</view>
+    <view class='frontshead' style='top:{{sheadTop}}px'>{{headLine[0].description}}</view>
     <image class='mask' src='../../image/mask.png' style='height:{{scrheight}}px' data-postid="{{headLine[0].id}}" catchtap='tapNews'></image>
   </view>
 </block>
@@ -13,10 +13,12 @@
       <view class='article' catchtap='tapNews' data-postid='{{item.id}}'>
         <image class='arimg' mode='aspectFill' src='{{item.cover}}' data-postid='{{item.id}}'></image>
         <text class='arhead' data-postid='{{item.id}}'>{{item.title}}</text>
-        <image src='../../image/time.png' class='artime' data-postid='{{item.id}}'></image>
-        <image src='../../image/readed.png' class='arreaded' data-postid='{{item.id}}'></image>
-        <text class='artimetext' data-postid='{{item.id}}'>{{item.time}}</text>
-        <text class='arreadedtext' data-postid='{{item.id}}'>{{item.read}}</text>
+        <view class='timeAndReaded' catchtap='tapNews' data-postid='{{item.id}}'>
+          <image src='../../image/time.png' class='artime' data-postid='{{item.id}}'></image>
+          <text decode="nbsp"  class='artimetext' data-postid='{{item.id}}'>&nbsp;{{item.time}}</text>
+          <image src='../../image/readed.png' class='arreaded' data-postid='{{item.id}}'></image>
+          <text class='arreadedtext'decode="nbsp" data-postid='{{item.id}}'>&nbsp;{{item.read}}</text>
+        </view>
       </view>
     </block>
     <view class='reachBottom' wx:if="{{!reachBottom}}">----加载中----</view>

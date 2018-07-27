@@ -9,7 +9,8 @@ Page({
   data: {
     reachBottom: false,
     reset: '',
-
+    sendButtonState: false,
+    content:false
   },
 
   onLoad: function(options) {
@@ -86,8 +87,14 @@ Page({
       content: res.detail.value
     })
   },
-
+  //提交信息
   replySubmit: function(res) {
+    if(this.data.content==false){
+      wx.showToast({
+        title: '请输入信息!',
+        icon:'none'
+      })
+    }else{
     var _this = this
     wx.request({
       url: 'http://139.199.79.232/HearFresh/CreateComment.php',
@@ -106,14 +113,16 @@ Page({
     console.log(_this.data.content)
     _this.setData({
       reset: '',
-      "fakeComment[0].content": _this.data.content
+      sendButtonState: false,
+      "fakeComment[0].content": _this.data.content,
+      content: false,
     })
 
     console.log("fuck:" + _this.data.fakeComment[0].content)
     wx.showToast({
       title: '发送成功！',
     })
-
+    }
   },
 
   //点赞
@@ -192,6 +201,16 @@ Page({
     })
   },
 
+  sendButtonShow: function() {
+      this.setData({
+        sendButtonState: true
+      })
+  },
+  sendButtonHide: function() {
+    this.setData({
+      sendButtonState: false
+    })
+  },
 
   /**
    * 页面上拉触底事件的处理函数
@@ -225,8 +244,8 @@ Page({
         } else {
           console.log("下拉成功")
           for (var i = 0; i < res.data.data.length; i++, fuck++) {
-            var param = {}
-            var string = "comment[" + fuck + "].content"
+            var param = {},
+              string = "comment[" + fuck + "].content"
             param[string] = res.data.data[i].content
 
 
@@ -234,8 +253,10 @@ Page({
             param[string] = res.data.data[i].username
 
 
-            var string = "comment[" + fuck + "].date"
-            param[string] = res.data.data[i].createdAt.date
+            var string = "comment[" + fuck + "].date",
+              createdAt = res.data.data[i].createdAt * 1000,
+              date = util.formatTime(new Date(createdAt))
+            param[string] = date
 
             var string = "comment[" + fuck + "].likeNumber"
             param[string] = res.data.data[i].likeNumber

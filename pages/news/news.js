@@ -1,7 +1,7 @@
 // pages/news/news.js
 var app = getApp(),
   page = 1,
-  pageSize = 5,
+  pageSize = 10,
   utils = require('../../utils/util.js')
 
 function judge(differTime) {
@@ -54,9 +54,9 @@ Page({
     var scrwidth = a.windowWidth
     this.setData({
       scrheight: scrwidth / 1.78,
-      headTop: scrwidth / 1.78 * 0.75,
+      headTop: scrwidth / 1.78 * 0.7,
       left: scrwidth / 20,
-      sheadTop: scrwidth / 1.78 * 0.86,
+      sheadTop: scrwidth / 1.78 * 0.85,
       headSize: scrwidth / 1.78 / 11.81,
       sheadSize: scrwidth / 1.78 / 16
     })

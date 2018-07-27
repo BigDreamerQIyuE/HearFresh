@@ -13,13 +13,15 @@
   line-height: 1.93;
   letter-spacing: 0.7px;
   text-align: left;
+  left: 38rpx;
+  font-size: 45rpx;
 }
 
 .frontshead {
+  left: 38rpx;
   position: absolute;
   z-index: 2;
-  font-size: 26rpx;
-  padding-right: 70rpx;
+  font-size: 28rpx;
   mix-blend-mode: undefined;
   font-family: SegoeUI;
   font-weight: normal;
@@ -49,6 +51,7 @@
 }
 
 .article {
+  display: flex;
   height: 270rpx;
   width: 100%;
   background-color: #fff;
@@ -63,73 +66,65 @@
 .arhead {
   position: absolute;
   font-size: 35rpx;
-  padding-top: 50rpx;
-  padding-left: 38rpx;
-  padding-right: 20rpx;
+  padding-top: 35rpx;
+  padding-left: 308rpx;
   font-weight: bold;
-
   mix-blend-mode: undefined;
   font-family: SegoeUI;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  text-align: left;
+  color: #000;
+}
 
+.timeAndReaded {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  left: 308rpx;
+  padding-top: 180rpx;
+  justify-content: center;
+}
+
+.artime {
+  height: 34rpx;
+  width: 34rpx;
+  left: 38rpx;
+}
+
+.arreaded {
+  height: 45rpx;
+  width: 45rpx;
+  left:70 rpx;
+}
+
+.artimetext {
+  width: 190rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2.25;
+  letter-spacing: 0.5px;
+  text-align: left;
+  color: #000;
+  left: 70rpx;
+}
+
+.arreadedtext {
+  font-size: 30rpx;
+  mix-blend-mode: undefined;
+  font-family: SegoeUI;
+  font-weight: bold;
   font-style: normal;
   font-stretch: normal;
   line-height: 2.03;
   letter-spacing: 0.5px;
   text-align: left;
-  color: #000000;
-
-}
-
-.artime {
-  position: absolute;
-  height: 34rpx;
-  width: 34rpx;
-  padding-top: 203rpx;
-  padding-left: 38rpx;
-}
-
-.arreaded {
-  position: absolute;
-  height: 44rpx;
-  width: 44rpx;
-  padding-top: 200rpx;
-  padding-left: 280rpx;
-}
-
-.artimetext {
-  position: absolute;
-  height: 30rpx;
-  width: 300rpx;
-  padding-top: 195rpx;
-  padding-left: 80rpx;
-  font-size: 25rpx;
-  z-index: 3;
-  font-weight: bold;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 2.25;
-  letter-spacing: 0.5px;
-  text-align: left;
-  color: #000000;
-
-}
-
-.arreadedtext {
-  position: absolute;
-  height: 30rpx;
-  width: 30rpx;
-  padding-top: 195rpx;
-  padding-left: 330rpx;
-  font-size: 70%;
-  z-index: 3;
-  font-weight: bold;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 2.25;
-  letter-spacing: 0.5px;
-  text-align: left;
-  color: #000000;
-  -webkit-text-stroke: 1rpx #707070;
+  color: #000;
+  padding-left: 0rpx;
 }
 
 .reachBottom {

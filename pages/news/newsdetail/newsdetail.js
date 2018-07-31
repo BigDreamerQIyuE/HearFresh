@@ -56,7 +56,7 @@ Page({
       url: 'http://139.199.79.232/HearFresh/Collect.php',
       method: 'POST',
       data: {
-        userId: '5b58394fee920a003ca68a9f',
+        userId: '5b58394fee920a003ca68a9f',  //应实现动态
         newsId: options.id,
         collectAction: false
       },

@@ -29,7 +29,7 @@ Page({
       method: 'POST',
       data: {
         newsId: id,
-        userId: '5b39b27067f356003815884d',
+        userId: '5b39b27067f356003815884d',   //应动态实现，相关api不完善
         page: 1,
         pageSize: pageSize
       },

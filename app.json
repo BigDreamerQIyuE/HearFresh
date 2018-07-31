@@ -1,11 +1,13 @@
 {
   "pages": [
+    "pages/me/me",
     "pages/news/news",
     "pages/home/home",
-    "pages/me/me",
     "pages/trade/trade",
     "pages/news/newsdetail/newsdetail",
-    "pages/news/newsdetail/comment/comment"
+    "pages/news/newsdetail/comment/comment",
+    "pages/me/changePersonalInfo/changePersonalInfo",
+    "pages/me/address/address"
   ],
   "window": {
     "navigationBarBackgroundColor": "#1F1E2C",

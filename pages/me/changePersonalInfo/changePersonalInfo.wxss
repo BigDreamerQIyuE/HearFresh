@@ -1,0 +1,67 @@
+/* pages/me/changePersonalInfo/changePersonalInfo.wxss */
+
+.newProfilePhoto {
+  width: 100%;
+  height: 300rpx;
+  background-color: #21202e;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  margin-bottom: 20rpx;
+}
+
+.profilePhoto {
+  height: 200rpx;
+  width: 200rpx;
+  border-radius: 100rpx;
+}
+
+.newProfilePhotoText {
+  font-family: SegoeScript;
+  font-size: 30rpx;
+  font-weight: bold;
+  line-height: 2.08;
+  text-align: left;
+  color: #808080;
+}
+
+.info {
+  width: 100%;
+  height: 100rpx;
+  background-color: #21202e;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  margin-bottom: 5rpx;
+}
+
+.info_image {
+  position: absolute;
+  left: 10%;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.info_head {
+  position: absolute;
+  left: 18%;
+  font-family: SegoeUI;
+  font-size: 30rpx;
+  font-weight: 600;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: left;
+  color: #fff;
+}
+
+.info_text {
+  position: absolute;
+  right: 10%;
+  font-family: SegoeUI;
+  font-size: 30rpx;
+  font-weight: bold;
+  text-align: left;
+  color: #FFFFFF;
+}

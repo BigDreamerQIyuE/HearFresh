@@ -1,4 +1,5 @@
 // pages/news/news.js
+//初始页面1   页面容量10
 var app = getApp(),
   page = 1,
   pageSize = 10,

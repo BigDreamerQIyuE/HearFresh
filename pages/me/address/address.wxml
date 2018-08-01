@@ -1,1 +1,6 @@
 <!--pages/me/address/address.wxml-->
+<block wx:for='{{address}}' wx:key="this">
+  <view>
+
+  </view>
+</block>

@@ -1,13 +1,19 @@
 {
   "pages": [
     "pages/me/me",
+    "pages/me/coupon/coupon",
     "pages/news/news",
     "pages/home/home",
     "pages/trade/trade",
     "pages/news/newsdetail/newsdetail",
     "pages/news/newsdetail/comment/comment",
     "pages/me/changePersonalInfo/changePersonalInfo",
-    "pages/me/address/address"
+    "pages/me/address/address",
+    "pages/me/collect/collect",
+    "pages/me/waitForComment/waitForComment",
+    "pages/me/afterSaleService/afterSaleService",
+    "pages/me/waitForDeliver/waitForDeliver",
+    "pages/me/waitForSign/waitForSign"
   ],
   "window": {
     "navigationBarBackgroundColor": "#1F1E2C",

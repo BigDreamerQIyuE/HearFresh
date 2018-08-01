@@ -21,12 +21,45 @@ Page({
     })
   },
 
-  address:function(){
+  address: function() {
     wx.navigateTo({
       url: 'address/address',
     })
+  },
+  coupon: function() {
+    wx.navigateTo({
+      url: 'coupon/coupon',
+    })
+  },
+  collect: function() {
+    wx.navigateTo({
+      url: 'collect/collect',
+    })
+  },
+  waitForDeliver: function() {
+    wx.navigateTo({
+      url: 'waitForDeliver/waitForDeliver',
+    })
+  },
+  waitForSign: function() {
+    wx.navigateTo({
+      url: 'waitForSign/waitForSign',
+    })
+  },
+  waitForComment: function() {
+    wx.navigateTo({
+      url: 'waitForComment/waitForComment',
+    })
+  },
+  afterSaleService: function() {
+    wx.navigateTo({
+      url: 'afterSaleService/afterSaleService',
+    })
+  },
+  logout: function() {
+    wx.showToast({
+      title: '注销成功！',
+    })
   }
-
-
 
 })

@@ -65,7 +65,7 @@
 
 .arhead {
   position: absolute;
-  font-size: 35rpx;
+  font-size: 28rpx;
   padding-top: 35rpx;
   padding-left: 308rpx;
   font-weight: bold;

@@ -63,5 +63,9 @@
   font-size: 30rpx;
   font-weight: bold;
   text-align: left;
-  color: #FFFFFF;
+  color: #fff;
+}
+
+.shadow {
+  box-shadow: #000 0px 0px 10rpx -2rpx;
 }

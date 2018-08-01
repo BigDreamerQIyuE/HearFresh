@@ -1,13 +1,11 @@
-// pages/me/address/address.js
+// pages/me/coupon/coupon.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    address:[{
-      
-    }]
+  
   },
 
   /**

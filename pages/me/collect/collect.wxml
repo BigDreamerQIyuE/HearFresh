@@ -1,21 +1,42 @@
 <!--pages/me/collect/collect.wxml-->
-<block wx:for="{{article}}" wx:key="this">
-  <view class='newsCollect'>
-    <view>
-      <image src='{{item.cover}}' class='arImg' mode='aspectFill'></image>
-    </view>
-    <view class='arInfo'>
-      <view class='arInfo_title'>{{item.title}}</view>
-      <view class='arInfo_timeAndReaded'>
-        <view class='arInfo_time'>
-          <image src='../../../image/time.png' class='arInfo_img'></image>
-          <text>{{item.time}}</text>
+
+<view class='head'>
+  <view class='newsButton' catchtap='newsButtonTap'>
+    <view class='newsButton_text'>News新闻</view>
+    <view  wx:if="{{listType}}" class='whiteBar'></view>
+  </view>
+  <view class='goodsButton' catchtap='goodsButtonTap'>
+    <view class='newsButton_text'>Goods商品</view>
+    <view wx:if="{{!listType}}" class='whiteBar'></view>
+  </view>
+</view>
+
+<block wx:if="{{listType}}">
+  <block wx:if="{{article[0].id}}">
+    <block wx:for="{{article}}" wx:key="this">
+      <view class='newsCollect' catchtap='tapNews'>
+        <view>
+          <image src='{{item.cover}}' class='arImg' mode='aspectFill' data-postid='{{item.id}}'></image>
         </view>
-        <view class='arInfo_readed'>
-          <image src='../../../image/readed.png' class='arInfo_img'></image>
-          <text>{{item.read}}</text>
+        <view class='arInfo' data-postid='{{item.id}}'>
+          <view class='arInfo_title' data-postid='{{item.id}}'>{{item.title}}</view>
+          <view class='arInfo_timeAndReaded' data-postid='{{item.id}}'>
+            <view class='arInfo_time'>
+              <image data-postid='{{item.id}}' src='../../../image/time.png' class='arInfo_img'></image>
+              <text data-postid='{{item.id}}' decode='nbsp'>&nbsp;{{item.time}}</text>
+            </view>
+            <view class='arInfo_readed'>
+              <image data-postid='{{item.id}}' src='../../../image/readed.png' class='arInfo_img'></image>
+              <text data-postid='{{item.id}}' decode='nbsp'>&nbsp;{{item.read}}</text>
+            </view>
+          </view>
         </view>
       </view>
-    </view>
-  </view>
+    </block>
+    <view class='reachBottom' wx:if="{{!reachBottom}}">———— 加载中 ————</view>
+    <view class='reachBottom' wx:if="{{reachBottom}}">———— 没了 ————</view>
+  </block>
+</block>
+<block wx:else>
+  <view> 商品收藏列表 </view>
 </block>

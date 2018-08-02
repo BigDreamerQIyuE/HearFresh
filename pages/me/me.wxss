@@ -69,7 +69,6 @@
   font-size: 30rpx;
   font-weight: 600;
   line-height: 1.33;
-  letter-spacing: normal;
   text-align: left;
   color: #fff;
 }

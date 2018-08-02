@@ -1,9 +1,9 @@
 {
   "pages": [
-        "pages/news/news",
+  
     "pages/me/me",
     "pages/me/coupon/coupon",
-
+      "pages/news/news",
     "pages/home/home",
     "pages/trade/trade",
     "pages/news/newsdetail/newsdetail",
@@ -34,7 +34,7 @@
         "pagePath": "pages/home/home",
         "iconPath": "image/home.png",
         "selectedIconPath": "image/homeSelected.png",
-        "selectedColor": "#FFFFFF",
+        "selectedColor": "white",
         "text": "Home"
       },
       {

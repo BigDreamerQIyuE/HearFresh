@@ -99,9 +99,6 @@ Page({
             differTime = currentTime - createdAt,
             date = judge(differTime)
           param[string] = date
-
-
-
           var string = "article[" + i + "].read";
           param[string] = res.data.data.news[i].reading;
           var string = "article[" + i + "].cover";
@@ -132,9 +129,6 @@ Page({
     console.log(event)
   },
 
-  iLoad: function(e) {
-
-  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -261,48 +255,20 @@ Page({
             var param = {};
             var string = "article[" + fuck + "].id";
             param[string] = res.data.data.news[i].newsId;
-            // console.log(res.data.data.news[i].newsId)
-            //_this.setData(param);
-
             var string = "article[" + fuck + "].title";
             param[string] = res.data.data.news[i].title;
-            // console.log(res.data.data.news[i].title)
-            // _this.setData(param);
-
             var string = "article[" + fuck + "].time",
               createdAt = res.data.data.news[i].createdAt,
               t = utils.formatTime(new Date()),
               standerdTime = new Date(t),
               currentTime = standerdTime.getTime() / 1000,
               differTime = currentTime - createdAt,
-              date
-
-            if (differTime < 60) {
-              date = differTime + "秒前"
-            } else if (differTime < 3600) {
-              data = parseInt(differTime / 60) + "分钟前"
-            } else if (differTime < 86400) {
-              data = parseInt(differTime / 3600) + "小时前"
-            } else if (differTime < 604800) {
-              date = parseInt(differTime / 86400) + "天前"
-            } else if (differTime < 2592000) {
-              date = parseInt(differTime / 604800) + "周前"
-            } else if (differTime < 31536000) {
-              date = parseInt(differTime / 2592000) + "月前"
-            } else {
-              date = parseInt(differTime / 31536000) + "年前"
-            }
+              date = judge(differTime)
             param[string] = date
-
-
             var string = "article[" + fuck + "].read";
             param[string] = res.data.data.news[i].reading;
-            //console.log(res.data.data.news[i].reading)
-            //_this.setData(param);
-
             var string = "article[" + fuck + "].cover";
             param[string] = res.data.data.news[i].cover;
-            // console.log(res.data.data.news[i].cover)
             _this.setData(param);
           }
         }
@@ -313,7 +279,6 @@ Page({
         })
       }
     });
-
   },
 
   /**

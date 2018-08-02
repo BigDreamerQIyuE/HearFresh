@@ -1,32 +1,32 @@
 <block wx:if="{{headLine[0].id}}">
   <view style='height:{{scrheight}}px' catchtap='tapNews' data-postid="{{headLine[0].id}}">
-    <image bindtap='tapNews' src='{{headLine[0].cover}}' style='height:{{scrheight}}px' class='bc' bindload='iLoad'></image>
+    <image bindtap='tapNews' src='{{headLine[0].cover}}' style='height:{{scrheight}}px' class='bc'></image>
     <view class='front' style='top:{{headTop}}px' data-postid="{{headLine[0].id}}">{{headLine[0].title}}</view>
     <view class='frontshead' style='top:{{sheadTop}}px' data-postid="{{headLine[0].id}}">{{headLine[0].description}}</view>
     <image class='mask' src='../../image/mask.png' style='height:{{maskHeight}}px' data-postid="{{headLine[0].id}}" catchtap='tapNews'></image>
   </view>
 </block>
-  <block wx:if="{{article[0].id}}">
-    <block wx:for="{{article}}" wx:key="this">
-      <view class='newsBackground' catchtap='tapNews'>
-        <view>
-          <image src='{{item.cover}}' class='arImg' mode='aspectFill' data-postid='{{item.id}}'></image>
-        </view>
-        <view class='arInfo' data-postid='{{item.id}}'>
-          <view class='arInfo_title' data-postid='{{item.id}}'>{{item.title}}</view>
-          <view class='arInfo_timeAndReaded' data-postid='{{item.id}}'>
-            <view class='arInfo_time'>
-              <image data-postid='{{item.id}}' src='../../image/time.png' class='arInfo_img'></image>
-              <text data-postid='{{item.id}}' decode='nbsp'>&nbsp;{{item.time}}</text>
-            </view>
-            <view class='arInfo_readed'>
-              <image data-postid='{{item.id}}' src='../../image/readed.png' class='arInfo_img'></image>
-              <text data-postid='{{item.id}}' decode='nbsp'>&nbsp;{{item.read}}</text>
-            </view>
+<block wx:if="{{article[0].id}}">
+  <block wx:for="{{article}}" wx:key="this">
+    <view class='newsBackground' catchtap='tapNews'>
+      <view>
+        <image src='{{item.cover}}' class='arImg' mode='aspectFill' data-postid='{{item.id}}'></image>
+      </view>
+      <view class='arInfo' data-postid='{{item.id}}'>
+        <view class='arInfo_title' data-postid='{{item.id}}'>{{item.title}}</view>
+        <view class='arInfo_timeAndReaded' data-postid='{{item.id}}'>
+          <view class='arInfo_time'>
+            <image data-postid='{{item.id}}' src='../../image/time.png' class='arInfo_img'></image>
+            <text data-postid='{{item.id}}' decode='nbsp'>&nbsp;{{item.time}}</text>
+          </view>
+          <view class='arInfo_readed'>
+            <image data-postid='{{item.id}}' src='../../image/readed.png' class='arInfo_img'></image>
+            <text data-postid='{{item.id}}' decode='nbsp'>&nbsp;{{item.read}}</text>
           </view>
         </view>
       </view>
-    </block>
-    <view class='reachBottom' wx:if="{{!reachBottom}}">----加载中----</view>
-    <view class='reachBottom' wx:if="{{reachBottom}}">----没了----</view>
+    </view>
   </block>
+  <view class='reachBottom' wx:if="{{!reachBottom}}">----加载中----</view>
+  <view class='reachBottom' wx:if="{{reachBottom}}">----没了----</view>
+</block>

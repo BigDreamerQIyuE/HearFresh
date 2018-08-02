@@ -8,12 +8,12 @@
 }
 
 .head {
+  width: 84%;
   font-size: 40rpx;
   position: absolute;
   z-index: 1;
   font-family: SegoeUI;
   font-weight: bold;
-  text-align: left;
   color: #fff;
   left: 8%;
   display: -webkit-box;

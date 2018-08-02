@@ -27,14 +27,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    raeachBottom: false,
+    listType: true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    var _this=this
+    var _this = this
     wx.request({
       url: 'http://139.199.79.232/HearFresh/GetTheFavoriteNewsList.php',
       method: 'POST',
@@ -74,37 +75,29 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
 
+  tapNews: function(event) {
+    var postId = event.target.dataset.postid;
+    wx.navigateTo({
+      url: '../../../pages/news/newsdetail/newsdetail?id=' + postId
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
+  newsButtonTap: function() {
+    if (this.data.listType == false) {
+      this.setData({
+        listType: true
+      })
+    }
+  },
+  goodsButtonTap: function() {
+    if (this.data.listType == true) {
+      this.setData({
+        listType: false
+      })
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
   onPullDownRefresh: function() {
 
   },
@@ -113,7 +106,57 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
+    page++
+    var _this = this
+    wx.request({
+      url: 'http://139.199.79.232/HearFresh/GetTheFavoriteNewsList.php',
+      method: 'POST',
+      data: {
+        userId: '5b58394fee920a003ca68a9f',
+        page: page,
+        pageSize: pageSize
+      },
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
 
+      success: function(res) {
+        if (res.data.data.news.length == 0) {
+          _this.setData({
+            reachBottom: true
+          })
+          page--
+        } else {
+          console.log(res.data);
+          var fuck = (page - 1) * pageSize - 1
+          for (var i = 0; i < res.data.data.news.length; i++, fuck++) {
+            var param = {};
+            var string = "article[" + fuck + "].id";
+            param[string] = res.data.data.news[i].newsId;
+            var string = "article[" + fuck + "].title";
+            param[string] = res.data.data.news[i].title;
+            var string = "article[" + fuck + "].time",
+              createdAt = res.data.data.news[i].createdAt,
+              t = utils.formatTime(new Date()),
+              standerdTime = new Date(t),
+              currentTime = standerdTime.getTime() / 1000,
+              differTime = currentTime - createdAt,
+              date = judge(differTime)
+            param[string] = date
+            var string = "article[" + fuck + "].read";
+            param[string] = res.data.data.news[i].reading;
+            var string = "article[" + fuck + "].cover";
+            param[string] = res.data.data.news[i].cover;
+            _this.setData(param);
+          }
+        }
+      },
+      fail: function(e) {
+        wx.showActionSheet({
+          itemList: ["fuck"],
+        })
+      }
+    });
   },
 
   /**

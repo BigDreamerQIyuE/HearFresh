@@ -1,2 +1,21 @@
 <!--pages/me/collect/collect.wxml-->
-<text>pages/me/collect/collect.wxml</text>
+<block wx:for="{{article}}" wx:key="this">
+  <view class='newsCollect'>
+    <view>
+      <image src='{{item.cover}}' class='arImg' mode='aspectFill'></image>
+    </view>
+    <view class='arInfo'>
+      <view class='arInfo_title'>{{item.title}}</view>
+      <view class='arInfo_timeAndReaded'>
+        <view class='arInfo_time'>
+          <image src='../../../image/time.png' class='arInfo_img'></image>
+          <text>{{item.time}}</text>
+        </view>
+        <view class='arInfo_readed'>
+          <image src='../../../image/readed.png' class='arInfo_img'></image>
+          <text>{{item.read}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>

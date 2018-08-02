@@ -1,8 +1,9 @@
 {
   "pages": [
+        "pages/news/news",
     "pages/me/me",
     "pages/me/coupon/coupon",
-    "pages/news/news",
+
     "pages/home/home",
     "pages/trade/trade",
     "pages/news/newsdetail/newsdetail",
@@ -32,21 +33,29 @@
       {
         "pagePath": "pages/home/home",
         "iconPath": "image/home.png",
+        "selectedIconPath": "image/homeSelected.png",
+        "selectedColor": "#FFFFFF",
         "text": "Home"
       },
       {
         "pagePath": "pages/trade/trade",
         "iconPath": "image/sale.png",
+        "selectedIconPath": "image/saleSelected.png",
+        "selectedColor": "#FFFFFF",
         "text": "Trade"
       },
       {
         "pagePath": "pages/news/news",
         "iconPath": "image/news.png",
+        "selectedIconPath": "image/newsSelected.png",
+        "selectedColor": "#FFFFFF",
         "text": "News"
       },
       {
         "pagePath": "pages/me/me",
         "iconPath": "image/me.png",
+        "selectedIconPath": "image/meSelected.png",
+        "selectedColor": "#FFFFFF",
         "text": "Me"
       }
     ]

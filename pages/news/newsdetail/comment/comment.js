@@ -77,9 +77,10 @@ Page({
           _this.setData(param)
 
         }
-        wx.hideToast()
+        wx.hideToast();
       },
     })
+
   },
 
   message: function(res) {
@@ -161,9 +162,9 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       success: function(res) {
-        var confirmData = "comment[" + fuck + "].like"
+      /*  var confirmData = "comment[" + fuck + "].like"
         param[confirmData] = res.data.data.like
-        _this.setData(param)
+        _this.setData(param)*/
       }
     })
   },
@@ -283,7 +284,9 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {},
+  onReady: function() {
+
+  },
 
   /**
    * 生命周期函数--监听页面显示

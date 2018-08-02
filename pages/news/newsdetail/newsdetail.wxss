@@ -8,19 +8,20 @@
 }
 
 .head {
-  font-size: 45rpx;
+  font-size: 40rpx;
   position: absolute;
   z-index: 1;
-  mix-blend-mode: undefined;
   font-family: SegoeUI;
   font-weight: bold;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.92;
-  letter-spacing: 0.7px;
   text-align: left;
-  color: #ffffff;
-  left:8%
+  color: #fff;
+  left: 8%;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
 }
 
 .shead {
@@ -28,11 +29,7 @@
   left: 8%;
   z-index: 1;
   font-size: 28rpx;
-  mix-blend-mode: undefined;
   font-family: SegoeUI;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
   line-height: 2.08;
   letter-spacing: 0.5px;
   text-align: left;
@@ -60,6 +57,7 @@ page {
   width: 84%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-top: 20rpx;
   margin-bottom: 20rpx;
 }
@@ -74,7 +72,7 @@ page {
   line-height: 2.5;
   letter-spacing: 0.5px;
   text-align: left;
-  color: #000000;
+  color: #000;
 }
 
 .info_time {
@@ -88,7 +86,6 @@ page {
   letter-spacing: 0.5px;
   text-align: left;
   color: #808080;
-  margin-top: 5rpx;
 }
 
 .msg_txt {
@@ -123,7 +120,7 @@ page {
   right: -1rpx;
 }
 
-.collectBorder{
+.collectBorder {
   z-index: 1;
   position: fixed;
   right: -15rpx;

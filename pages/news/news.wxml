@@ -6,22 +6,27 @@
     <image class='mask' src='../../image/mask.png' style='height:{{maskHeight}}px' data-postid="{{headLine[0].id}}" catchtap='tapNews'></image>
   </view>
 </block>
-<view>
   <block wx:if="{{article[0].id}}">
     <block wx:for="{{article}}" wx:key="this">
-      <view class='blank'></view>
-      <view class='article' catchtap='tapNews' data-postid='{{item.id}}'>
-        <image class='arimg' mode='aspectFill' src='{{item.cover}}' data-postid='{{item.id}}'></image>
-        <text class='arhead' data-postid='{{item.id}}'>{{item.title}}</text>
-        <view class='timeAndReaded' catchtap='tapNews' data-postid='{{item.id}}'>
-          <image src='../../image/time.png' class='artime' data-postid='{{item.id}}'></image>
-          <text decode="nbsp" class='artimetext' data-postid='{{item.id}}'>&nbsp;{{item.time}}</text>
-          <image src='../../image/readed.png' class='arreaded' data-postid='{{item.id}}'></image>
-          <text class='arreadedtext' decode="nbsp" data-postid='{{item.id}}'>&nbsp;{{item.read}}</text>
+      <view class='newsBackground' catchtap='tapNews'>
+        <view>
+          <image src='{{item.cover}}' class='arImg' mode='aspectFill' data-postid='{{item.id}}'></image>
+        </view>
+        <view class='arInfo' data-postid='{{item.id}}'>
+          <view class='arInfo_title' data-postid='{{item.id}}'>{{item.title}}</view>
+          <view class='arInfo_timeAndReaded' data-postid='{{item.id}}'>
+            <view class='arInfo_time'>
+              <image data-postid='{{item.id}}' src='../../image/time.png' class='arInfo_img'></image>
+              <text data-postid='{{item.id}}' decode='nbsp'>&nbsp;{{item.time}}</text>
+            </view>
+            <view class='arInfo_readed'>
+              <image data-postid='{{item.id}}' src='../../image/readed.png' class='arInfo_img'></image>
+              <text data-postid='{{item.id}}' decode='nbsp'>&nbsp;{{item.read}}</text>
+            </view>
+          </view>
         </view>
       </view>
     </block>
     <view class='reachBottom' wx:if="{{!reachBottom}}">----加载中----</view>
     <view class='reachBottom' wx:if="{{reachBottom}}">----没了----</view>
   </block>
-</view>

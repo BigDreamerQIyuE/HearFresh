@@ -1,9 +1,8 @@
 {
   "pages": [
-  
     "pages/me/me",
     "pages/me/coupon/coupon",
-      "pages/news/news",
+    "pages/news/news",
     "pages/home/home",
     "pages/trade/trade",
     "pages/news/newsdetail/newsdetail",

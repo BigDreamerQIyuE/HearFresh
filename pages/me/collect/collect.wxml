@@ -37,6 +37,7 @@
     <view class='reachBottom' wx:if="{{reachBottom}}">———— 没了 ————</view>
   </block>
 </block>
+
 <block wx:else>
-  <view> 商品收藏列表 </view>
+  <view style='font-family:Segoe UI;'> 回复 </view>
 </block>

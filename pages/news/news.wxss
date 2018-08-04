@@ -3,28 +3,38 @@
 .front {
   position: absolute;
   z-index: 2;
-  top: 320rpx;
+  font-weight: bold;
   color: #fff;
-  font-size: 50rpx;
-  font-weight: 800;
-    padding-left: 60rpx;
-  padding-right: 60rpx;
+  display: flex;
+  font-family: SegoeUI;
+  line-height: 1.93;
+  letter-spacing: 0.7px;
+  text-align: left;
+  left: 38rpx;
+  font-size: 40rpx;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
 }
 
 .frontshead {
+  left: 38rpx;
   position: absolute;
   z-index: 2;
-  top: 380rpx;
-  color: #a8a8a8;
-  font-size: 26rpx;
-  padding-left: 60rpx;
-  padding-right: 60rpx;
+  font-size: 28rpx;
+  font-family: SegoeUI;
+  line-height: 2.08;
+  letter-spacing: 0.5px;
+  text-align: left;
+  color: #e6e6e6;
 }
 
 .bc {
   position: absolute;
   z-index: -1;
-  height: 450rpx;
   width: 100%;
 }
 
@@ -34,63 +44,66 @@
   width: 100%;
 }
 
-.blank {
-  height: 10rpx;
-  width: 750rpx;
+.reachBottom {
+  text-align: center;
+  color: #fff;
 }
 
-.article {
-  height: 300rpx;
+.newsBackground {
   width: 100%;
-  background-color: #ffffff
+  height: 250rpx;
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  margin-bottom: 10rpx;
 }
 
-.arimg {
-  height: 300rpx;
-  width: 300rpx;
-  left: 0px;
+.arImg {
+  height: 250rpx;
+  width: 250rpx;
 }
 
-.arhead {
-  position: absolute;
-  font-size: 35rpx;
-  padding-top: 50rpx;
-  padding-left: 35rpx;
-  padding-right: 20rpx;
-  font-weight: 600;
+.arInfo {
+  height: 250rpx;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size: 28rpx;
+  font-family: SegoeUI;
+  font-weight: bold;
+  line-height: 2.03;
+  letter-spacing: 0.5px;
+  text-align: justify;
+  color: #000;
 }
 
-.artime {
-  position: absolute;
-  height: 30rpx;
-  width: 30rpx;
-  padding-top: 220rpx;
-  padding-left: 35rpx;
+.arInfo_title {
+  height: 150rpx;
+  width: 80%;
+  text-align: justify;
+  margin-top: 30rpx;
 }
 
-.arreaded {
-  position: absolute;
-  height: 40rpx;
-  width: 40rpx;
-  padding-top: 220rpx;
-  padding-left: 280rpx;
+.arInfo_img {
+  height: 35rpx;
+  width: 35rpx;
 }
 
-.artimetext {
-  position: absolute;
-  height: 30rpx;
-  width: 300rpx;
-  padding-top: 220rpx;
-  padding-left: 70rpx;
-  font-size: 25rpx;
-  z-index: 3
+.arInfo_timeAndReaded {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.arreadedtext {
-  position: absolute;
-  height: 30rpx;
-  width: 30rpx;
-  padding-top: 220rpx;
-  padding-left: 330rpx;
-  font-size: 70%;
+.arInfo_time {
+  display: flex;
+  align-items: center;
+}
+
+.arInfo_readed {
+  display: flex;
+  align-items: center;
 }

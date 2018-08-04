@@ -11,7 +11,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.1.1",
+	"libVersion": "2.2.0",
 	"appid": "wx6474161c1c9a347a",
 	"projectname": "HearFresh",
 	"isGameTourist": false,

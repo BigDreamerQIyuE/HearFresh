@@ -1,10 +1,18 @@
 <!--pages/news/detail/newsdetail.wxml-->
 <image class='comment' src='../../../image/comment.png' catchtap='toComment' data-postid='{{id}}'></image>
-<view style='height:450rpx'>
-  <image src='{{cover}}' class='bc'></image>
-  <text class='head'>{{title}}</text>
-  <text class='shead'>{{description}}</text>
-  <image class='mask' src='../../../image/mask.png'></image>
+<image class='collectBorder' src='../../../image/collectBorder.png'></image>
+<block wx:if="{{collect}}">
+  <image class='collect' src='../../../image/collect1.png' catchtap='collect'></image>
+</block>
+<block wx:else>
+  <image class='collect' src='../../../image/collect.png' catchtap='collect'></image>
+</block>
+
+<view style='height:{{scrheight}}px'>
+  <image src='{{cover}}' class='bc' bindload='iLoad'></image>
+  <text class='head' style='top:{{headTop}}px'>{{title}}</text>
+  <text class='shead' style='top:{{sheadTop}}px'>{{description}}</text>
+  <image class='mask' style='height:{{scrheight}}px' src='../../../image/mask.png'></image>
 </view>
 
 <view class="msg">
@@ -13,6 +21,5 @@
     <text class="info_time">{{date}}</text>
   </view>
   <text class="msg_txt">{{content}}</text>
-  
-</view>
 
+</view>

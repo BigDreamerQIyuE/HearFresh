@@ -1,22 +1,21 @@
 <!--pages/news/newsdetail/comment/comment.wxml-->
-<view class='replyInput'>
-  <input placeholder='你想说啥？' class='input' confirm-type='send' bindconfirm='replySubmit'></input>
-</view>
-<view class='leftRightBlank'>
+<form bindsubmit='replySubmit' class='replyInput'>
+  <input placeholder=' What are your thoughts? 你有什么想法？' value='{{reset}}' bindfocus='sendButtonShow' bindblur='sendButtonHide' class='input' bindconfirm='replySubmit' bindinput='message' confirm-type='发送'></input>
+  <button  wx:if='{{sendButtonState}}' class='sendButton' size='mini' form-type='submit'>提交</button>
+</form>
 
-  <block wx:for="{{comment}}" wx:key='this'>
+
+<view class='leftRightBlank'>
+  <block wx:for="{{fakeComment}}" wx:key='this'>
     <view class='bg'>
       <view class='upAndDown'>
-        <image wx:if="{{item.like}}" src='../../../../image/up1.png' class='up' catchtap='likeComment' data-likeid='{{item.id}}'></image>
-        <image wx:else src='../../../../image/up.png' class='up' catchtap='likeComment' data-likeid='{{item.id}}'></image>
-        
-        <image wx:if="{{item.dislike}}" src='../../../../image/down1.png' class='down' catchtap='dislikeComment' data-dislikeid='{{item.id}}'></image>
-        <image wx:else src='../../../../image/down.png' class='down' catchtap='dislikeComment' data-dislikeid='{{item.id}}'></image>
+        <image src='../../../../image/up.png' class='up'></image>
+        <image src='../../../../image/down.png' class='down'></image>
       </view>
       <view class='information'>
-        <text class='username'>{{item.username}}</text>
+        <text class='username'>shaolizhi</text>
         <text class='level'> Level 999 </text>
-        <text class='likeNumber'>{{item.likeNumber}}赞 </text>
+        <text class='likeNumber'>0赞 </text>
         <text class='date'>{{item.date}}</text>
         <view class='content'>{{item.content}}</view>
         <view class='replyView'>
@@ -28,4 +27,34 @@
     </view>
     <view class='bottomBlank'></view>
   </block>
+
+
+  <block wx:for="{{comment}}" wx:key='this'>
+    <view class='bg' >
+      <view class='upAndDown'>
+        <image wx:if="{{item.like}}" src='../../../../image/up1.png' class='up' catchtap='likeComment' data-likeid='{{item.id}}'></image>
+        <image wx:else src='../../../../image/up.png' class='up' catchtap='likeComment' data-likeid='{{item.id}}'></image>
+        <image wx:if="{{item.dislike}}" src='../../../../image/down1.png' class='down' catchtap='dislikeComment' data-dislikeid='{{item.id}}'></image>
+        <image wx:else src='../../../../image/down.png' class='down' catchtap='dislikeComment' data-dislikeid='{{item.id}}'></image>
+      </view>
+      <view class='information'>
+        <text class='username'>{{item.username}}</text>
+        <text class='level'> Level 999 </text>
+        <text class='likeNumber'>{{item.likeNumber}}赞 </text>
+        <text class='date'>{{item.date}}</text>
+        <view class='content'>{{item.content}}</view>
+        <view class='replyView'>
+          <image src='../../../../image/reply.png' class='replyImg'></image>
+          <text class='replyTitle'>Reply 评论(34)</text>
+          <image src='../../../../image/rightmenu.png' class='rightMenu'></image>
+        </view>
+      </view>
+    </view>
+    <view class='bottomBlank'></view>
+
+  </block>
+  <view class='reachBottom' wx:if="{{!reachBottom}}">----加载中----</view>
+  <view class='reachBottom' wx:if="{{reachBottom}}">----没了----</view>
+  <view class='blank'></view>
+
 </view>

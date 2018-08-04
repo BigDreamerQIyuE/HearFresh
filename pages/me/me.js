@@ -5,62 +5,61 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-  
+  onLoad: function(options) {
+
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+  changePersonalInfo: function() {
+    wx.navigateTo({
+      url: 'changePersonalInfo/changePersonalInfo',
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
+  address: function() {
+    wx.navigateTo({
+      url: 'address/address',
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
+  coupon: function() {
+    wx.navigateTo({
+      url: 'coupon/coupon',
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
+  collect: function() {
+    wx.navigateTo({
+      url: 'collect/collect',
+    })
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
+  waitForDeliver: function() {
+    wx.navigateTo({
+      url: 'waitForDeliver/waitForDeliver',
+    })
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
+  waitForSign: function() {
+    wx.navigateTo({
+      url: 'waitForSign/waitForSign',
+    })
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  waitForComment: function() {
+    wx.navigateTo({
+      url: 'waitForComment/waitForComment',
+    })
+  },
+  afterSaleService: function() {
+    wx.navigateTo({
+      url: 'afterSaleService/afterSaleService',
+    })
+  },
+  logout: function() {
+    wx.showToast({
+      title: '注销成功！',
+    })
   }
+
 })

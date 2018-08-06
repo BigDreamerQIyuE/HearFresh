@@ -35,6 +35,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    wx.showLoading({
+      title: '正在加载',
+    })
     var _this = this
     wx.request({
       url: 'http://139.199.79.232/HearFresh/GetTheFavoriteNewsList.php',
@@ -71,6 +74,7 @@ Page({
           param[string] = res.data.data.news[i].cover;
           _this.setData(param)
         }
+        wx.hideLoading()
       }
     })
   },
@@ -106,6 +110,9 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
+    wx.showLoading({
+      title: '正在加载',
+    })
     page++
     var _this = this
     wx.request({
@@ -150,6 +157,7 @@ Page({
             _this.setData(param);
           }
         }
+        wx.hideLoading()
       },
       fail: function(e) {
         wx.showActionSheet({

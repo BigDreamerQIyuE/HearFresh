@@ -34,7 +34,7 @@
       </view>
     </block>
     <view class='reachBottom' wx:if="{{!reachBottom}}">———— 加载中 ————</view>
-    <view class='reachBottom' wx:if="{{reachBottom}}">———— 没了 ————</view>
+    <view class='reachBottom' wx:if="{{reachBottom}}">———— 没有更多内容 ————</view>
   </block>
 </block>
 

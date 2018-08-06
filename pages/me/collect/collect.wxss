@@ -107,7 +107,8 @@
 }
 
 .reachBottom {
+  display: flex;
   text-align: center;
   font-family: SegoeUI;
-  color: #FFF;
+  color: grey
 }

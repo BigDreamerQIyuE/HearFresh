@@ -98,6 +98,7 @@ Page({
             currentTime = standerdTime.getTime() / 1000,
             differTime = currentTime - createdAt,
             date = judge(differTime)
+            console.log("currentTime="+t)
           param[string] = date
           var string = "article[" + i + "].read";
           param[string] = res.data.data.news[i].reading;

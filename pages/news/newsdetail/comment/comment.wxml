@@ -1,36 +1,39 @@
 <!--pages/news/newsdetail/comment/comment.wxml-->
 <form bindsubmit='replySubmit' class='replyInput'>
   <input placeholder=' What are your thoughts? 你有什么想法？' value='{{reset}}' bindfocus='sendButtonShow' bindblur='sendButtonHide' class='input' bindconfirm='replySubmit' bindinput='message' confirm-type='发送'></input>
-  <button  wx:if='{{sendButtonState}}' class='sendButton' size='mini' form-type='submit'>提交</button>
+  <button wx:if='{{sendButtonState}}' class='sendButton' size='mini' form-type='submit'>提交</button>
 </form>
 
-
-<view class='leftRightBlank'>
-  <block wx:for="{{fakeComment}}" wx:key='this'>
-    <view class='bg'>
+<block wx:for="{{fakeComment}}" wx:key='this'>
+  <view class='container'>
+    <view class='background'>
       <view class='upAndDown'>
         <image src='../../../../image/up.png' class='up'></image>
         <image src='../../../../image/down.png' class='down'></image>
       </view>
       <view class='information'>
-        <text class='username'>shaolizhi</text>
-        <text class='level'> Level 999 </text>
-        <text class='likeNumber'>0赞 </text>
-        <text class='date'>{{item.date}}</text>
+        <view class='info_head'>
+          <text class='username'>shaolizhi</text>
+          <text class='level'> Level 999 </text>
+          <text class='likeNumber'>0赞 </text>
+          <text class='date'>{{item.date}}</text>
+        </view>
         <view class='content'>{{item.content}}</view>
         <view class='replyView'>
-          <image src='../../../../image/reply.png' class='replyImg'></image>
-          <text class='replyTitle'> Reply 评论(34)</text>
-          <image src='../../../../image/rightmenu.png' class='rightMenu'></image>
+          <view class='reply_img_title'>
+            <image src='../../../../image/reply.png' class='replyImg'></image>
+            <view class='replyTitle'> Reply 回复(0)</view>
+          </view>
+          <image src='../../../../image/rightmenu.png' class='replyMenu'></image>
         </view>
       </view>
     </view>
-    <view class='bottomBlank'></view>
-  </block>
+  </view>
+</block>
 
-
-  <block wx:for="{{comment}}" wx:key='this'>
-    <view class='bg' >
+<block wx:for="{{comment}}" wx:key='this'>
+  <view class='container'>
+    <view class='background'>
       <view class='upAndDown'>
         <image wx:if="{{item.like}}" src='../../../../image/up1.png' class='up' catchtap='likeComment' data-likeid='{{item.id}}'></image>
         <image wx:else src='../../../../image/up.png' class='up' catchtap='likeComment' data-likeid='{{item.id}}'></image>
@@ -38,23 +41,25 @@
         <image wx:else src='../../../../image/down.png' class='down' catchtap='dislikeComment' data-dislikeid='{{item.id}}'></image>
       </view>
       <view class='information'>
-        <text class='username'>{{item.username}}</text>
-        <text class='level'> Level 999 </text>
-        <text class='likeNumber'>{{item.likeNumber}}赞 </text>
-        <text class='date'>{{item.date}}</text>
+        <view class='info_head'>
+          <view class='username'>{{item.username}}</view>
+          <view class='level'> Level 999 </view>
+          <view class='likeNumber'>{{item.likeNumber}}赞 </view>
+          <view class='date'>{{item.date}}</view>
+        </view>
         <view class='content'>{{item.content}}</view>
         <view class='replyView'>
-          <image src='../../../../image/reply.png' class='replyImg'></image>
-          <text class='replyTitle'>Reply 评论(34)</text>
-          <image src='../../../../image/rightmenu.png' class='rightMenu'></image>
+          <view class='reply_img_title'>
+            <image src='../../../../image/reply.png' class='replyImg'></image>
+            <view class='replyTitle'>Reply 回复(34)</view>
+          </view>
+          <image src='../../../../image/rightmenu.png' class='replyMenu'></image>
         </view>
       </view>
     </view>
-    <view class='bottomBlank'></view>
+  </view>
 
-  </block>
-  <view class='reachBottom' wx:if="{{!reachBottom}}">----加载中----</view>
-  <view class='reachBottom' wx:if="{{reachBottom}}">----没了----</view>
-  <view class='blank'></view>
-
-</view>
+</block>
+<view class='reachBottom' wx:if="{{!reachBottom}}">———— 加载中 ————</view>
+<view class='reachBottom' wx:if="{{reachBottom}}">———— 没有更多内容了 —————</view>
+<view class='blank'></view>

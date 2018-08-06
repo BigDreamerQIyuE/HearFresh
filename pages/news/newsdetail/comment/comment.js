@@ -1,6 +1,4 @@
 // pages/news/newsdetail/comment/comment.js
-
-
 var util = require('../../../../utils/util.js'),
   page = 1,
   pageSize = 10
@@ -10,7 +8,7 @@ Page({
     reachBottom: false,
     reset: '',
     sendButtonState: false,
-    content:false
+    content: false
   },
 
   onLoad: function(options) {
@@ -19,7 +17,7 @@ Page({
       icon: 'loading'
     })
     console.log("page=" + page)
-    var id = options.id,
+    var id = '5b5014952f301e003bb8892a', //options.id,
       _this = this;
     _this.setData({
       id: id
@@ -29,7 +27,7 @@ Page({
       method: 'POST',
       data: {
         newsId: id,
-        userId: '5b39b27067f356003815884d',   //应动态实现，相关api不完善
+        userId: '5b39b27067f356003815884d', //应动态实现，相关api不完善
         page: 1,
         pageSize: pageSize
       },
@@ -90,39 +88,48 @@ Page({
   },
   //提交信息
   replySubmit: function(res) {
-    if(this.data.content==false){
+    if (this.data.content == false) {
       wx.showToast({
         title: '请输入信息!',
-        icon:'none'
+        icon: 'none'
       })
-    }else{
-    var _this = this
-    wx.request({
-      url: 'http://139.199.79.232/HearFresh/CreateComment.php',
-      method: 'POST',
-      data: {
-        content: _this.data.content,
-        userId: '5b39b27067f356003815884d',
-        newsId: _this.data.id
-      },
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
+    } else {
+      var _this = this
+      wx.request({
+        url: 'http://139.199.79.232/HearFresh/CreateComment.php',
+        method: 'POST',
+        data: {
+          content: _this.data.content,
+          userId: '5b39b27067f356003815884d',
+          newsId: _this.data.id
+        },
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        success: function() {
+          var
+            t = util.formatTime(new Date()),
+            standerdTime = new Date(t),
+            currentTime = standerdTime.getTime(),
+            date = util.formatTime(new Date(currentTime))
+          _this.setData({
+            "fakeComment[0].date": date
+          })
+        }
+      })
 
-    })
+      console.log(_this.data.content)
+      _this.setData({
+        reset: '',
+        sendButtonState: false,
+        "fakeComment[0].content": _this.data.content,
+        content: false,
+      })
 
-    console.log(_this.data.content)
-    _this.setData({
-      reset: '',
-      sendButtonState: false,
-      "fakeComment[0].content": _this.data.content,
-      content: false,
-    })
-
-    console.log("fuck:" + _this.data.fakeComment[0].content)
-    wx.showToast({
-      title: '发送成功！',
-    })
+      console.log("fuck:" + _this.data.fakeComment[0].content)
+      wx.showToast({
+        title: '发送成功！',
+      })
     }
   },
 
@@ -162,9 +169,9 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       success: function(res) {
-      /*  var confirmData = "comment[" + fuck + "].like"
-        param[confirmData] = res.data.data.like
-        _this.setData(param)*/
+        /*  var confirmData = "comment[" + fuck + "].like"
+          param[confirmData] = res.data.data.like
+          _this.setData(param)*/
       }
     })
   },
@@ -195,17 +202,17 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       success: function(res) {
-        name = "comment[" + fuck + "].dislike"
-        param[name] = res.data.data.dislike
-        _this.setData(param)
+        /* name = "comment[" + fuck + "].dislike"
+         param[name] = res.data.data.dislike
+         _this.setData(param)*/
       }
     })
   },
 
   sendButtonShow: function() {
-      this.setData({
-        sendButtonState: true
-      })
+    this.setData({
+      sendButtonState: true
+    })
   },
   sendButtonHide: function() {
     this.setData({
@@ -217,6 +224,9 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
+    wx.showLoading({
+      title: '正在加载',
+    })
     page++
     var _this = this,
       id = _this.data.id,
@@ -276,6 +286,7 @@ Page({
 
           }
         }
+        wx.hideLoading()
       }
     })
   },

@@ -7,7 +7,7 @@
 <block wx:else>
   <image class='collect' src='../../../image/collect.png' catchtap='collect'></image>
 </block>
-
+<block wx:if="{{author}}">
 <view style='height:{{scrheight}}px'>
   <image src='{{cover}}' class='bc' bindload='iLoad'></image>
   <text class='head' style='top:{{headTop}}px'>{{title}}</text>
@@ -23,3 +23,4 @@
   <text class="msg_txt">{{content}}</text>
 
 </view>
+</block>

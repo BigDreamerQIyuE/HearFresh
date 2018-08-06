@@ -6,6 +6,7 @@
     <image class='mask' src='../../image/mask.png' style='height:{{maskHeight}}px' data-postid="{{headLine[0].id}}" catchtap='tapNews'></image>
   </view>
 </block>
+
 <block wx:if="{{article[0].id}}">
   <block wx:for="{{article}}" wx:key="this">
     <view class='newsBackground' catchtap='tapNews'>
@@ -27,6 +28,6 @@
       </view>
     </view>
   </block>
-  <view class='reachBottom' wx:if="{{!reachBottom}}">----加载中----</view>
-  <view class='reachBottom' wx:if="{{reachBottom}}">----没了----</view>
+  <view class='reachBottom' wx:if="{{!reachBottom}}">———— 加载中 ————</view>
+  <view class='reachBottom' wx:if="{{reachBottom}}">———— 没有更多内容了 ————</view>
 </block>

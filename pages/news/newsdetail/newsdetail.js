@@ -6,6 +6,9 @@ Page({
   },
 
   onLoad: function(options) {
+    wx.showLoading({
+      title: '正在加载',
+    })
     var a = wx.getSystemInfoSync();
     var scrwidth = a.windowWidth
     this.setData({
@@ -64,6 +67,7 @@ Page({
         _this.setData({
           collect: collection.data.data.collection
         })
+        wx.hideLoading()
       },
 
       fail: function() {

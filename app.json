@@ -1,8 +1,9 @@
 {
   "pages": [
+        "pages/news/news",
     "pages/me/me",
     "pages/me/coupon/coupon",
-    "pages/news/news",
+
     "pages/home/home",
     "pages/trade/trade",
     "pages/news/newsdetail/newsdetail",
@@ -13,7 +14,8 @@
     "pages/me/waitForComment/waitForComment",
     "pages/me/afterSaleService/afterSaleService",
     "pages/me/waitForDeliver/waitForDeliver",
-    "pages/me/waitForSign/waitForSign"
+    "pages/me/waitForSign/waitForSign",
+    "pages/news/newsdetail/comment/reply/reply"
   ],
   "window": {
     "navigationBarBackgroundColor": "#1F1E2C",

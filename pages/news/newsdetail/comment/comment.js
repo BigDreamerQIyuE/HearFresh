@@ -17,7 +17,7 @@ Page({
       icon: 'loading'
     })
     console.log("page=" + page)
-    var id = '5b5014952f301e003bb8892a', //options.id,
+    var id = options.id, //options.id,
       _this = this;
     _this.setData({
       id: id
@@ -72,6 +72,9 @@ Page({
 
           var string = "comment[" + i + "].dislike"
           param[string] = res.data.data[i].dislike
+
+          var string = "comment[" + i + "].commentId"
+          param[string] = res.data.data[i].commentId
           _this.setData(param)
 
         }
@@ -218,6 +221,15 @@ Page({
     this.setData({
       sendButtonState: false
     })
+  },
+  toReply: function(event) {
+    var postId = event.target.dataset.postid
+    console.log("TO Reply")
+    wx.navigateTo({
+      url: 'reply/reply?commentId=' + postId
+    })
+
+    console.log(postId)
   },
 
   /**

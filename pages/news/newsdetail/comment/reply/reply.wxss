@@ -36,7 +36,7 @@
   display: flex;
   flex-direction: row;
   width: 98%;
-  margin-bottom: 10rpx;
+  margin-bottom: 2rpx;
 }
 
 .upAndDown {
@@ -151,4 +151,18 @@
   text-align: center;
   color: grey;
   padding-bottom: 80rpx;
+}
+
+.replyTotalNumber{
+  width: 98%;
+  height: 40rpx;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFF;
+  margin-top: 10rpx;
+  margin-bottom: 2rpx;
+    text-align: center;
+  color: #1f1e2c;
+  font-weight: bold;
+  font-size: 27rpx;
 }

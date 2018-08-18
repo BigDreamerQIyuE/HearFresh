@@ -1,11 +1,50 @@
+<!--pages/news/newsdetail/comment/reply/reply.wxml-->
+
+<!-- 被评论的comment-->
+<view class='container'>
+  <view class='background'>
+    <view class='upAndDown'>
+      <image wx:if="{{like}}" src='../../../../../image/up1.png' class='up' catchtap='likeComment' data-likeid='{{id}}'></image>
+      <image wx:else src='../../../../../image/up.png' class='up' catchtap='likeComment' data-likeid='{{id}}'></image>
+      <image wx:if="{{dislike}}" src='../../../../../image/down1.png' class='down' catchtap='dislikeComment' data-dislikeid='{{id}}'></image>
+      <image wx:else src='../../../../../image/down.png' class='down' catchtap='dislikeComment' data-dislikeid='{{id}}'></image>
+    </view>
+    <view class='information'>
+      <view class='info_head'>
+        <view class='username'>{{username}}</view>
+        <view class='level'> Level 999 </view>
+        <view class='likeNumber'>{{likeNumber}}赞 </view>
+        <view class='date'>{{date}}</view>
+      </view>
+      <view class='content'>{{content}}</view>
+      <view class='replyView'>
+        <view class='reply_img_title'>
+          <image src='../../../../../image/reply.png' class='replyImg' catchtap='toReply' data-postid='{{item.commentId}}'></image>
+          <view class='replyTitle' catchtap='toReply' data-postid='{{item.commentId}}'>Reply 回复(34)</view>
+        </view>
+        <image src='../../../../../image/rightmenu.png' class='replyMenu'></image>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 回复总数-->
+<view class='container'>
+  <view class='replyTotalNumber'>
+    12条回复
+  </view>
+</view>
+
+
+<!-- reply部分-->
 <block wx:for="{{comment}}" wx:key='this'>
   <view class='container'>
     <view class='background'>
       <view class='upAndDown'>
-        <image wx:if="{{item.like}}" src='../../../../image/up1.png' class='up' catchtap='likeComment' data-likeid='{{item.id}}'></image>
-        <image wx:else src='../../../../image/up.png' class='up' catchtap='likeComment' data-likeid='{{item.id}}'></image>
-        <image wx:if="{{item.dislike}}" src='../../../../image/down1.png' class='down' catchtap='dislikeComment' data-dislikeid='{{item.id}}'></image>
-        <image wx:else src='../../../../image/down.png' class='down' catchtap='dislikeComment' data-dislikeid='{{item.id}}'></image>
+        <image wx:if="{{item.like}}" src='../../../../../image/up1.png' class='up' catchtap='likeComment' data-likeid='{{item.id}}'></image>
+        <image wx:else src='../../../../../image/up.png' class='up' catchtap='likeComment' data-likeid='{{item.id}}'></image>
+        <image wx:if="{{item.dislike}}" src='../../../../../image/down1.png' class='down' catchtap='dislikeComment' data-dislikeid='{{item.id}}'></image>
+        <image wx:else src='../../../../../image/down.png' class='down' catchtap='dislikeComment' data-dislikeid='{{item.id}}'></image>
       </view>
       <view class='information'>
         <view class='info_head'>
@@ -17,10 +56,10 @@
         <view class='content'>{{item.content}}</view>
         <view class='replyView'>
           <view class='reply_img_title'>
-            <image src='../../../../image/reply.png' class='replyImg' catchtap='toReply' data-postid='{{item.commentId}}'></image>
+            <image src='../../../../../image/reply.png' class='replyImg' catchtap='toReply' data-postid='{{item.commentId}}'></image>
             <view class='replyTitle' catchtap='toReply' data-postid='{{item.commentId}}'>Reply 回复(34)</view>
           </view>
-          <image src='../../../../image/rightmenu.png' class='replyMenu'></image>
+          <image src='../../../../../image/rightmenu.png' class='replyMenu'></image>
         </view>
       </view>
     </view>

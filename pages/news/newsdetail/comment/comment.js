@@ -223,13 +223,19 @@ Page({
     })
   },
   toReply: function(event) {
-    var postId = event.target.dataset.postid
-    console.log("TO Reply")
+    var username = event.target.dataset.username,
+      commentId = event.target.dataset.commentid,
+
+      likeNumber = event.target.dataset.likenumber,
+      date = event.target.dataset.date,
+      content = event.target.dataset.content,
+      like = event.target.dataset.like,
+      dislike = event.target.dataset.dislike;
+ 
     wx.navigateTo({
-      url: 'reply/reply?commentId=' + postId
+      url: 'reply/reply?commentId=' + commentId + '&username=' + username + '&likeNumber=' + likeNumber + '&date=' + date + '&content=' + content + '&like=' + like + '&dislike=' + dislike
     })
 
-    console.log(postId)
   },
 
   /**

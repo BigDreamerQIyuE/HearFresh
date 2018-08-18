@@ -50,8 +50,9 @@
         <view class='content'>{{item.content}}</view>
         <view class='replyView'>
           <view class='reply_img_title'>
-            <image src='../../../../image/reply.png' class='replyImg' catchtap='toReply' data-postid='{{item.commentId}}'></image>
-            <view class='replyTitle' catchtap='toReply' data-postid='{{item.commentId}}'>Reply 回复(34)</view>
+            <image src='../../../../image/reply.png' class='replyImg' catchtap='toReply' data-commentid='{{item.commentId}}' data-username='{{item.username}}' data-likenumber='{{item.likeNumber}}' data-date='{{item.date}}' data-content='{{item.content}}' data-like='{{item.like}}'
+              data-dislike='{{item.dislike}}'></image>
+            <view class='replyTitle' catchtap='toReply' data-commentid='{{item.commentId}}' data-username='{{item.username}}' data-likenumber='{{item.likeNumber}}' data-date='{{item.date}}' data-content='{{item.content}}' data-like='{{item.like}}' data-dislike='{{item.dislike}}'>Reply 回复(34)</view>
           </view>
           <image src='../../../../image/rightmenu.png' class='replyMenu'></image>
         </view>

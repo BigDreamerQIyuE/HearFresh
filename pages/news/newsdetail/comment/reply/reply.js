@@ -15,11 +15,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    var _this=this
+    this.setData({
+      username: options.username,
+      likeNumber: options.likeNumber,
+      date: options.date,
+      content: options.content,
+      like: options.like,
+      dislike: options.dislike,
+      id:options.commentId
+    })
+    var _this = this
     wx.showToast({
       title: '加载中...',
       icon: 'loading'
     })
+
     wx.request({
       url: 'http://139.199.79.232/HearFresh/GetTheReplyList.php',
       method: 'POST',
@@ -40,7 +50,6 @@ Page({
         }
         console.log(res.data)
         var time;
-
         for (var i = 0; i < res.data.data.length; i++) {
           var param = {}
           var string = "comment[" + i + "].content"
@@ -75,6 +84,8 @@ Page({
           _this.setData(param)
 
         }
+      },
+      complete:function(){
         wx.hideToast();
       }
     })

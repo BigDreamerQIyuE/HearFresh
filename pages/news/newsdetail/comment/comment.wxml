@@ -35,10 +35,10 @@
   <view class='container'>
     <view class='background'>
       <view class='upAndDown'>
-        <image wx:if="{{item.like}}" src='../../../../image/up1.png' class='up' catchtap='likeComment' data-likeid='{{item.id}}'></image>
-        <image wx:else src='../../../../image/up.png' class='up' catchtap='likeComment' data-likeid='{{item.id}}'></image>
-        <image wx:if="{{item.dislike}}" src='../../../../image/down1.png' class='down' catchtap='dislikeComment' data-dislikeid='{{item.id}}'></image>
-        <image wx:else src='../../../../image/down.png' class='down' catchtap='dislikeComment' data-dislikeid='{{item.id}}'></image>
+        <image wx:if="{{item.like}}" src='../../../../image/up.png' class='up' catchtap='likeComment' data-likeid='{{item.id}}'></image>
+        <image wx:else src='../../../../image/up.png' class='upOpacity' catchtap='likeComment' data-likeid='{{item.id}}'></image>
+        <image wx:if="{{item.dislike}}" src='../../../../image/down.png' class='down' catchtap='dislikeComment' data-dislikeid='{{item.id}}'></image>
+        <image wx:else src='../../../../image/down.png' class='downOpacity' catchtap='dislikeComment' data-dislikeid='{{item.id}}'></image>
       </view>
       <view class='information'>
         <view class='info_head'>

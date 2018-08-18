@@ -78,8 +78,10 @@ Page({
           _this.setData(param)
 
         }
-        wx.hideToast();
       },
+      complete:function(){
+        wx.hideToast()
+      }
     })
 
   },
@@ -301,9 +303,11 @@ Page({
             var string = "comment[" + fuck + "].dislike"
             param[string] = res.data.data[i].dislike
             _this.setData(param)
-
           }
         }
+        
+      },
+      complete:function(){
         wx.hideLoading()
       }
     })

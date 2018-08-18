@@ -2,6 +2,7 @@
 
 /* pages/news/newsdetail/comment/comment.wxss */
 
+
 .replyInput {
   position: fixed;
   bottom: 0rpx;
@@ -48,15 +49,29 @@
 
 .up {
   padding-top: 8rpx;
-  width: 50rpx;
+  width:50rpx;
   height: 50rpx;
   padding-bottom: 10rpx;
 }
 
+.upOpacity{
+    padding-top: 8rpx;
+  width:50rpx;
+  height: 50rpx;
+  padding-bottom: 10rpx;
+  opacity: 0.25
+}
+
 .down {
-  width: 50rpx;
+  width:50rpx; 
   height: 50rpx;
 }
+.downOpacity{
+  width:50rpx; 
+  height: 50rpx;
+  opacity: 0.25
+}
+
 
 .information {
   margin-top: 15rpx;

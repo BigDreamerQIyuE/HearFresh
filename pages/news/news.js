@@ -64,7 +64,7 @@ Page({
     })
     var _this = this
     wx.request({
-      url: 'http://139.199.79.232/HearFresh/GetTheNewsList.php',
+      url: 'https://hearfresh.leanapp.cn/api/v1/GetTheNewsList',
       method: 'POST',
       data: {
         page: page,
@@ -172,7 +172,7 @@ Page({
 
     var _this = this
     wx.request({
-      url: 'http://139.199.79.232/HearFresh/GetTheNewsList.php',
+      url: 'https://hearfresh.leanapp.cn/api/v1/GetTheNewsList',
       method: 'POST',
       data: {
         page: 1,
@@ -232,7 +232,7 @@ Page({
     page++
     var _this = this
     wx.request({
-      url: 'http://139.199.79.232/HearFresh/GetTheNewsList.php',
+      url: 'https://hearfresh.leanapp.cn/api/v1/GetTheNewsList',
       method: 'POST',
       data: {
         page: page,

@@ -28,6 +28,6 @@
       </view>
     </view>
   </block>
-  <view class='reachBottom' wx:if="{{!reachBottom}}">———— 加载中 ————</view>
-  <view class='reachBottom' wx:if="{{reachBottom}}">———— 没有更多内容了 ————</view>
+  <view class='reachBottom' wx:if="{{!reachBottom}}">加载中</view>
+  <view class='reachBottom' wx:if="{{reachBottom}}">没有更多内容了</view>
 </block>

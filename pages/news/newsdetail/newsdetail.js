@@ -20,7 +20,7 @@ Page({
     var id = options.id;
     //请求文章详细内容
     wx.request({
-      url: 'http://139.199.79.232/HearFresh/GetNewsByObjectId.php',
+      url: 'https://hearfresh.leanapp.cn/api/v1/GetNewsByObjectId',
       method: 'POST',
       data: {
         newsId: id
@@ -52,7 +52,7 @@ Page({
 
     //请求是否收藏数据
     wx.request({
-      url: 'http://139.199.79.232/HearFresh/Collect.php',
+      url: 'https://hearfresh.leanapp.cn/api/v1/Collect',
       method: 'POST',
       data: {
         userId: '5b58394fee920a003ca68a9f',  //应实现动态
@@ -94,7 +94,7 @@ Page({
       collect: !_this.data.collect
     })
     wx.request({
-      url: 'http://139.199.79.232/HearFresh/Collect.php',
+      url: 'https://hearfresh.leanapp.cn/api/v1/Collect',
       method: 'POST',
       data: {
         userId: '5b58394fee920a003ca68a9f',

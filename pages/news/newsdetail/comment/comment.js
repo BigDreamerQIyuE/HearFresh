@@ -23,7 +23,7 @@ Page({
       id: id
     })
     wx.request({
-      url: 'http://139.199.79.232/HearFresh/GetTheCommentList.php',
+      url: 'https://hearfresh.leanapp.cn/api/v1/GetTheCommentList',
       method: 'POST',
       data: {
         newsId: id,
@@ -36,7 +36,7 @@ Page({
       },
 
       success: function(res) {
-        if (res.data.data.length < pageSize) {
+        if (res.data.data==null) {
           _this.setData({
             reachBottom: true
           })
@@ -73,13 +73,16 @@ Page({
           var string = "comment[" + i + "].dislike"
           param[string] = res.data.data[i].dislike
 
+          var string = "comment[" + i + "].replyNumber"
+          param[string] = res.data.data[i].replyNumber
+
           var string = "comment[" + i + "].commentId"
           param[string] = res.data.data[i].commentId
           _this.setData(param)
 
         }
       },
-      complete:function(){
+      complete: function() {
         wx.hideToast()
       }
     })
@@ -101,7 +104,7 @@ Page({
     } else {
       var _this = this
       wx.request({
-        url: 'http://139.199.79.232/HearFresh/CreateComment.php',
+        url: 'https://hearfresh.leanapp.cn/api/v1/CreateComment',
         method: 'POST',
         data: {
           content: _this.data.content,
@@ -164,7 +167,7 @@ Page({
       _this.setData(param)
     }
     wx.request({
-      url: 'http://139.199.79.232/HearFresh/LikeComment.php',
+      url: 'https://hearfresh.leanapp.cn/api/v1/LikeComment',
       method: 'POST',
       data: {
         userId: '5b39b27067f356003815884d',
@@ -174,6 +177,7 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       success: function(res) {
+        console.log("like success")
         /*  var confirmData = "comment[" + fuck + "].like"
           param[confirmData] = res.data.data.like
           _this.setData(param)*/
@@ -197,7 +201,7 @@ Page({
     param[name] = !_this.data.comment[fuck].dislike
     _this.setData(param)
     wx.request({
-      url: 'http://139.199.79.232/HearFresh/DislikeComment.php',
+      url: 'https://hearfresh.leanapp.cn/api/v1/DislikeComment',
       method: 'POST',
       data: {
         userId: '5b39b27067f356003815884d',
@@ -207,6 +211,7 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       success: function(res) {
+        console.log("dislike success")
         /* name = "comment[" + fuck + "].dislike"
          param[name] = res.data.data.dislike
          _this.setData(param)*/
@@ -232,10 +237,11 @@ Page({
       date = event.target.dataset.date,
       content = event.target.dataset.content,
       like = event.target.dataset.like,
+      replyNumber=event.target.dataset.replynumber,
       dislike = event.target.dataset.dislike;
- 
+
     wx.navigateTo({
-      url: 'reply/reply?commentId=' + commentId + '&username=' + username + '&likeNumber=' + likeNumber + '&date=' + date + '&content=' + content + '&like=' + like + '&dislike=' + dislike
+      url: 'reply/reply?commentId=' + commentId + '&username=' + username + '&likeNumber=' + likeNumber + '&date=' + date + '&content=' + content + '&like=' + like + '&dislike=' + dislike + '&replyNumber=' + replyNumber
     })
 
   },
@@ -253,7 +259,7 @@ Page({
       fuck = (page - 1) * pageSize
     console.log("fuck" + fuck)
     wx.request({
-      url: 'http://139.199.79.232/HearFresh/GetTheCommentList.php',
+      url: 'https://hearfresh.leanapp.cn/api/v1/GetTheCommentList',
       method: 'POST',
       data: {
         newsId: id,
@@ -267,7 +273,7 @@ Page({
 
       success: function(res) {
         console.log(res.data)
-        if (res.data.data.length == 0) {
+        if (res.data.data == null) {
           _this.setData({
             reachBottom: true
           })
@@ -299,15 +305,18 @@ Page({
             var string = "comment[" + fuck + "].like"
             param[string] = res.data.data[i].like
 
+            var string = "comment[" + i + "].replyNumber"
+            param[string] = res.data.data[i].replyNumber
+
 
             var string = "comment[" + fuck + "].dislike"
             param[string] = res.data.data[i].dislike
             _this.setData(param)
           }
         }
-        
+
       },
-      complete:function(){
+      complete: function() {
         wx.hideLoading()
       }
     })

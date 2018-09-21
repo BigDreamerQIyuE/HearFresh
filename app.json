@@ -18,6 +18,7 @@
     "pages/news/newsdetail/comment/reply/reply"
   ],
   "window": {
+    "navigationStyle":"custom",
     "navigationBarBackgroundColor": "#1F1E2C",
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "HearFresh听鲜",

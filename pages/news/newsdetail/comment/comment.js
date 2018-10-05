@@ -1,127 +1,94 @@
-var util = require('../../../utils/util.js')
+// pages/news/newsdetail/comment/comment.js
+var util = require('../../../../utils/util.js'),
+  page = 1,
+  pageSize = 10
+
 Page({
-
   data: {
-
+    reachBottom: false,
+    reset: '',
+    sendButtonState: false,
+    content: false
   },
 
   onLoad: function(options) {
-    wx.showLoading({
-      title: '正在加载',
+    wx.showToast({
+      title: '加载中',
+      icon: 'loading'
     })
-    var a = wx.getSystemInfoSync();
-    var scrwidth = a.windowWidth
-    this.setData({
-      scrheight: scrwidth / 1.78,
-      headTop: scrwidth / 1.78 * 0.75,
-      sheadTop: scrwidth / 1.78 * 0.85,
-    })
-    var _this = this
-<<<<<<< HEAD
-    var id = options.id; //更改初始获取的新闻Id
-=======
-    var id = options.id;
->>>>>>> parent of 94803d4... news详细页，评论页改进
-    //请求文章详细内容
-    wx.request({
-      url: 'https://hearfresh.leanapp.cn/api/v1/GetNewsByObjectId',
-      method: 'POST',
-      data: {
-        newsId: id
-      },
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      success: function(res) {
-        var createdAt = res.data.data.createdAt * 1000,
-          date = util.formatTime(new Date(createdAt))
-        console.log(res.data)
-        _this.setData({
-          title: res.data.data.title,
-          description: res.data.data.description,
-          content: res.data.data.content,
-          author: res.data.data.author,
-          reading: res.data.data.reading,
-          cover: res.data.data.cover,
-          id: id,
-          date: date
-        })
-      },
-      fail: function() {
-        wx.showActionSheet({
-          itemList: ["fuck fail"],
-        })
-      }
-    })
-
-    //请求是否收藏数据
-    wx.request({
-      url: 'https://hearfresh.leanapp.cn/api/v1/Collect',
-      method: 'POST',
-      data: {
-        userId: '5b58394fee920a003ca68a9f',  //应实现动态
-        newsId: options.id,
-        collectAction: false
-      },
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      success: function(collection) {
-        console.log(collection.data.data.collection)
-        _this.setData({
-          collect: collection.data.data.collection
-        })
-        wx.hideLoading()
-      },
-
-      fail: function() {
-        wx.showActionSheet({
-          itemList: ["fuck fail"],
-        })
-      }
-    })
-
-
-  },
-  //评论入口
-  toComment: function(event) {
-    var postId = event.target.dataset.postid;
-    wx.navigateTo({
-      url: 'comment/comment?id=' + postId
-    });
-  },
-
-  //收藏
-  collect: function(res) {
-    var _this = this
+    console.log("page=" + page)
+    var id = options.id, //options.id,
+      _this = this;
     _this.setData({
-      collect: !_this.data.collect
+      id: id
     })
     wx.request({
-      url: 'https://hearfresh.leanapp.cn/api/v1/Collect',
+      url: 'https://hearfresh.leanapp.cn/api/v1/GetTheCommentList',
       method: 'POST',
       data: {
-        userId: '5b58394fee920a003ca68a9f',
-        newsId: _this.data.id,
-        collectAction: true
+        newsId: id,
+        userId: '5b39b27067f356003815884d', //应动态实现，相关api不完善
+        page: 1,
+        pageSize: pageSize
       },
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
 
       success: function(res) {
-        console.log("collect success")
-      },
+        if (res.data.data==null) {
+          _this.setData({
+            reachBottom: true
+          })
+        }
+        console.log(res.data)
+        var time;
 
-      fail: function() {
-        wx.showActionSheet({
-          itemList: ["连接错误"],
-        })
+        for (var i = 0; i < res.data.data.length; i++) {
+          var param = {}
+          var string = "comment[" + i + "].content"
+          param[string] = res.data.data[i].content
+
+
+          var string = "comment[" + i + "].username"
+          param[string] = res.data.data[i].username
+
+
+          var string = "comment[" + i + "].date",
+            createdAt = res.data.data[i].createdAt * 1000,
+            date = util.formatTime(new Date(createdAt))
+          param[string] = date
+
+          var string = "comment[" + i + "].likeNumber"
+          param[string] = res.data.data[i].likeNumber
+
+          var string = "comment[" + i + "].id"
+          param[string] = res.data.data[i].commentId
+
+
+          var string = "comment[" + i + "].like"
+          param[string] = res.data.data[i].like
+
+
+          var string = "comment[" + i + "].dislike"
+          param[string] = res.data.data[i].dislike
+
+          var string = "comment[" + i + "].replyNumber"
+          param[string] = res.data.data[i].replyNumber
+
+          var string = "comment[" + i + "].commentId"
+          param[string] = res.data.data[i].commentId
+          _this.setData(param)
+
+        }
+      },
+      complete: function() {
+        wx.hideToast()
       }
     })
+
   },
 
-<<<<<<< HEAD
   message: function(res) {
     this.setData({
       content: res.detail.value
@@ -265,13 +232,14 @@ Page({
   toReply: function(event) {
     var username = event.target.dataset.username,
       commentId = event.target.dataset.commentid,
+
       likeNumber = event.target.dataset.likenumber,
       date = event.target.dataset.date,
       content = event.target.dataset.content,
       like = event.target.dataset.like,
-      replyNumber = event.target.dataset.replynumber,
+      replyNumber=event.target.dataset.replynumber,
       dislike = event.target.dataset.dislike;
-console.log("wocaocaocao"+commentId)
+
     wx.navigateTo({
       url: 'reply/reply?commentId=' + commentId + '&username=' + username + '&likeNumber=' + likeNumber + '&date=' + date + '&content=' + content + '&like=' + like + '&dislike=' + dislike + '&replyNumber=' + replyNumber
     })
@@ -283,7 +251,7 @@ console.log("wocaocaocao"+commentId)
    */
   onReachBottom: function() {
     wx.showLoading({
-      title: '正在加载更多评论',
+      title: '正在加载',
     })
     page++
     var _this = this,
@@ -337,15 +305,27 @@ console.log("wocaocaocao"+commentId)
             var string = "comment[" + fuck + "].like"
             param[string] = res.data.data[i].like
 
-            var string = "comment[" + fuck + "].replyNumber"
+            var string = "comment[" + i + "].replyNumber"
             param[string] = res.data.data[i].replyNumber
 
-=======
-  iLoad: function(e) {
->>>>>>> parent of 94803d4... news详细页，评论页改进
 
+            var string = "comment[" + fuck + "].dislike"
+            param[string] = res.data.data[i].dislike
+            _this.setData(param)
+          }
+        }
+
+      },
+      complete: function() {
+        wx.hideLoading()
+      }
+    })
   },
 
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
   onReady: function() {
 
   },
@@ -368,7 +348,7 @@ console.log("wocaocaocao"+commentId)
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-
+    page = 1
   },
 
   /**
@@ -378,12 +358,7 @@ console.log("wocaocaocao"+commentId)
 
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
 
-  },
 
   /**
    * 用户点击右上角分享

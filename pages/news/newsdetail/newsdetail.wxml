@@ -1,21 +1,28 @@
 <!--pages/news/detail/newsdetail.wxml-->
-<block wx:if="{{author}}">
-  <view style='height:{{scrheight}}px'>
-    <image src='{{cover}}' class='bc'></image>
-    <text class='head' style='top:{{headTop}}px'>{{title}}</text>
-    <text class='shead' style='top:{{sheadTop}}px'>{{description}}</text>
-    <image class='mask' style='height:{{scrheight}}px' src='../../../image/mask.png'></image>
-  </view>
-
-  <view class="msg">
-    <view class="msg_info">
-      <text class="info_author">撰写：{{author}}</text>
-      <text class="info_time">{{date}}</text>
-    </view>
-    <text class="msg_txt">{{content}}</text>
-  </view>
+<image class='comment' src='../../../image/comment.png' catchtap='toComment' data-postid='{{id}}'></image>
+<image class='collectBorder' src='../../../image/collectBorder.png'></image>
+<block wx:if="{{collect}}">
+  <image class='collect' src='../../../image/collect1.png' catchtap='collect'></image>
 </block>
+<block wx:else>
+  <image class='collect' src='../../../image/collect.png' catchtap='collect'></image>
+</block>
+<block wx:if="{{author}}">
+<view style='height:{{scrheight}}px'>
+  <image src='{{cover}}' class='bc' bindload='iLoad'></image>
+  <text class='head' style='top:{{headTop}}px'>{{title}}</text>
+  <text class='shead' style='top:{{sheadTop}}px'>{{description}}</text>
+  <image class='mask' style='height:{{scrheight}}px' src='../../../image/mask.png'></image>
+</view>
 
+<view class="msg">
+  <view class="msg_info">
+    <text class="info_author">撰写：{{author}}</text>
+    <text class="info_time">{{date}}</text>
+  </view>
+  <text class="msg_txt">{{content}}</text>
+
+<<<<<<< HEAD
 <view class='bottomTools'>
   <view class='bottomToolsButton' catchtap='toComment' data-postid='{{id}}'>
     <image class='bottomToolsImg' src='../../../image/comment.png'></image>
@@ -87,3 +94,7 @@
   </view>
 </block>
 <view style='height:80rpx'></view>
+=======
+</view>
+</block>
+>>>>>>> parent of 94803d4... news详细页，评论页改进

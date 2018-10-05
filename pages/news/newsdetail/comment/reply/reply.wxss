@@ -1,0 +1,183 @@
+/* pages/news/newsdetail/comment/reply/reply.wxss */
+
+/* pages/news/newsdetail/comment/comment.wxss */
+
+
+.replyInput {
+  position: fixed;
+  bottom: 0rpx;
+  background-color: #1f1e2c;
+  width: 100%;
+  justify-items: right;
+  z-index: 3;
+}
+
+.sendButton {
+  mix-blend-mode: undefined;
+  border-radius: 7px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  font-size: 30rpx;
+  float: right;
+  margin-right: 10rpx;
+  margin-bottom: 10rpx;
+}
+
+.input {
+  margin: 10rpx;
+  background-color: #fff;
+  height: 80rpx;
+  mix-blend-mode: undefined;
+  border-radius: 7px;
+  border: solid 1px #000;
+  font-size: 30rpx;
+}
+
+.background {
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  width: 98%;
+  margin-bottom: 2rpx;
+}
+
+.upAndDown {
+  width: 10%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.up {
+  padding-top: 8rpx;
+  width:50rpx;
+  height: 50rpx;
+  padding-bottom: 10rpx;
+}
+
+.upOpacity{
+    padding-top: 8rpx;
+  width:50rpx;
+  height: 50rpx;
+  padding-bottom: 10rpx;
+  opacity: 0.25
+}
+
+.down {
+  width:50rpx; 
+  height: 50rpx;
+}
+.downOpacity{
+  width:50rpx; 
+  height: 50rpx;
+  opacity: 0.25
+}
+
+
+.information {
+  margin-top: 15rpx;
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15rpx;
+}
+
+.info_head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.level {
+  color: #307c92;
+  font-size: 25rpx;
+  font-family: SegoeUI;
+  font-weight: bold;
+  text-align: left;
+}
+
+.username {
+  background-color: #edeff1;
+  font-size: 25rpx;
+  font-family: SegoeUI;
+  font-weight: bold;
+  text-align: left;
+}
+
+.likeNumber {
+  font-size: 25rpx;
+  color: #818181;
+  font-family: SegoeUI;
+  font-weight: bold;
+  text-align: left;
+}
+
+.date {
+  font-size: 25rpx;
+  color: #818181;
+  font-family: SegoeUI;
+  font-weight: bold;
+  text-align: left;
+}
+
+.content {
+  font-size: 27rpx;
+  margin-top: 15rpx;
+  margin-bottom: 18rpx;
+  font-family: SegoeUI;
+  font-weight: bold;
+  line-height: 1.5;
+  text-align: justify;
+  color: #2a313a;
+}
+
+.replyView {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reply_img_title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.replyImg {
+  height: 30rpx;
+  width: 30rpx;
+  margin-right: 5rpx;
+}
+
+.replyTitle {
+  font-size: 25rpx;
+  font-weight: bold;
+  font-family: SegoeUI;
+  text-align: left;
+  color: #2a313a;
+}
+
+.replyMenu {
+  height: 50rpx;
+  width: 50rpx;
+}
+
+.reachBottom {
+  height: 60rpx;
+  text-align: center;
+  color: grey;
+  padding-bottom: 80rpx;
+}
+
+.replyTotalNumber{
+  width: 98%;
+  height: 40rpx;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFF;
+  margin-top: 10rpx;
+  margin-bottom: 2rpx;
+    text-align: center;
+  color: #1f1e2c;
+  font-weight: bold;
+  font-size: 27rpx;
+}

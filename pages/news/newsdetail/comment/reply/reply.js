@@ -1,5 +1,5 @@
 // pages/news/newsdetail/comment/reply/reply.js
-var util = require('../../../../utils/util.js'),
+var util = require('../../../../../utils/util.js'),
   page = 1,
   pageSize = 10
 Page({
@@ -71,7 +71,7 @@ Page({
           param[string] = res.data.data[i].likeNumber
 
           var string = "comment[" + i + "].id"
-          param[string] = res.data.data[i].commentId
+          param[string] = res.data.data[i].replyId
 
 
           var string = "comment[" + i + "].like"
@@ -81,18 +81,8 @@ Page({
           var string = "comment[" + i + "].dislike"
           param[string] = res.data.data[i].dislike
 
-          var string = "comment[" + i + "].replyNumber"
-          param[string] = res.data.data[i].replyNumber
-
-          if (res.data.data[i].replyComment != null) {
-
-            var string = "comment[" + i + "].replyComment.content"
-            param[string] = res.data.data[i].replyComment.content
-
-            var string = "comment[" + i + "].replyComment.username"
-            param[string] = res.data.data[i].replyComment.username
-          }
-
+          var string = "comment[" + i + "].targetUsername"
+          param[string] = res.data.data[i].targetUsername
           _this.setData(param)
 
         }

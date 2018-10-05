@@ -1,3 +1,5 @@
+/* pages/news/newsdetail/comment/reply/reply.wxss */
+
 /* pages/news/newsdetail/comment/comment.wxss */
 
 .replyInput {
@@ -33,7 +35,7 @@
   background-color: #fff;
   display: flex;
   flex-direction: row;
-  width: 98%;
+  width: 100%;
   margin-bottom: 2rpx;
 }
 
@@ -46,27 +48,28 @@
 
 .up {
   padding-top: 8rpx;
-  width:50rpx;
+  width: 50rpx;
   height: 50rpx;
   padding-bottom: 10rpx;
 }
 
-.upOpacity{
-    padding-top: 8rpx;
-  width:50rpx;
+.upOpacity {
+  padding-top: 8rpx;
+  width: 50rpx;
   height: 50rpx;
   padding-bottom: 10rpx;
-  opacity: 0.25
+  opacity: 0.25;
 }
 
 .down {
-  width:50rpx; 
+  width: 50rpx;
   height: 50rpx;
 }
-.downOpacity{
-  width:50rpx; 
+
+.downOpacity {
+  width: 50rpx;
   height: 50rpx;
-  opacity: 0.25
+  opacity: 0.25;
 }
 
 .information {
@@ -97,6 +100,8 @@
   font-family: SegoeUI;
   font-weight: bold;
   text-align: left;
+  padding: 3rpx;
+  border-radius: 5rpx;
 }
 
 .likeNumber {
@@ -115,8 +120,40 @@
   text-align: left;
 }
 
-.content {
+.quote {
   font-size: 27rpx;
+  margin-top: 15rpx;
+  padding: 10rpx;
+  font-weight: bold;
+  line-height: 1.5;
+  text-align: justify;
+  background-color: #f1f1f1;
+}
+
+.quoteUsernameAll {
+  display: flex;
+  flex-direction: row;
+}
+
+.quoteUsername {
+  font-size: 25rpx;
+  color: #307c92;
+  margin-right: 5rpx;
+}
+
+.quoteUsernameAssist {
+  margin-right: 5rpx;
+  font-size: 25rpx;
+  color: #2a313a;
+}
+
+.quoteContent {
+  color: #929292;
+  font-size: 25rpx;
+}
+
+.content {
+  font-size: 29rpx;
   margin-top: 15rpx;
   margin-bottom: 18rpx;
   font-family: SegoeUI;
@@ -157,10 +194,16 @@
   width: 50rpx;
 }
 
-.reachBottom {
-  height: 60rpx;
+.replyTotalNumber {
+  width: 100%;
+  height: 40rpx;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  margin-top: 10rpx;
+  margin-bottom: 2rpx;
   text-align: center;
-  color: grey;
-  padding-bottom: 80rpx;
-  font-size: 30rpx;
+  color: #1f1e2c;
+  font-weight: bold;
+  font-size: 27rpx;
 }

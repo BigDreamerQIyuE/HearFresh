@@ -4,6 +4,12 @@ var util = require('../../../utils/util.js'),
 Page({
 
   data: {
+    commentInputStatus: false,
+    inputContent: null,
+    contentLength: 0,
+    reset: '',
+    inputCommentId:null,
+    inputPlaceHolder:'来谈谈你的看法吧！'
 
   },
 
@@ -17,15 +23,15 @@ Page({
       scrheight: scrwidth / 1.78,
       headTop: scrwidth / 1.78 * 0.75,
       sheadTop: scrwidth / 1.78 * 0.85,
+      newsId: options.id    //'5b5014952f301e003bb8892a' //改为options.id
     })
     var _this = this
-    var id = options.id; //更改初始获取的新闻Id
     //请求文章详细内容
     wx.request({
       url: 'https://hearfresh.leanapp.cn/api/v1/GetNewsByObjectId',
       method: 'POST',
       data: {
-        newsId: id
+        newsId: _this.data.newsId
       },
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -41,7 +47,6 @@ Page({
           author: res.data.data.author,
           reading: res.data.data.reading,
           cover: res.data.data.cover,
-          id: id,
           date: date
         })
       },
@@ -51,14 +56,14 @@ Page({
         })
       }
     })
-
+    _this.requestFirstComment()
     //请求是否收藏数据
     wx.request({
       url: 'https://hearfresh.leanapp.cn/api/v1/Collect',
       method: 'POST',
       data: {
         userId: '5b58394fee920a003ca68a9f', //应实现动态
-        newsId: options.id,
+        newsId: _this.data.newsId,
         collectAction: false
       },
       header: {
@@ -78,12 +83,16 @@ Page({
         })
       }
     })
+  },
+
+  requestFirstComment: function() {
+    var _this = this
     //请求第一页评论
     wx.request({
       url: 'https://hearfresh.leanapp.cn/api/v1/GetTheCommentList',
       method: 'POST',
       data: {
-        newsId: id,
+        newsId: _this.data.newsId,
         userId: '5b39b27067f356003815884d', //应动态实现，相关api不完善
         page: 1,
         pageSize: pageSize
@@ -152,13 +161,8 @@ Page({
         wx.hideToast()
       }
     })
-
-
   },
-  //评论入口
-  toComment: function(event) {
 
-  },
 
   //收藏
   collect: function(res) {
@@ -190,57 +194,7 @@ Page({
     })
   },
 
-  message: function(res) {
-    this.setData({
-      content: res.detail.value
-    })
-  },
-  //提交信息
-  replySubmit: function(res) {
-    if (this.data.content == false) {
-      wx.showToast({
-        title: '请输入信息!',
-        icon: 'none'
-      })
-    } else {
-      var _this = this
-      wx.request({
-        url: 'https://hearfresh.leanapp.cn/api/v1/CreateComment',
-        method: 'POST',
-        data: {
-          content: _this.data.content,
-          userId: '5b39b27067f356003815884d',
-          newsId: _this.data.id
-        },
-        header: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        success: function() {
-          var
-            t = util.formatTime(new Date()),
-            standerdTime = new Date(t),
-            currentTime = standerdTime.getTime(),
-            date = util.formatTime(new Date(currentTime))
-          _this.setData({
-            "fakeComment[0].date": date
-          })
-        }
-      })
 
-      console.log(_this.data.content)
-      _this.setData({
-        reset: '',
-        sendButtonState: false,
-        "fakeComment[0].content": _this.data.content,
-        content: false,
-      })
-
-      console.log("fuck:" + _this.data.fakeComment[0].content)
-      wx.showToast({
-        title: '发送成功！',
-      })
-    }
-  },
 
   //点赞
   likeComment: function(event) {
@@ -279,9 +233,6 @@ Page({
       },
       success: function(res) {
         console.log("like success")
-        /*  var confirmData = "comment[" + fuck + "].like"
-          param[confirmData] = res.data.data.like
-          _this.setData(param)*/
       }
     })
   },
@@ -313,23 +264,79 @@ Page({
       },
       success: function(res) {
         console.log("dislike success")
-        /* name = "comment[" + fuck + "].dislike"
-         param[name] = res.data.data.dislike
-         _this.setData(param)*/
       }
     })
   },
 
-  sendButtonShow: function() {
+  //评论相关
+
+  //评论入口
+  commentInputStatus: function(event) {
+    console.log(event.target.dataset.inputcommentid)
+    if(event.target.dataset.inputcommentid!=null){
+      this.setData({
+        inputCommentId: event.target.dataset.inputcommentid,
+        inputPlaceHolder: '引用 @'+event.target.dataset.inputplaceholder+' 的评论：'
+      })
+    }
     this.setData({
-      sendButtonState: true
+      commentInputStatus: true
     })
   },
-  sendButtonHide: function() {
+  commentInputStatusOff: function() {
     this.setData({
-      sendButtonState: false
+      commentInputStatus: false
     })
   },
+
+  message: function(res) {
+    this.setData({
+      inputContent: res.detail.value,
+      contentLength: res.detail.value.length
+    })
+  },
+
+  //提交信息
+  replySubmit: function(res) {
+    console.log(this.data.inputCommentId)
+    if (this.data.contentLength==0) {
+      wx.showToast({
+        title: '请输入信息!',
+        icon: 'none'
+      })
+    } else {
+      var _this = this
+      wx.request({
+        url: 'https://hearfresh.leanapp.cn/api/v1/CreateComment',
+        method: 'POST',
+        data: {
+          content: _this.data.inputContent,
+          userId: '5b39b27067f356003815884d',
+          newsId: _this.data.newsId,
+          replyCommentId:_this.data.inputCommentId
+        },
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        success: function() {
+          _this.commentInputStatusOff()
+          _this.setData({
+            reset: '',
+            inputContent: null,
+            contentLength:0,
+            inputCommentId:null,
+            inputPlaceHolder:'来谈谈你的看法吧！'
+          })
+          wx.showToast({
+            title: '发送成功！',
+          })
+          _this.requestFirstComment()
+        }
+      })
+    }
+  },
+
+//reply详细界面
   toReply: function(event) {
     var username = event.target.dataset.username,
       commentId = event.target.dataset.commentid,
@@ -339,23 +346,21 @@ Page({
       like = event.target.dataset.like,
       replyNumber = event.target.dataset.replynumber,
       dislike = event.target.dataset.dislike;
-console.log("wocaocaocao"+commentId)
+    console.log("wocaocaocao" + commentId)
     wx.navigateTo({
-      url: 'reply/reply?commentId=' + commentId + '&username=' + username + '&likeNumber=' + likeNumber + '&date=' + date + '&content=' + content + '&like=' + like + '&dislike=' + dislike + '&replyNumber=' + replyNumber
+      url: 'reply/reply?commentId=' + commentId + '&username=' + username + '&likeNumber=' + likeNumber + '&date=' + date + '&content=' + content + '&like=' + like + '&dislike=' + dislike + '&replyNumber=' + replyNumber + '&newsId=' + this.data.newsId
     })
 
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
+  // 页面上拉触底事件的处理函数
   onReachBottom: function() {
     wx.showLoading({
-      title: '正在加载更多评论',
+      title: '正在加载',
     })
     page++
     var _this = this,
-      id = _this.data.id,
+      id = _this.data.newsId,
       fuck = (page - 1) * pageSize
     console.log("fuck" + fuck)
     wx.request({
@@ -378,6 +383,9 @@ console.log("wocaocaocao"+commentId)
             reachBottom: true
           })
           page--
+          wx.showToast({
+            title: '没有更多内容了',
+          })
         } else {
           console.log("下拉成功")
           for (var i = 0; i < res.data.data.length; i++, fuck++) {

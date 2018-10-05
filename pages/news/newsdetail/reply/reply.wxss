@@ -1,35 +1,57 @@
 /* pages/news/newsdetail/comment/reply/reply.wxss */
 
 /* pages/news/newsdetail/comment/comment.wxss */
-
+.inputEntrance{
+  position: fixed;
+  bottom: 0rpx;
+  width: 100%;
+  z-index: 3;
+}
 .replyInput {
   position: fixed;
   bottom: 0rpx;
   background-color: #1f1e2c;
   width: 100%;
-  justify-items: right;
+  height: 350rpx;
   z-index: 3;
 }
-
-.sendButton {
-  mix-blend-mode: undefined;
-  border-radius: 7px;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
-  font-size: 30rpx;
-  float: right;
-  margin-right: 10rpx;
-  margin-bottom: 10rpx;
+.inputBg{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%
 }
 
 .input {
+  width: 100%;
   margin: 10rpx;
+  padding: 15rpx;
   background-color: #fff;
-  height: 80rpx;
-  mix-blend-mode: undefined;
-  border-radius: 7px;
-  border: solid 1px #000;
   font-size: 30rpx;
+  line-height: 45rpx;
+  border-radius: 30rpx;
 }
+
+.inputWordCount{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sendButton {
+  border-radius: 30rpx;
+  font-size: 30rpx;
+  letter-spacing: 1.5px;
+  width: 200rpx;
+  margin-right:10rpx;
+}
+.inputContentLength{
+  margin-left: 10rpx;
+  font-size: 30rpx;
+  color: #fff;
+  letter-spacing: 1.5px
+}
+
 
 .background {
   background-color: #fff;

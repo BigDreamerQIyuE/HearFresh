@@ -8,8 +8,8 @@
   <view class='container'>
     <view class='background'>
       <view class='upAndDown'>
-        <image src='../../../../image/up.png' class='upOpacity'></image>
-        <image src='../../../../image/down.png'class='downOpacity'></image>
+        <image src='../../../../image/up.png' class='up'></image>
+        <image src='../../../../image/down.png' class='down'></image>
       </view>
       <view class='information'>
         <view class='info_head'>
@@ -51,9 +51,8 @@
         <view class='replyView'>
           <view class='reply_img_title'>
             <image src='../../../../image/reply.png' class='replyImg' catchtap='toReply' data-commentid='{{item.commentId}}' data-username='{{item.username}}' data-likenumber='{{item.likeNumber}}' data-date='{{item.date}}' data-content='{{item.content}}' data-like='{{item.like}}'
-              data-dislike='{{item.dislike}}' data-replynumber='{{item.replyNumber}}'></image>
-            <view class='replyTitle' catchtap='toReply' data-commentid='{{item.commentId}}' data-username='{{item.username}}' data-likenumber='{{item.likeNumber}}' data-date='{{item.date}}' data-content='{{item.content}}' data-like='{{item.like}}' data-dislike='{{item.dislike}}'
-              data-replynumber='{{item.replyNumber}}'>Reply 回复({{item.replyNumber}})</view>
+              data-dislike='{{item.dislike}}'></image>
+            <view class='replyTitle' catchtap='toReply' data-commentid='{{item.commentId}}' data-username='{{item.username}}' data-likenumber='{{item.likeNumber}}' data-date='{{item.date}}' data-content='{{item.content}}' data-like='{{item.like}}' data-dislike='{{item.dislike}}'>Reply 回复(34)</view>
           </view>
           <image src='../../../../image/rightmenu.png' class='replyMenu'></image>
         </view>
@@ -62,6 +61,6 @@
   </view>
 
 </block>
-<view class='reachBottom' wx:if="{{!reachBottom}}">加载中</view>
-<view class='reachBottom' wx:if="{{reachBottom}}">没有更多内容了</view>
+<view class='reachBottom' wx:if="{{!reachBottom}}">———— 加载中 ————</view>
+<view class='reachBottom' wx:if="{{reachBottom}}">———— 没有更多内容了 —————</view>
 <view class='blank'></view>

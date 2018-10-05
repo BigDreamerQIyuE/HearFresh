@@ -45,10 +45,9 @@
 }
 
 .reachBottom {
-  height: 45rpx;
+  height: 60rpx;
   text-align: center;
   color: grey;
-  font-size: 30rpx;
 }
 
 .newsBackground {

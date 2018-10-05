@@ -20,7 +20,7 @@
       <view class='replyView'>
         <view class='reply_img_title'>
           <image src='../../../../../image/reply.png' class='replyImg' catchtap='toReply' data-postid='{{item.commentId}}'></image>
-          <view class='replyTitle' catchtap='toReply' data-postid='{{item.commentId}}'>Reply 回复({{item.replyNumber}})</view>
+          <view class='replyTitle' catchtap='toReply' data-postid='{{item.commentId}}'>Reply 回复(34)</view>
         </view>
         <image src='../../../../../image/rightmenu.png' class='replyMenu'></image>
       </view>
@@ -31,7 +31,7 @@
 <!-- 回复总数-->
 <view class='container'>
   <view class='replyTotalNumber'>
-    {{replyNumber}}条回复
+    12条回复
   </view>
 </view>
 
@@ -54,7 +54,6 @@
           <view class='date'>{{item.date}}</view>
         </view>
         <view class='content'>{{item.content}}</view>
-        <!--
         <view class='replyView'>
           <view class='reply_img_title'>
             <image src='../../../../../image/reply.png' class='replyImg' catchtap='toReply' data-postid='{{item.commentId}}'></image>
@@ -62,7 +61,6 @@
           </view>
           <image src='../../../../../image/rightmenu.png' class='replyMenu'></image>
         </view>
-        -->
       </view>
     </view>
   </view>

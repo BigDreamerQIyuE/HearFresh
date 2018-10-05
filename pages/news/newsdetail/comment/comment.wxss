@@ -162,5 +162,4 @@
   text-align: center;
   color: grey;
   padding-bottom: 80rpx;
-  font-size: 30rpx;
 }

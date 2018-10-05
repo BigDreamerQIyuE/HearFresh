@@ -22,8 +22,7 @@ Page({
       content: options.content,
       like: options.like,
       dislike: options.dislike,
-      id: options.commentId,
-      replyNumber: options.replyNumber
+      id: options.commentId
     })
     var _this = this
     wx.showToast({
@@ -33,7 +32,7 @@ Page({
     console.log(options.commentId)
 
     wx.request({
-      url: 'https://hearfresh.leanapp.cn/api/v1/GetTheReplyList',
+      url: 'http://139.199.79.232/HearFresh/GetTheReplyList.php',
       method: 'POST',
       data: {
         commentId: options.commentId,
@@ -119,7 +118,7 @@ Page({
       _this.setData(param)
     }
     wx.request({
-      url: 'https://hearfresh.leanapp.cn/api/v1/LikeComment',
+      url: 'http://139.199.79.232/HearFresh/LikeComment.php',
       method: 'POST',
       data: {
         userId: '5b39b27067f356003815884d',
@@ -129,7 +128,6 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       success: function(res) {
-        console.log("like success")
         /*  var confirmData = "comment[" + fuck + "].like"
           param[confirmData] = res.data.data.like
           _this.setData(param)*/
@@ -153,7 +151,7 @@ Page({
     param[name] = !_this.data.comment[fuck].dislike
     _this.setData(param)
     wx.request({
-      url: 'https://hearfresh.leanapp.cn/api/v1/DislikeComment',
+      url: 'http://139.199.79.232/HearFresh/DislikeComment.php',
       method: 'POST',
       data: {
         userId: '5b39b27067f356003815884d',
@@ -163,7 +161,6 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       success: function(res) {
-        console.log("dislike success")
         /* name = "comment[" + fuck + "].dislike"
          param[name] = res.data.data.dislike
          _this.setData(param)*/

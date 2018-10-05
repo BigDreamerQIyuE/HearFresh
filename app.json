@@ -1,11 +1,16 @@
 {
   "pages": [
+<<<<<<< HEAD
         "pages/news/news",
 <<<<<<< HEAD
     "pages/news/newsdetail/newsdetail",
 
 =======
 >>>>>>> parent of 94803d4... news详细页，评论页改进
+=======
+    "pages/news/newsdetail/newsdetail",
+    "pages/news/news",
+>>>>>>> parent of 0268bd4... news微调
     "pages/me/me",
     "pages/me/coupon/coupon",
 

@@ -29,7 +29,6 @@ Page({
       title: '加载中...',
       icon: 'loading'
     })
-    console.log(options.commentId)
 
     wx.request({
       url: 'http://139.199.79.232/HearFresh/GetTheReplyList.php',

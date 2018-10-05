@@ -28,7 +28,7 @@
     <image class='bottomToolsImg' src='../../../image/comment.png'></image>
     <text class='bottomToolsText'>评论</text>
   </view>
-  <button  class='bottomToolsButton' catchtap='collect'>
+  <view class='bottomToolsButton' catchtap='collect'>
     <block wx:if="{{collect}}">
       <image class='bottomToolsImg' src='../../../image/collect1.png'></image>
       <text class='bottomToolsText'>已收藏</text>
@@ -37,11 +37,11 @@
       <image class='bottomToolsImg' src='../../../image/collect.png'></image>
       <text class='bottomToolsText'>收藏</text>
     </block>
-  </button>
-  <button class='bottomToolsButton' open-type='share' >
+  </view>
+  <view class='bottomToolsButton'>
     <image class='bottomToolsImg' src='../../../image/share.png'></image>
     <text class='bottomToolsText'>分享</text>
-  </button>
+  </view>
 </view>
 
 
@@ -82,9 +82,9 @@
         <view class='content'>{{item.content}}</view>
         <view class='replyView'>
           <view class='reply_img_title'>
-            <image src='../../../image/reply.png' class='replyImg' catchtap='toReply' data-commentid='{{item.id}}' data-username='{{item.username}}' data-likenumber='{{item.likeNumber}}' data-date='{{item.date}}' data-content='{{item.content}}' data-like='{{item.like}}'
+            <image src='../../../image/reply.png' class='replyImg' catchtap='toReply' data-commentid='{{item.commentId}}' data-username='{{item.username}}' data-likenumber='{{item.likeNumber}}' data-date='{{item.date}}' data-content='{{item.content}}' data-like='{{item.like}}'
               data-dislike='{{item.dislike}}' data-replynumber='{{item.replyNumber}}'></image>
-            <view class='replyTitle' catchtap='toReply' data-commentid='{{item.id}}' data-username='{{item.username}}' data-likenumber='{{item.likeNumber}}' data-date='{{item.date}}' data-content='{{item.content}}' data-like='{{item.like}}' data-dislike='{{item.dislike}}'
+            <view class='replyTitle' catchtap='toReply' data-commentid='{{item.commentId}}' data-username='{{item.username}}' data-likenumber='{{item.likeNumber}}' data-date='{{item.date}}' data-content='{{item.content}}' data-like='{{item.like}}' data-dislike='{{item.dislike}}'
               data-replynumber='{{item.replyNumber}}'>Reply 回复({{item.replyNumber}})</view>
           </view>
           <image src='../../../image/rightmenu.png' class='replyMenu'></image>

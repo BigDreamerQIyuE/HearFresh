@@ -18,10 +18,14 @@ Page({
     })
     var _this = this
 <<<<<<< HEAD
+<<<<<<< HEAD
     var id = options.id; //更改初始获取的新闻Id
 =======
     var id = options.id;
 >>>>>>> parent of 94803d4... news详细页，评论页改进
+=======
+    var id = '5b5014952f301e003bb8892a'; //更改初始获取的新闻Id
+>>>>>>> parent of 0268bd4... news微调
     //请求文章详细内容
     wx.request({
       url: 'http://139.199.79.232/HearFresh/GetNewsByObjectId.php',
@@ -83,7 +87,7 @@ Page({
 
 
   },
-  //评论入口
+  //评论页入口
   toComment: function(event) {
     var postId = event.target.dataset.postid;
     wx.navigateTo({
@@ -265,13 +269,14 @@ Page({
   toReply: function(event) {
     var username = event.target.dataset.username,
       commentId = event.target.dataset.commentid,
+
       likeNumber = event.target.dataset.likenumber,
       date = event.target.dataset.date,
       content = event.target.dataset.content,
       like = event.target.dataset.like,
       replyNumber = event.target.dataset.replynumber,
       dislike = event.target.dataset.dislike;
-console.log("wocaocaocao"+commentId)
+
     wx.navigateTo({
       url: 'reply/reply?commentId=' + commentId + '&username=' + username + '&likeNumber=' + likeNumber + '&date=' + date + '&content=' + content + '&like=' + like + '&dislike=' + dislike + '&replyNumber=' + replyNumber
     })
@@ -283,7 +288,7 @@ console.log("wocaocaocao"+commentId)
    */
   onReachBottom: function() {
     wx.showLoading({
-      title: '正在加载更多评论',
+      title: '正在加载',
     })
     page++
     var _this = this,

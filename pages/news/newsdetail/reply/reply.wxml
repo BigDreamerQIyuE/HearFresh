@@ -1,0 +1,72 @@
+<!--pages/news/newsdetail/comment/reply/reply.wxml-->
+
+<!-- 被评论的comment-->
+<view class='container'>
+  <view class='background'>
+    <view class='upAndDown'>
+      <image wx:if="{{like}}" src='../../../../image/up.png' class='up' catchtap='likeComment' data-likeid='{{id}}'></image>
+      <image wx:else src='../../../../image/up.png' class='upOpacity' catchtap='likeComment' data-likeid='{{id}}'></image>
+      <image wx:if="{{dislike}}" src='../../../../image/down.png' class='down' catchtap='dislikeComment' data-dislikeid='{{id}}'></image>
+      <image wx:else src='../../../../image/down.png' class='downOpacity' catchtap='dislikeComment' data-dislikeid='{{id}}'></image>
+    </view>
+    <view class='information'>
+      <view class='info_head'>
+        <view class='username'>{{username}}</view>
+        <view class='level'> Level 999 </view>
+        <view class='likeNumber'>{{likeNumber}}赞 </view>
+        <view class='date'>{{date}}</view>
+      </view>
+      <view class='content'>{{content}}</view>
+    </view>
+  </view>
+</view>
+
+<!-- 回复总数-->
+<view class='container'>
+  <view class='replyTotalNumber'>
+    {{replyNumber}}条回复
+  </view>
+</view>
+
+
+<!-- reply部分-->
+<block wx:for="{{comment}}" wx:key='this'>
+  <view class='container'>
+    <view class='background'>
+      <view class='upAndDown'>
+        <image wx:if="{{item.like}}" src='../../../../image/up.png' class='up' catchtap='likeComment' data-likeid='{{item.id}}'></image>
+        <image wx:else src='../../../../image/up.png' class='upOpacity' catchtap='likeComment' data-likeid='{{item.id}}'></image>
+        <image wx:if="{{item.dislike}}" src='../../../../image/down.png' class='down' catchtap='dislikeComment' data-dislikeid='{{item.id}}'></image>
+        <image wx:else src='../../../../image/down.png' class='downOpacity' catchtap='dislikeComment' data-dislikeid='{{item.id}}'></image>
+      </view>
+      <view class='information'>
+        <view class='info_head'>
+          <view class='username'>{{item.username}}</view>
+          <view class='level'> Level 999 </view>
+          <view class='likeNumber'>{{item.likeNumber}}赞 </view>
+          <view class='date'>{{item.date}}</view>
+        </view>
+        <block wx:if="{{item.replyComment}}">
+          <view class='quote'>
+            <view class='quoteUsernameAll'>
+              <view class='quoteUsernameAssist'>引用</view>
+              <view class='quoteUsername'>@{{item.replyComment.username}} </view>
+              <view class='quoteUsernameAssist'> 发表的：</view>
+            </view>
+            <view class='quoteContent'>{{item.replyComment.content}}</view>
+          </view>
+        </block>
+        <view class='content'>{{item.content}}</view>
+        <view class='replyView'>
+          <view class='reply_img_title'>
+            <image src='../../../../image/reply.png' class='replyImg' catchtap='toReply' data-commentid='{{item.commentId}}' data-username='{{item.username}}' data-likenumber='{{item.likeNumber}}' data-date='{{item.date}}' data-content='{{item.content}}' data-like='{{item.like}}'
+              data-dislike='{{item.dislike}}' data-replynumber='{{item.replyNumber}}'></image>
+            <view class='replyTitle' catchtap='toReply' data-commentid='{{item.commentId}}' data-username='{{item.username}}' data-likenumber='{{item.likeNumber}}' data-date='{{item.date}}' data-content='{{item.content}}' data-like='{{item.like}}' data-dislike='{{item.dislike}}'
+              data-replynumber='{{item.replyNumber}}'>Reply 回复({{item.replyNumber}})</view>
+          </view>
+          <image src='../../../../image/rightmenu.png' class='replyMenu'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>

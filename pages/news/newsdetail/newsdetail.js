@@ -19,7 +19,7 @@ Page({
       sheadTop: scrwidth / 1.78 * 0.85,
     })
     var _this = this
-    var id = '5b5014952f301e003bb8892a'; //更改初始获取的新闻Id
+    var id = options.id; //更改初始获取的新闻Id
     //请求文章详细内容
     wx.request({
       url: 'https://hearfresh.leanapp.cn/api/v1/GetNewsByObjectId',
@@ -155,7 +155,7 @@ Page({
 
 
   },
-  //评论页入口
+  //评论入口
   toComment: function(event) {
 
   },
@@ -333,14 +333,13 @@ Page({
   toReply: function(event) {
     var username = event.target.dataset.username,
       commentId = event.target.dataset.commentid,
-
       likeNumber = event.target.dataset.likenumber,
       date = event.target.dataset.date,
       content = event.target.dataset.content,
       like = event.target.dataset.like,
       replyNumber = event.target.dataset.replynumber,
       dislike = event.target.dataset.dislike;
-
+console.log("wocaocaocao"+commentId)
     wx.navigateTo({
       url: 'reply/reply?commentId=' + commentId + '&username=' + username + '&likeNumber=' + likeNumber + '&date=' + date + '&content=' + content + '&like=' + like + '&dislike=' + dislike + '&replyNumber=' + replyNumber
     })
@@ -352,7 +351,7 @@ Page({
    */
   onReachBottom: function() {
     wx.showLoading({
-      title: '正在加载',
+      title: '正在加载更多评论',
     })
     page++
     var _this = this,

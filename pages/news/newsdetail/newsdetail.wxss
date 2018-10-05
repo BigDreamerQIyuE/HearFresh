@@ -117,6 +117,10 @@ page {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #fff;
+}
+.bottomToolsButton::after {
+  border: none;
 }
 
 .bottomToolsImg {
@@ -135,6 +139,7 @@ page {
   background-color: #1c1c28;
   height: 10rpx;
   width: 100%;
+  margin-top: 35rpx;
 }
 
 .allComment {

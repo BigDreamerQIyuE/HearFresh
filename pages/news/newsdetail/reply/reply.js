@@ -30,6 +30,7 @@ Page({
       title: '加载中...',
       icon: 'loading'
     })
+    console.log(options.commentId)
 
     wx.request({
       url: 'https://hearfresh.leanapp.cn/api/v1/GetTheReplyList',

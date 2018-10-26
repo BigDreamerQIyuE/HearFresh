@@ -10,53 +10,28 @@ Page({
     reset: '',
     inputCommentId:null,
     inputPlaceHolder:'来谈谈你的看法吧！'
-
   },
 
   onLoad: function(options) {
-    wx.showLoading({
-      title: '正在加载',
-    })
     var a = wx.getSystemInfoSync();
     var scrwidth = a.windowWidth
     this.setData({
       scrheight: scrwidth / 1.78,
       headTop: scrwidth / 1.78 * 0.75,
       sheadTop: scrwidth / 1.78 * 0.85,
-      newsId: options.id    //'5b5014952f301e003bb8892a' //改为options.id
+
+      newsId: options.articleObjectId,   //'5b5014952f301e003bb8892a' //改为options.id
+      title: options.title,
+      description: options.description,
+      author: options.author,
+      cover: options.cover,
+      content: options.content,
+      updatedAt: options.updatedAt
     })
+    
     var _this = this
-    //请求文章详细内容
-    wx.request({
-      url: 'https://hearfresh.leanapp.cn/api/v1/GetNewsByObjectId',
-      method: 'POST',
-      data: {
-        newsId: _this.data.newsId
-      },
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      success: function(res) {
-        var createdAt = res.data.data.createdAt * 1000,
-          date = util.formatTime(new Date(createdAt))
-        console.log(res.data)
-        _this.setData({
-          title: res.data.data.title,
-          description: res.data.data.description,
-          content: res.data.data.content,
-          author: res.data.data.author,
-          reading: res.data.data.reading,
-          cover: res.data.data.cover,
-          date: date
-        })
-      },
-      fail: function() {
-        wx.showActionSheet({
-          itemList: ["fuck fail"],
-        })
-      }
-    })
     _this.requestFirstComment()
+
     //请求是否收藏数据
     wx.request({
       url: 'https://hearfresh.leanapp.cn/api/v1/Collect',
@@ -85,9 +60,8 @@ Page({
     })
   },
 
-  requestFirstComment: function() {
+  requestFirstComment: function() {//请求第一页评论，当用户提交评论后刷新第一页
     var _this = this
-    //请求第一页评论
     wx.request({
       url: 'https://hearfresh.leanapp.cn/api/v1/GetTheCommentList',
       method: 'POST',
@@ -288,14 +262,12 @@ Page({
       commentInputStatus: false
     })
   },
-
   message: function(res) {
     this.setData({
       inputContent: res.detail.value,
       contentLength: res.detail.value.length
     })
   },
-
   //提交信息
   replySubmit: function(res) {
     console.log(this.data.inputCommentId)

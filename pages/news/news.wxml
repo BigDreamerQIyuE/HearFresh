@@ -1,28 +1,36 @@
-<block wx:if="{{headLine[0].id}}">
-  <view style='height:{{scrheight}}px' catchtap='tapNews' data-postid="{{headLine[0].id}}">
+<block wx:if="{{headLine[0].articleObjectId}}">
+  <view style='height:{{scrheight}}px' catchtap='tapNews' data-postarticleobjectid="{{headLine[0].articleObjectId}}">
     <image bindtap='tapNews' src='{{headLine[0].cover}}' style='height:{{scrheight}}px' class='bc'></image>
-    <view class='front' style='top:{{headTop}}px' data-postid="{{headLine[0].id}}">{{headLine[0].title}}</view>
-    <view class='frontshead' style='top:{{sheadTop}}px' data-postid="{{headLine[0].id}}">{{headLine[0].description}}</view>
-    <image class='mask' src='../../image/mask.png' style='height:{{maskHeight}}px' data-postid="{{headLine[0].id}}" catchtap='tapNews'></image>
+    <view class='front' style='top:{{headTop}}px' data-postarticleobjectid="{{headLine[0].articleObjectId}}">{{headLine[0].title}}</view>
+    <view class='frontshead' style='top:{{sheadTop}}px' data-postarticleobjectid="{{headLine[0].articleObjectId}}">{{headLine[0].description}}</view>
+    <image class='mask' src='../../image/mask.png' style='height:{{maskHeight}}px' data-postarticleobjectid="{{headLine[0].articleObjectId}}" catchtap='tapNews'></image>
   </view>
 </block>
 
-<block wx:if="{{article[0].id}}">
+<block wx:if="{{article[0].articleObjectId}}">
   <block wx:for="{{article}}" wx:key="this">
     <view class='newsBackground' catchtap='tapNews'>
       <view>
-        <image src='{{item.cover}}' class='arImg' mode='aspectFill' data-postid='{{item.id}}'></image>
+        <image src='{{item.cover}}' class='arImg' mode='aspectFill' data-postarticleobjectid='{{item.articleObjectId}}' data-posttitle='{{item.title}}' data-postdescription='{{item.description}}' data-postauthor='{{item.author}}' data-postcover='{{item.cover}}'
+          data-postcontent='{{item.content}}' data-postsupdatedat='{{item.supdatedAt}}'></image>
       </view>
-      <view class='arInfo' data-postid='{{item.id}}'>
-        <view class='arInfo_title' data-postid='{{item.id}}'>{{item.title}}</view>
-        <view class='arInfo_timeAndReaded' data-postid='{{item.id}}'>
+      <view class='arInfo' data-postarticleobjectid='{{item.articleObjectId}}' data-posttitle='{{item.title}}' data-postdescription='{{item.description}}' data-postauthor='{{item.author}}' data-postcover='{{item.cover}}' data-postcontent='{{item.content}}'
+        data-postsupdatedat='{{item.supdatedAt}}'>
+        <view class='arInfo_title' data-postarticleobjectid='{{item.articleObjectId}}' data-posttitle='{{item.title}}' data-postdescription='{{item.description}}' data-postauthor='{{item.author}}' data-postcover='{{item.cover}}' data-postcontent='{{item.content}}'
+          data-postsupdatedat='{{item.supdatedAt}}'>{{item.title}}</view>
+        <view class='arInfo_timeAndReaded' data-postarticleobjectid='{{item.articleObjectId}}' data-posttitle='{{item.title}}' data-postdescription='{{item.description}}' data-postauthor='{{item.author}}' data-postcover='{{item.cover}}' data-postcontent='{{item.content}}'
+          data-postsupdatedat='{{item.supdatedAt}}'>
           <view class='arInfo_time'>
-            <image data-postid='{{item.id}}' src='../../image/time.png' class='arInfo_img'></image>
-            <text data-postid='{{item.id}}' decode='nbsp'>&nbsp;{{item.time}}</text>
+            <image data-postarticleobjectid='{{item.articleObjectId}}' data-posttitle='{{item.title}}' data-postdescription='{{item.description}}' data-postauthor='{{item.author}}' data-postcover='{{item.cover}}' data-postcontent='{{item.content}}' data-postsupdatedat='{{item.supdatedAt}}'
+              src='../../image/time.png' class='arInfo_img'></image>
+            <text data-postarticleobjectid='{{item.articleObjectId}}' data-posttitle='{{item.title}}' data-postdescription='{{item.description}}' data-postauthor='{{item.author}}' data-postcover='{{item.cover}}' data-postcontent='{{item.content}}' data-postsupdatedat='{{item.supdatedAt}}'
+              decode='nbsp'>&nbsp;{{item.updatedAt}}</text>
           </view>
           <view class='arInfo_readed'>
-            <image data-postid='{{item.id}}' src='../../image/readed.png' class='arInfo_img'></image>
-            <text data-postid='{{item.id}}' decode='nbsp'>&nbsp;{{item.read}}</text>
+            <image data-postarticleobjectid='{{item.articleObjectId}}' data-posttitle='{{item.title}}' data-postdescription='{{item.description}}' data-postauthor='{{item.author}}' data-postcover='{{item.cover}}' data-postcontent='{{item.content}}' data-postsupdatedat='{{item.supdatedAt}}'
+              src='../../image/readed.png' class='arInfo_img'></image>
+            <text data-postarticleobjectid='{{item.articleObjectId}}' data-posttitle='{{item.title}}' data-postdescription='{{item.description}}' data-postauthor='{{item.author}}' data-postcover='{{item.cover}}' data-postcontent='{{item.content}}' data-postsupdatedat='{{item.supdatedAt}}'
+              decode='nbsp'>&nbsp;{{item.reading}}</text>
           </view>
         </view>
       </view>

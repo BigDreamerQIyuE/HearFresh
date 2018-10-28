@@ -1,5 +1,7 @@
 /* pages/news/detail/newsdetail.wxss */
 
+@import "../../../wxParse/wxParse.wxss";
+
 page {
   background-color: #fff;
 }
@@ -90,12 +92,12 @@ page {
 
 .msg_txt {
   width: 84%;
-  font-size: 28rpx;
-  text-align: justify;
-  font-family: SimHei;
-  line-height: 1.33;
-  letter-spacing: 0.6px;
-  color: #2a313a;
+  //font-size: 28rpx;
+  //text-align: justify;
+  //font-family: SimHei;
+  //line-height: 1.33;
+  ///letter-spacing: 0.6px;
+  //color: #2a313a;
 }
 
 .bottomTools {

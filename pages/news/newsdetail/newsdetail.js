@@ -1,9 +1,18 @@
 var util = require('../../../utils/util.js'),
   page = 1,
-  pageSize = 10
+  pageSize = 10,
+  WxParse=require('../../../wxParse/wxParse.js');
 Page({
 
   data: {
+    nesId:'',
+    title: '',
+    description:'',
+    author: '',
+    cover: '',
+    content: '',
+    updatedAt: '',
+
     commentInputStatus: false,
     inputContent: null,
     contentLength: 0,
@@ -12,10 +21,13 @@ Page({
     inputPlaceHolder:'来谈谈你的看法吧！'
   },
 
+
   onLoad: function(options) {
     var a = wx.getSystemInfoSync();
-    var scrwidth = a.windowWidth
-    this.setData({
+    var scrwidth = a.windowWidth;
+    var _this=this;
+    var temp = WxParse.wxParse('content', 'html', wx.getStorageSync('content'), _this, 5)
+    _this.setData({
       scrheight: scrwidth / 1.78,
       headTop: scrwidth / 1.78 * 0.75,
       sheadTop: scrwidth / 1.78 * 0.85,
@@ -25,11 +37,10 @@ Page({
       description: options.description,
       author: options.author,
       cover: options.cover,
-      content: options.content,
+      content:temp,
       updatedAt: options.updatedAt
     })
-    
-    var _this = this
+    console.log(options.content)
     _this.requestFirstComment()
 
     //请求是否收藏数据

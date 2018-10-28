@@ -119,7 +119,7 @@ Page({
         }
         wx.hideLoading()
 
-        console.log(_this.data.headLine[0].cover)
+        console.log(_this.data.headLine[0].supdatedAt)
       },
       fail: function(e) {
         wx.showActionSheet({
@@ -130,6 +130,8 @@ Page({
   },
 
   tapNews: function(event) { //跳转到新闻详细界面
+wx.setStorageSync('content',event .target.dataset.postcontent)
+
     wx.navigateTo({
       url: 'newsdetail/newsdetail?articleObjectId=' + event.target.dataset.postarticleobjectid + '&title=' + event.target.dataset.posttitle + '&description=' + event.target.dataset.postdescription + '&author=' + event.target.dataset.postauthor + '&cover=' + event.target.dataset.postcover + '&content=' + event.target.dataset.postcontent + '&updatedAt=' + event.target.dataset.postsupdatedat
     });

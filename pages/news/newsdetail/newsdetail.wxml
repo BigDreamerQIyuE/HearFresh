@@ -1,19 +1,20 @@
 <!--pages/news/detail/newsdetail.wxml-->
-<block wx:if="{{author}}">
-  <view style='height:{{scrheight}}px'>
-    <image src='{{cover}}' class='bc' mode='widthFix'></image>
-    <text class='head' style='top:{{headTop}}px'>{{title}}</text>
-    <text class='shead' style='top:{{sheadTop}}px'>{{description}}</text>
-    <image class='mask' style='height:{{scrheight}}px' src='../../../image/mask.png'></image>
+<import src="../../../wxParse/wxParse.wxml"/>
+<view style='height:{{scrheight}}px'>
+  <image src='{{cover}}' class='bc' mode='widthFix'></image>
+  <text class='head' style='top:{{headTop}}px'>{{title}}</text>
+  <text class='shead' style='top:{{sheadTop}}px'>{{description}}</text>
+  <image class='mask' style='height:{{scrheight}}px' src='../../../image/mask.png'></image>
+</view>
+<view class="msg">
+  <view class="msg_info">
+    <text class="info_author">撰写：{{author}}</text>
+    <text class="info_time">{{updatedAt}}</text>
   </view>
-  <view class="msg">
-    <view class="msg_info">
-      <text class="info_author">撰写：{{author}}</text>
-      <text class="info_time">{{updatedAt}}</text>
-    </view>
-    <text class="msg_txt">{{content}}</text>
+  <view class="msg_txt">
+    <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
   </view>
-</block>
+</view>
 
 <!-- 底部工具栏条-->
 <view class='bottomTools'>
@@ -92,7 +93,8 @@
 <block wx:if='{{commentInputStatus}}'>
   <form bindsubmit='replySubmit' class='replyInput'>
     <view class='inputBg'>
-      <textarea bindblur='commentInputStatus' show-confirm-bar='' value='{{reset}}' class='input' bindconfirm='replySubmit' bindblur='commentInputStatusOff' bindinput='message' maxlength='300' auto-focus='true' auto-height='true' fixed='true' cursor-spacing='50' placeholder='{{inputPlaceHolder}}'></textarea>
+      <textarea bindblur='commentInputStatus' show-confirm-bar='' value='{{reset}}' class='input' bindconfirm='replySubmit' bindblur='commentInputStatusOff' bindinput='message' maxlength='300' auto-focus='true' auto-height='true' fixed='true' cursor-spacing='50'
+        placeholder='{{inputPlaceHolder}}'></textarea>
     </view>
     <view class='inputWordCount'>
       <text class='inputContentLength'>{{contentLength}}/300</text>

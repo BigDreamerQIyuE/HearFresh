@@ -1,9 +1,13 @@
 <block wx:if="{{headLine[0].articleObjectId}}">
-  <view style='height:{{scrheight}}px' catchtap='tapNews' data-postarticleobjectid="{{headLine[0].articleObjectId}}">
+  <view style='height:{{scrheight}}px' catchtap='tapNews' data-postarticleobjectid='{{headLine[0].articleObjectId}}' data-posttitle='{{headLine[0].title}}' data-postdescription='{{headLine[0].description}}' data-postauthor='{{headLine[0].author}}' data-postcover='{{headLine[0].cover}}'
+          data-postcontent='{{headLine[0].content}}' data-postsupdatedat='{{headLine[0].supdatedAt}}'>
     <image bindtap='tapNews' src='{{headLine[0].cover}}' style='height:{{scrheight}}px' class='bc'></image>
-    <view class='front' style='top:{{headTop}}px' data-postarticleobjectid="{{headLine[0].articleObjectId}}">{{headLine[0].title}}</view>
-    <view class='frontshead' style='top:{{sheadTop}}px' data-postarticleobjectid="{{headLine[0].articleObjectId}}">{{headLine[0].description}}</view>
-    <image class='mask' src='../../image/mask.png' style='height:{{maskHeight}}px' data-postarticleobjectid="{{headLine[0].articleObjectId}}" catchtap='tapNews'></image>
+    <view class='front' style='top:{{headTop}}px' data-postarticleobjectid='{{headLine[0].articleObjectId}}' data-posttitle='{{headLine[0].title}}' data-postdescription='{{headLine[0].description}}' data-postauthor='{{headLine[0].author}}' data-postcover='{{headLine[0].cover}}'
+          data-postcontent='{{headLine[0].content}}' data-postsupdatedat='{{headLine[0].supdatedAt}}'>{{headLine[0].title}}</view>
+    <view class='frontshead' style='top:{{sheadTop}}px' data-postarticleobjectid='{{headLine[0].articleObjectId}}' data-posttitle='{{headLine[0].title}}' data-postdescription='{{headLine[0].description}}' data-postauthor='{{headLine[0].author}}' data-postcover='{{headLine[0].cover}}'
+          data-postcontent='{{headLine[0].content}}' data-postsupdatedat='{{headLine[0].supdatedAt}}'>{{headLine[0].description}}</view>
+    <image class='mask' src='../../image/mask.png' style='height:{{maskHeight}}px' catchtap='tapNews' data-postarticleobjectid='{{headLine[0].articleObjectId}}' data-posttitle='{{headLine[0].title}}' data-postdescription='{{headLine[0].description}}' data-postauthor='{{headLine[0].author}}' data-postcover='{{headLine[0].cover}}'
+          data-postcontent='{{headLine[0].content}}' data-postsupdatedat='{{headLine[0].supdatedAt}}'></image>
   </view>
 </block>
 
